@@ -8,6 +8,10 @@ import java.util.Arrays;
 public class SevenImpl extends Base implements ISeven {
     @Override
     public long newAvg(double[] arr, double navg) {
+        if (arr == null) {
+            throw new IllegalArgumentException("Array cannot be null");
+        }
+
         double sum = Arrays.stream(arr).sum();
         int n = arr.length;
         double requiredDonation = navg * (n + 1) - sum;
