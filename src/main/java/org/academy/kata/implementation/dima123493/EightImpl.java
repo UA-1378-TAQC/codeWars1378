@@ -37,9 +37,9 @@ public class EightImpl extends Base implements IEight {
         boolean isNegative = values[0] == '-';
 
         for (int i = isNegative ? 1 : 0; i < values.length; i++) {
-            char c = values[i];
+            char character = values[i];
 
-            int digit = c - '0';
+            int digit = character - '0';
             result = result * 10 + digit;
         }
         return isNegative ? -result : result;
