@@ -3,6 +3,11 @@ package org.academy.kata.implementation.dima123493;
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
@@ -36,6 +41,19 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return "";
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0){
+            return "";
+        }
+
+        Map<Character, Integer> stockCount = new HashMap<>();
+        for (String book : lstOfArt) {
+            char category = book.charAt(0);
+            int quantity = Integer.parseInt(book.split(" ")[1]);
+            stockCount.put(category, stockCount.getOrDefault(category, 0) + quantity);
+        }
+
+        return Arrays.stream(lstOf1stLetter)
+                .map(cat -> "(" + cat + " : " + stockCount.getOrDefault(cat.charAt(0), 0) + ")")
+                .collect(Collectors.joining(" - "));
     }
 }
