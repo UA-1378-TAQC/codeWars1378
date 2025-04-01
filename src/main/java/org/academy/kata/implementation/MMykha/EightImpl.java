@@ -2,6 +2,7 @@ package org.academy.kata.implementation.MMykha;
 
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
+import java.util.Arrays;
 
 public class EightImpl extends Base implements IEight {
     @Override
@@ -26,7 +27,11 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        return new int[0];
+        return this.isIntArrayEmptyOrNull(input)?new int[]{} : new int[] {(int)Arrays.stream(input).filter(el -> el>0).count(), Arrays.stream(input).filter(el -> el<0).sum()};
+    }
+
+    private boolean isIntArrayEmptyOrNull(int[] input){
+        return input == null || input.length == 0;
     }
 
     @Override
