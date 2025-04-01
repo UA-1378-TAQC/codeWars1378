@@ -31,7 +31,14 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int stringToNumber(String str) {
-        return 0;
+        int number = 0;
+        try {
+            number = Integer.parseInt(str);
+            System.out.println("Converted integer: " + number);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid integer input");
+        }
+        return number;
     }
 
     @Override
