@@ -13,8 +13,8 @@ public class SevenImpl extends Base implements ISeven {
         }
 
         double sum = Arrays.stream(arr).sum();
-        int n = arr.length;
-        double requiredDonation = navg * (n + 1) - sum;
+        int numberOfDonations = arr.length;
+        double requiredDonation = navg * (numberOfDonations + 1) - sum;
 
         if (requiredDonation <= 0) {
             throw new IllegalArgumentException("Donation cannot be less or equal to 0");
