@@ -24,9 +24,9 @@ public class EightImpl extends Base implements IEight {
     @Override
     public int[] squareOrSquareRoot(int[] array) {
         return Arrays.stream(array)
-                .map(n -> {
-                    int sqrt = (int) Math.sqrt(n);
-                    return (sqrt * sqrt == n) ? sqrt : n * n;
+                .map(number -> {
+                    int sqrt = (int) Math.sqrt(number);
+                    return (sqrt * sqrt == number) ? sqrt : number * number;
                 })
                 .toArray();
     }
