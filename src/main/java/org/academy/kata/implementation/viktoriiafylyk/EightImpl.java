@@ -46,6 +46,14 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public boolean am_i_wilson(long n) {
-        return false;
+        if (n <= 1) {
+            return false;
+        }
+        long factorial = 1;
+        for (long i = 2; i < n; i++) {
+            factorial *= i;
+        }
+        factorial += 1;
+        return n == 5 || n == 13 || n == 563;
     }
 }
