@@ -16,7 +16,7 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+        return Math.round((mpg * 1.609344f / 4.54609188f) * 100.0f) / 100.0f;
     }
 
     @Override
