@@ -6,7 +6,7 @@ import org.academy.kata.IEight;
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
-        return 0;
+        return (int) (time * 0.5);
     }
 
     @Override
