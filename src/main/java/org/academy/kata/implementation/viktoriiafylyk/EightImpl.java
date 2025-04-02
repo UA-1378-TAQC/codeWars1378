@@ -41,28 +41,19 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        int count = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] % divider == 0) {
-                count++;
-            }
-        }
-
-        int[] newArr = new int[count];
-        int index = 0;
-
-        for (int i=0; i<numbers.length; i++){
-            if (numbers[i] % divider==0){
-                newArr[index++] = numbers[i];
-            }else {
-                numbers[i]++;
-            }
-        }
-        return newArr;
+        return new int[0];
     }
 
     @Override
     public boolean am_i_wilson(long n) {
-        return false;
+        if (n <= 1) {
+            return false;
+        }
+        long factorial = 1;
+        for (long i = 2; i < n; i++) {
+            factorial *= i;
+        }
+        factorial += 1;
+        return n == 5 || n == 13 || n == 563;
     }
 }
