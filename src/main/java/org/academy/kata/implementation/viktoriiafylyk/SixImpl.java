@@ -21,7 +21,30 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double mean(String town, String strng) {
-        return 0;
+        String[] cities = strng.split("\n");
+
+        for (String cityData : cities) {
+            String[] parts = cityData.split(":");
+            String cityName = parts[0];
+
+            if (cityName.equals(town)) {
+                String[] months = parts[1].split(",");
+                double totalRainfall = 0.0;
+                int numberOfMonths = 0;
+
+                for (String monthData : months) {
+                    String[] monthParts = monthData.trim().split(" ");
+                    double rainfall = Double.parseDouble(monthParts[1]);
+
+                    totalRainfall += rainfall;
+                    numberOfMonths++;
+                }
+
+                return totalRainfall / numberOfMonths;
+            }
+        }
+
+        return -1.0;
     }
 
     @Override
