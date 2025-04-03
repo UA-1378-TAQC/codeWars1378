@@ -41,7 +41,26 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        int k = 0;
+        for(int i = 0;i<numbers.length;i++)
+        {
+            if(numbers[i]%divider == 0){
+                k += 1;
+            }
+        }
+
+        int new_numbers[] = new int[k];
+
+        int p = 0;
+        for(int i = 0;i<numbers.length;i++)
+        {
+            if(numbers[i]%divider == 0){
+                new_numbers[p] = numbers[i];
+                p += 1;
+            }
+        }
+        
+        return new_numbers;return new int[0];
     }
 
     @Override
