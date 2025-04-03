@@ -3,8 +3,6 @@ package org.academy.kata.implementation.roman50021;
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
 
-import static java.lang.Math.sqrt;
-
 public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
