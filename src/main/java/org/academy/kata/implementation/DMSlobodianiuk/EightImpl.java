@@ -45,7 +45,31 @@ public class EightImpl extends Base implements IEight {
     }
 
     @Override
-    public boolean am_i_wilson(long n) {
-        return false;
+    public static boolean amIWilson(long n){
+
+        if(n == 0 || n == 1){
+            return false;
+        }
+        long p = n;        
+        double t = ((factorial(p-1) + 1)%(Math.pow(p,2)));
+        
+
+        if(t == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+    public static long factorial(long p){
+        int k = 1;
+
+        for(int i = 1;i<=p;i++){
+            k *= i;
+        }
+
+        return k;
     }
 }
