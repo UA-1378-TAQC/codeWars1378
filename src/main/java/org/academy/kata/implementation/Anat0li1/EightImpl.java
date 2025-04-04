@@ -26,7 +26,17 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        return new int[0];
+        for(int i = 0; i < input.length; i++){
+            if(input[i] > 0){
+                if(Math.sqrt(input[i]) == Math.floor(Math.sqrt(input[i]))){
+                    input[i] = (int)Math.sqrt(input[i]);
+                }
+                else{
+                    input[i] = (int)Math.pow(input[i], 2);
+                }
+            }
+        }
+        return input;
     }
 
     @Override
