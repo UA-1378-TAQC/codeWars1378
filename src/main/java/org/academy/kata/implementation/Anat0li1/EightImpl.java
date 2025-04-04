@@ -3,6 +3,8 @@ package org.academy.kata.implementation.Anat0li1;
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
 
+import java.math.BigInteger;
+
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
@@ -46,6 +48,27 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public boolean am_i_wilson(long n) {
-        return false;
+        return isPrime(n) && factorial(BigInteger.valueOf(n - 1)).add(BigInteger.ONE).mod(BigInteger.valueOf(n).multiply(BigInteger.valueOf(n))).equals(BigInteger.ZERO);
+    }
+
+    private static BigInteger factorial(BigInteger n) {
+        if (n.equals(BigInteger.ZERO) || n.equals(BigInteger.ONE)) {
+            return BigInteger.ONE;
+        }
+        return n.multiply(factorial(n.subtract(BigInteger.ONE)));
+    }
+
+    private static boolean isPrime(long n){
+        if(n <= 1){
+            return false;
+        }
+        boolean isPrime = true;
+        for(int i = 2; i <= Math.sqrt(n); i++){
+            if(n % i == 0){
+                isPrime = false;
+                break;
+            }
+        }
+        return isPrime;
     }
 }
