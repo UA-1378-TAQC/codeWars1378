@@ -1,9 +1,9 @@
 package org.academy.kata.implementation.DMSlobodianiuk;
 
+import java.math.BigInteger;
+
 import org.academy.kata.Base;
 import org.academy.kata.IFive;
-
-import java.math.BigInteger;
 
 public class FiveImpl extends Base implements IFive {
     @Override
@@ -23,7 +23,10 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public double solve(double m) {
-        return 0;
+        
+        double x = ((2*m + 1) - Math.sqrt( Math.pow((2*m + 1),2) - 4*m*m))/(2*m);
+
+        return x;
     }
 
     @Override
