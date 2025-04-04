@@ -23,7 +23,22 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public double solve(double m) {
-        return 0;
+        double left = 0.0;
+        double right = 1.0;
+        double mid = 0.0;
+
+        while (right - left > 1e-13){
+            mid = (left + right) / 2;
+            double current = mid / Math.pow(1 - mid, 2);
+
+            if(current < m){
+                left = mid;
+            }else {
+                right = mid;
+            }
+        }
+
+        return mid;
     }
 
     @Override
