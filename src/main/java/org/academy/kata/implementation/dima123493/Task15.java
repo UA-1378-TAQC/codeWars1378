@@ -3,7 +3,7 @@ package org.academy.kata.implementation.dima123493;
 import org.academy.kata.ISix;
 
 public class Task15 implements Task {
-    ISix iSix;
+    private ISix iSix;
 
     public Task15(ISix sixImpl) {
         this.iSix = sixImpl;
