@@ -1,9 +1,9 @@
 package org.academy.kata.implementation.DMSlobodianiuk;
 
+import java.math.BigInteger;
+
 import org.academy.kata.Base;
 import org.academy.kata.IFive;
-
-import java.math.BigInteger;
 
 public class FiveImpl extends Base implements IFive {
     @Override
@@ -18,7 +18,22 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        BigInteger fibo_1 = BigInteger.ONE;
+        BigInteger fibo_2 = BigInteger.ONE;
+        
+
+        for (BigInteger i = BigInteger.ZERO; i.compareTo(n) <= 0; i = i.add(BigInteger.ONE)) {
+            
+            BigInteger t = fibo_2;
+
+
+            fibo_2 = fibo_2.add(fibo_1);
+            fibo_1 = t;
+        }
+
+        fibo_2 = fibo_2.add(BigInteger.valueOf(-1));
+
+        return fibo_2.multiply(BigInteger.valueOf(4));
     }
 
     @Override
