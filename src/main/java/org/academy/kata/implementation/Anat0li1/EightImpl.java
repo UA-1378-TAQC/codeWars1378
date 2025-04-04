@@ -6,7 +6,11 @@ import org.academy.kata.IEight;
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
-        return 0;
+        if(time <= 0){
+            return 0;
+        }
+        double litresPerHour = 0.5;
+        return (int)Math.floor(time * litresPerHour);
     }
 
     @Override
