@@ -21,7 +21,17 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+        for(int i = 0; i < array.length; i++){
+            if(array[i] > 0){
+                if(Math.sqrt(array[i]) == Math.floor(Math.sqrt(array[i]))){
+                    array[i] = (int)Math.sqrt(array[i]);
+                }
+                else{
+                    array[i] = (int)Math.pow(array[i], 2);
+                }
+            }
+        }
+        return array;
     }
 
     @Override
