@@ -3,6 +3,9 @@ package org.academy.kata.implementation.RomanKmet;
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
@@ -16,7 +19,11 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+        final double kilometersPerMile = 1.609344;
+        final double litersPerGallon = 4.54609188;
+        double kpl = (mpg * kilometersPerMile) / litersPerGallon;
+        BigDecimal kplRounded = new BigDecimal(kpl).setScale(2, RoundingMode.HALF_UP);
+        return (float) kplRounded.doubleValue();
     }
 
     @Override
