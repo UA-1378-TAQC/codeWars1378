@@ -36,7 +36,8 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public double TwoDecimalPlaces(double number) {
-        return 0;
+        int accuracy = 2;
+        return Math.round(number * Math.pow(10, accuracy)) / Math.pow(10, accuracy);
     }
 
     @Override
