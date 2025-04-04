@@ -31,7 +31,22 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int stringToNumber(String str) {
-        return 0;
+        int number = 0;
+        int index = 0;
+        int sign = 1;
+
+        if(str.charAt(index) == '-')
+        {
+            sign = -1;
+            index++;
+        }
+
+        while(index < str.length()){
+            number = number * 10 + (str.charAt(index) - '0');
+            index++;
+        }
+
+        return sign * number;
     }
 
     @Override
