@@ -1,9 +1,10 @@
 package org.academy.kata.implementation.viktoriiafylyk;
+import org.academy.interfaces.ITask;
 import org.academy.kata.IEight;
 import org.academy.util.Authors;
 import org.academy.util.data.IReader;
 import org.academy.util.data.IWriter;
-public class Task_7  {
+public class Task_7 implements ITask {
     private final IEight impl;
     private long n;
 
