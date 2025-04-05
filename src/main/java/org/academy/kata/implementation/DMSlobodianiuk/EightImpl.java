@@ -60,7 +60,7 @@ public class EightImpl extends Base implements IEight {
             }
         }
         
-        return new_numbers;return new int[0];
+        return new_numbers;
     }
 
     @Override
