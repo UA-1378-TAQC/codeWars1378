@@ -51,12 +51,10 @@ public class SixImpl extends Base implements ISix {
                 continue;
             }
 
-            // Перевірка на неправильний формат (float-числа)
             if (match.matches(".*\\d+\\.\\d+.*")) {
                 return "Error(float number):" + match;
             }
 
-            // Розбиваємо матч на слова
             String[] words = match.trim().split(" ");
 
             int firstScoreIndex = -1;
