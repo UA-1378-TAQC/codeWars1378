@@ -10,7 +10,7 @@ public class Task15 implements Task {
     }
 
     @Override
-    public void run(Reader reader, Writer writer) {
+    public void run(Reader reader, Writer writer) {//
         String town = reader.readln();
         String string = reader.readln();
         iSix.mean(town, string);
