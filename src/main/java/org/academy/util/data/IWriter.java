@@ -1,4 +1,4 @@
 package org.academy.util.data;
 
-public interface IWritter {
+public interface IWriter {
 }
