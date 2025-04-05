@@ -16,7 +16,10 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+        double miles_per_imperial_gallon = 1.609344;
+        double kilometers_per_liter = 4.54609188;
+        double kpl = mpg * (miles_per_imperial_gallon/kilometers_per_liter);
+        return (float) Math.round(kpl * 100.0) / 100f;
     }
 
     @Override
