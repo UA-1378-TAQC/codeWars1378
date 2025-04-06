@@ -12,6 +12,7 @@ public class Task_6 implements ITask {
     public Task_6(IEight impl) {
         this.impl = impl;
     }
+    @Override
 
     public void run(Authors author, IReader reader, IWriter writer) {;
         String input = reader.readString("Введіть рядок, який містить число :");
