@@ -12,7 +12,7 @@ public class Task_7 implements ITask {
     public Task_7(IEight impl) {
         this.impl = impl;
     }
-
+    @Override
     public void run(Authors author, IReader reader, IWriter writer) {
         long number = reader.readLong("Введіть число для форматування :");
         boolean isWilson = impl.am_i_wilson(number);
