@@ -85,7 +85,7 @@ public class ConsoleReader implements IReader {
     @Override
     public double[] readDoubleArray(Double minVal) {
         double[] result;
-        while (true) {
+        while(true){
             System.out.println("Введіть розділювач:");
             String delimiter = scanner.nextLine().trim();
             System.out.println("Введіть значення, розділені '" + delimiter + "':");
