@@ -16,7 +16,6 @@ public class SevenImpl extends Base implements ISeven {
         if (x <= 0) {
             throw new IllegalArgumentException();
         }
-
         long result = (long) Math.ceil(x);
         return result;
     }
