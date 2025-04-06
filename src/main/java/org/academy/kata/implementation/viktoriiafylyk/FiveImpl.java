@@ -23,7 +23,30 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public double solve(double m) {
-        return 0;
+        double A = m;
+        double B = -(2 * m + 1);
+        double C = m;
+
+        // Обчислюємо дискримінант
+        double discriminant = B * B - 4 * A * C;
+
+        // Перевіряємо, чи є дійсні корені
+        if (discriminant < 0) {
+            throw new IllegalArgumentException("Немає дійсних коренів для заданого m.");
+        }
+
+        // Обчислюємо корені
+        double root1 = (-B + Math.sqrt(discriminant)) / (2 * A);
+        double root2 = (-B - Math.sqrt(discriminant)) / (2 * A);
+
+        // Повертаємо корінь в діапазоні (0, 1)
+        if (root1 > 0 && root1 < 1) {
+            return root1;
+        } else if (root2 > 0 && root2 < 1) {
+            return root2;
+        } else {
+            throw new IllegalArgumentException("Немає коренів в діапазоні (0, 1) для заданого m.");
+        }
     }
 
     @Override
