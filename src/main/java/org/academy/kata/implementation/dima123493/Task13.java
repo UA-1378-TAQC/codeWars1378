@@ -10,14 +10,15 @@ public class Task13 implements ITask {
     public void run(Authors author, IReader reader, IWriter writer) {
         writer.writePrompt("Enter book values: ");
 
-        String numberWithDecimal = "\\d+\\.\\d{2}";// Формат числа з крапкою та двома знаками після
-        String newline = "\\n";// Розділювач рядків
-        String checkNumber = "\\d+";// Номер чека
-        String category = "[A-Za-z0-9]+";// Категорія (одне слово, без пробілів)
-        String amount = "\\d+\\.\\d{2}";// Сума (як і початковий баланс)
+        String numberWithDecimal = "\\d+\\.\\d{2}";// Number format with a period and two digits after
+        String newline = "\\n";// Line separator
+        String checkNumber = "\\d+";// Check number
+        String category = "[A-Za-z0-9]+";// Category (one word, no spaces)
+        String amount = "\\d+\\.\\d{2}";// Amount (same as the initial balance)
+
 
         String entryLine = newline + checkNumber + " " + category + " " + amount;
-        String fullRegex = numberWithDecimal + "(" + entryLine + ")*";
+        String fullRegex = "^" + numberWithDecimal + "(" + entryLine + ")*$";
 
         String book = reader.readString(fullRegex);
 
