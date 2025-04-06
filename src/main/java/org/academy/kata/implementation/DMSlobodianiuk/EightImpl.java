@@ -3,6 +3,8 @@ package org.academy.kata.implementation.DMSlobodianiuk;
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
 
+import java.util.List;
+
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
@@ -60,11 +62,16 @@ public class EightImpl extends Base implements IEight {
             }
         }
         
-        return new_numbers;return new int[0];
+        return new_numbers;
     }
 
     @Override
     public boolean am_i_wilson(long n) {
         return false;
+    }
+
+    @Override
+    public List<String> getTasks() {
+        return List.of();
     }
 }

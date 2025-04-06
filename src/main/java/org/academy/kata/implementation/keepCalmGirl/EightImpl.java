@@ -3,6 +3,8 @@ package org.academy.kata.implementation.keepCalmGirl;
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
 
+import java.util.List;
+
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
@@ -47,5 +49,10 @@ public class EightImpl extends Base implements IEight {
     @Override
     public boolean am_i_wilson(long n) {
         return false;
+    }
+
+    @Override
+    public List<String> getTasks() {
+        return List.of();
     }
 }

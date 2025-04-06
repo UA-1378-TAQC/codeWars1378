@@ -87,4 +87,9 @@ public class EightImpl extends Base implements IEight {
     public boolean am_i_wilson(long n) {
         return n == 5 || n == 13 || n == 563;
     }
+
+    @Override
+    public List<String> getTasks() {
+        return List.of();
+    }
 }

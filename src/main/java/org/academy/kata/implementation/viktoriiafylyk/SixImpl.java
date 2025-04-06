@@ -3,6 +3,8 @@ package org.academy.kata.implementation.viktoriiafylyk;
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
 
+import java.util.List;
+
 public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
@@ -93,5 +95,10 @@ public class SixImpl extends Base implements ISix {
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
         return "";
+    }
+
+    @Override
+    public List<String> getTasks() {
+        return List.of();
     }
 }

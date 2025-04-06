@@ -3,6 +3,8 @@ package org.academy.kata.implementation.Anat0li1;
 import org.academy.kata.Base;
 import org.academy.kata.ISeven;
 
+import java.util.List;
+
 public class SevenImpl extends Base implements ISeven {
     @Override
     public long newAvg(double[] arr, double navg) {
@@ -12,5 +14,10 @@ public class SevenImpl extends Base implements ISeven {
     @Override
     public String seriesSum(int n) {
         return "";
+    }
+
+    @Override
+    public List<String> getTasks() {
+        return List.of();
     }
 }

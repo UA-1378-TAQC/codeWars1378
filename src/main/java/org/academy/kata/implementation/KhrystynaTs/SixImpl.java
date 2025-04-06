@@ -3,7 +3,14 @@ package org.academy.kata.implementation.KhrystynaTs;
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class SixImpl extends Base implements ISix {
+    @Override
+    public List<String> getTasks() {
+        return Arrays.asList();
+    }
     @Override
     public long findNb(long m) {
         return 0;
@@ -11,7 +18,8 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String balance(String book) {
-        return "";
+        String book2 = book.replaceAll("[^\\p{IsAlphabetic}\\p{IsDigit}]", " ");
+        return book2;
     }
 
     @Override

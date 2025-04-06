@@ -4,8 +4,14 @@ import org.academy.kata.Base;
 import org.academy.kata.IFive;
 
 import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.List;
 
 public class FiveImpl extends Base implements IFive {
+    @Override
+    public List<String> getTasks() {
+        return Arrays.asList();
+    }
     @Override
     public long[] gap(int g, long m, long n) {
         return new long[0];

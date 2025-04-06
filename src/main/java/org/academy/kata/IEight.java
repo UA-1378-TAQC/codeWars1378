@@ -1,6 +1,9 @@
 package org.academy.kata;
 
+import java.util.List;
+
 public interface IEight {
+
     int liters(double time);
 
     double getVolumeOfCuboid(final double length, final double width, final double height);
@@ -18,4 +21,6 @@ public interface IEight {
     int[] divisibleBy(int[] numbers, int divider);
 
     boolean am_i_wilson(long n);
+
+    List<String> getTasks();
 }

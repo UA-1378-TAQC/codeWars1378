@@ -1,5 +1,7 @@
 package org.academy.kata;
 
+import java.util.List;
+
 public interface ISix {
     long findNb(long m);
 
@@ -14,4 +16,6 @@ public interface ISix {
     String nbaCup(String resultSheet, String toFind);
 
     String stockSummary(String[] lstOfArt, String[] lstOf1stLetter);
+
+    List<String> getTasks();
 }
