@@ -18,7 +18,7 @@ public class Task10 implements ITask {
         try{
             long result = author.getSeven().newAvg(arr,navg);
             writer.writePrompt("Результат виконання - очікувана пожертва:");
-            writer.writeLong(result);
+            writer.writeResult(result);
         }catch(IllegalArgumentException e){
             writer.writePrompt("Нажаль, очікувана пожертва недостатньо велика і не є додатнім числом.");
         }
