@@ -16,7 +16,7 @@ public class Task11 implements ITask {
         try {
             String result = author.getSeven().seriesSum(number);
             writer.writePrompt(String.format("Результат. Значення %d-го члену ряду дорівнює:",number));
-            writer.writeString(result);
+            writer.writeResult(result);
         }catch(Exception e){
             writer.writePrompt("Щось пішло не так.");
         }
