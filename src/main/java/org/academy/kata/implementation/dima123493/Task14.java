@@ -9,12 +9,12 @@ public class Task14 implements ITask {
 
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
-        writer.writePrompt("Enter x value: ");
+        //writer.writePrompt("Enter x value: ");
         double x = reader.readDouble(0.0);
 
         double result = author.getSix().f(x);
 
-        writer.writePrompt("Result:");
-        writer.writeResult(result);
+        //writer.writePrompt("Result:");
+       // writer.writeResult(result);
     }
 }
