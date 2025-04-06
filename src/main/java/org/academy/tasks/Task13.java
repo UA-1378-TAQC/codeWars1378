@@ -1,4 +1,4 @@
-package org.academy.kata.implementation.dima123493;
+package org.academy.tasks;
 
 import org.academy.interfaces.ITask;
 import org.academy.util.Authors;
