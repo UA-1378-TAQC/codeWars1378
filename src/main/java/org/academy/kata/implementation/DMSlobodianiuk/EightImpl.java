@@ -51,7 +51,6 @@ public class EightImpl extends Base implements IEight {
 
         int new_numbers[] = new int[k];
 
-
         int p = 0;
         for(int i = 0;i<numbers.length;i++)
         {
@@ -61,7 +60,7 @@ public class EightImpl extends Base implements IEight {
             }
         }
         
-        return new_numbers;
+        return new_numbers;return new int[0];
     }
 
     @Override
