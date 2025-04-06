@@ -10,7 +10,7 @@ public class Task14 implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
         writer.writePrompt("Enter x value: ");
-        double x = reader.readDouble();
+        double x = reader.readDouble(0.0);
 
         double result = author.getSix().f(x);
 
