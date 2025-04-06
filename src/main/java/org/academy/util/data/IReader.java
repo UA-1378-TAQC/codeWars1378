@@ -3,13 +3,13 @@ package org.academy.util.data;
 import java.math.BigInteger;
 
 public interface IReader {
-    int readInt(String prompt);
-    long readLong(String prompt);
-    float readFloat(String prompt);
-    double readDouble(String prompt);
-    BigInteger readBigInteger(String prompt);
-    String readString(String prompt);
-    int[] readIntArray(String prompt, String delimiter);
-    double[] readDoubleArray(String prompt, String delimiter);
-    String[] readStringArray(String prompt, String delimiter);
+    int readInt(Integer minVal);
+    long readLong(Long minVal);
+    float readFloat(Float minVal);
+    double readDouble(Double minVal);
+    BigInteger readBigInteger(BigInteger minVal);
+    String readString(String regEx);
+    int[] readIntArray(Integer minVal);
+    double[] readDoubleArray(Double minVal);
+    String[] readStringArray(String regEx);
 }
