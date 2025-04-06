@@ -14,6 +14,7 @@ public class Task_5 implements ITask{
          this.impl = impl;
      }
 
+    @Override
      public void run(Authors author, IReader reader, IWriter writer) {
          int[] input = reader.readIntArray("Введіть масив цілих чисел (додатні та від'ємні) :", "" );
          int[] result = impl.countPositivesSumNegatives(input);
