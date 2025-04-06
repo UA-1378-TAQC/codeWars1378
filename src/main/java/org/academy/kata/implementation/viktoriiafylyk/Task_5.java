@@ -6,20 +6,18 @@ import org.academy.util.data.IReader;
 import org.academy.util.data.IWriter;
 import org.academy.interfaces.ITask;
 
-
 public class Task_5 implements ITask{
     private final IEight impl;
-    private int[] input;
      public Task_5(IEight impl) {
          this.impl = impl;
      }
 
     @Override
      public void run(Authors author, IReader reader, IWriter writer) {
-         int[] input = reader.readIntArray("Введіть масив цілих чисел (додатні та від'ємні) :", "" );
+         Integer minValue = 0 ;
+         int[] input = reader.readIntArray(minValue);
          int[] result = impl.countPositivesSumNegatives(input);
          writer.writePrompt("Результат : ");
          writer.writeResult(result);
      }
-
 }
