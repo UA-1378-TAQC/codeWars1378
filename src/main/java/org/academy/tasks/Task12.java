@@ -17,7 +17,7 @@ public class Task12 implements ITask {
             long result = author.getSix().findNb(m);
             if(result != -1){
                 writer.writePrompt("Результат. Кількість кубиків дорівнює значенню:");
-                writer.writeLong(result);
+                writer.writeResult(result);
             }else {
                 writer.writePrompt("Результат. За заданим об'ємом " +
                         "не було знайдено існуїчої кількості кубиків.");
