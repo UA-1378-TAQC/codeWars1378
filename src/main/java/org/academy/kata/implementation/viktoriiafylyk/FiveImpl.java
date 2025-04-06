@@ -28,6 +28,29 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public long[] smallest(long n) {
-        return new long[0];
+        String numStr = Long.toString(n);
+        long minNumber = n;
+        int minI = -1, minJ = -1;
+
+        for (int i = 0; i < numStr.length(); i++) {
+            for (int j = 0; j < numStr.length(); j++) {
+                if (i != j) {
+                    StringBuilder sb = new StringBuilder(numStr);
+                    char digit = sb.charAt(i);
+                    sb.deleteCharAt(i);
+                    sb.insert(j, digit);
+
+                    long newNumber = Long.parseLong(sb.toString());
+
+                    if (newNumber < minNumber) {
+                        minNumber = newNumber;
+                        minI = i;
+                        minJ = j;
+                    }
+                }
+            }
+        }
+
+        return new long[] { minNumber, minI, minJ };
     }
 }
