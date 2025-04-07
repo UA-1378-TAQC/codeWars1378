@@ -7,12 +7,13 @@ import org.academy.util.data.IWriter;
 
 public class Task1 implements ITask {
 
-    public void run(Authors author, IReader reader, IWriter writer) {
-        writer.writePrompt("Enter time:");
+    public void run(Authors author, IReader reader, IWriter writter) {
+        writter.writePrompt("Enter time:");
         double time = reader.readDouble(0.0);
 
         int result = author.getEight().liters(time);
 
-        writer.writePrompt("time = " + time + "----> litres = " + result);
+        writter.writePrompt("time = " + time + "----> litres = ");
+        writter.writeResult(result);
     }
 }

@@ -29,6 +29,8 @@ public class Task3 implements ITask {
 
         double result = author.getEight().mpgToKPM(mpg);
 
-        writter.writePrompt(mpg +"of Imperial gallons, that is " + result + "kilometers per liter");
+        writter.writePrompt(mpg +"of Imperial gallons, that is ");
+        writter.writeResult(result);
+        writter.writePrompt(" kilometers per liter");
     }
 }

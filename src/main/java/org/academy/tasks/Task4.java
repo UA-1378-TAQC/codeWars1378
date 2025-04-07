@@ -32,7 +32,8 @@ public class Task4 implements ITask {
 
         int[] result = author.getEight().squareOrSquareRoot(array);
 
-        writter.writePrompt(array + "->" + result);
+        writter.writePrompt(array + "->");
+        writter.writeResult(result);
 
     }
 }

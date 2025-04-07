@@ -25,7 +25,8 @@ public class Task2 implements ITask {
 
         double result = author.getEight().getVolumeOfCuboid(length,width,height);
 
-        writter.writePrompt("The volume of a rectangular cuboid is " + result);
+        writter.writePrompt("The volume of a rectangular cuboid is ");
+        writter.writeResult(result);
 
     }
 }

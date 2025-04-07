@@ -35,7 +35,6 @@ public class Task21 implements ITask {
 
         double result = author.getFive().solve(m);
 
-        writter.writePrompt(Double.toString(result));
-
+        writter.writeResult(result);
     }
 }
