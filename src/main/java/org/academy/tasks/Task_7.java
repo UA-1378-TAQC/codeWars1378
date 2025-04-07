@@ -8,7 +8,7 @@ public class Task_7 implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
         Long minValue = 1L;
-        writer.writePrompt("Введіть число для форматування :");
+        writer.writePrompt("Введіть число для перевірки на Wilson Prime :");
         long number = reader.readLong(minValue);
         boolean isWilson = author.getEight().am_i_wilson(number);
         writer.writePrompt("Результат : ");
