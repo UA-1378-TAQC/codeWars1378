@@ -14,6 +14,6 @@ public class Task5 implements ITask{
          int[] input = reader.readIntArray(minValue);
          int[] result = author.getEight().countPositivesSumNegatives(input);
          writer.writePrompt("Результат : ");
-         writer.writeResult(result);
+         writer.writeArray(result);
      }
 }
