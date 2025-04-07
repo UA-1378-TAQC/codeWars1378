@@ -8,10 +8,10 @@ public class Task6 implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {;
         String integerRegex = "^[-+]?\\d+$";
-        writer.writePrompt("Введіть рядок, який містить число : ");
+        writer.writePrompt("Enter a string containing a number: ");
         String input = reader.readString(integerRegex);
         int result = author.getEight().stringToNumber(input);
-        writer.writePrompt("Результат конвертування : ");
+        writer.writePrompt("The result of the conversion: ");
         writer.writeResult(result);
     }
 }
