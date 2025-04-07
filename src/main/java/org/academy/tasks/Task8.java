@@ -9,10 +9,10 @@ public class Task8 implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
         Double minValue = 0.0;
-        writer.writePrompt("Введіть число для форматування :");
+        writer.writePrompt("Enter a number to format:");
         double number = reader.readDouble(minValue);
         double result = author.getEight().TwoDecimalPlaces(number);
-        writer.writePrompt("Результат форматування : ");
+        writer.writePrompt("The result of formatting: ");
         writer.writeResult(result);
     }
 }
