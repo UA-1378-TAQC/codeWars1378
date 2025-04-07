@@ -9,11 +9,11 @@ public class Task5 implements ITask{
 
     @Override
      public void run(Authors author, IReader reader, IWriter writer) {
-         writer.writePrompt("Введіть масив цілих чисел (додатні та від'ємні) :");
+         writer.writePrompt("Enter an array of integers (positive and negative) :");
          Integer minValue = 0 ;
          int[] input = reader.readIntArray(minValue);
          int[] result = author.getEight().countPositivesSumNegatives(input);
-         writer.writePrompt("Результат : ");
+         writer.writePrompt("Result : ");
          writer.writeArray(result);
      }
 }
