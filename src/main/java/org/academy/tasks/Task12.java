@@ -6,24 +6,16 @@ import org.academy.util.data.IReader;
 import org.academy.util.data.IWriter;
 
 public class Task12 implements ITask {
-    public Task12() {}
-
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
-        writer.writePrompt("Для виконання цього завдання необхідно ввести об'єм побудови.");
-        writer.writePrompt("Введіть ціле додатнє число:");
+        writer.writePrompt("Enter the building volume (positive integer):");
         long m = reader.readLong(0L);
-        try {
-            long result = author.getSix().findNb(m);
-            if(result != -1){
-                writer.writePrompt("Результат. Кількість кубиків дорівнює значенню:");
-                writer.writeResult(result);
-            }else {
-                writer.writePrompt("Результат. За заданим об'ємом " +
-                        "не було знайдено існуїчої кількості кубиків.");
-            }
-        }catch(Exception e){
-            writer.writePrompt("Щось пішло не так.");
+        long result = author.getSix().findNb(m);
+        if (result != -1) {
+            writer.writePrompt("Result. The number of cubes is:");
+            writer.writeResult(result);
+        } else {
+            writer.writePrompt("Result: It is impossible to calculate the number of cubes based on the given volume.");
         }
     }
 }
