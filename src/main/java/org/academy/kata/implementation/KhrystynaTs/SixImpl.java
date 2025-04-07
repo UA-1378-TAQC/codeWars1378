@@ -16,7 +16,22 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double f(double x) {
-        return 0;
+        double A = x;
+        double B = -(2 * x + 1);
+        double C = x;
+
+        double discriminant = B * B - 4 * A * C;
+
+        double sqrtDiscriminant = Math.sqrt(discriminant);
+
+        double x1 = (-B + sqrtDiscriminant) / (2 * A);
+        double x2 = (-B - sqrtDiscriminant) / (2 * A);
+
+        if (x1 > 0 && x1 < 1) {
+            return x1;
+        } else {
+            return x2;
+        }
     }
 
     @Override
