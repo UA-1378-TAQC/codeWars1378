@@ -4,7 +4,7 @@ import org.academy.util.Authors;
 import org.academy.util.data.IReader;
 import org.academy.util.data.IWriter;
 
-public class Task_6 implements ITask {
+public class Task6 implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {;
         String integerRegex = "^[-+]?\\d+$";

@@ -5,7 +5,7 @@ import org.academy.util.data.IReader;
 import org.academy.util.data.IWriter;
 import org.academy.interfaces.ITask;
 
-public class Task_5 implements ITask{
+public class Task5 implements ITask{
 
     @Override
      public void run(Authors author, IReader reader, IWriter writer) {
