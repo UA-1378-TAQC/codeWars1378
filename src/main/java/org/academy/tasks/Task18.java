@@ -23,7 +23,7 @@ public class Task18 implements ITask {
             writer.writePrompt("Пари простих чисел із проміжком " + g + " не знайдено.");
         } else {
             writer.writePrompt("Знайдено пару:");
-            writer.writeResult(result);
+            writer.writeArray(result);
         }
     }
 }
