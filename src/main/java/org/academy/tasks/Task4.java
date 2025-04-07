@@ -24,16 +24,16 @@ public class Task4 implements ITask {
         "The input array will always contain only positive numbers, and will never be empty or null.";
 
     @Override
-    public void run(Authors author, IReader reader, IWriter writter){
+    public void run(Authors author, IReader reader, IWriter writer){
 
-        writter.writePrompt("Enter an integer array.");
+        writer.writePrompt("Enter an integer array.");
 
         int[] array = reader.readIntArray(0);
 
         int[] result = author.getEight().squareOrSquareRoot(array);
 
-        writter.writePrompt(array + "->");
-        writter.writeResult(result);
+        writer.writePrompt(array + "->");
+        writer.writeResult(result);
 
     }
 }

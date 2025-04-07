@@ -21,16 +21,16 @@ public class Task3 implements ITask {
         "\r\n" + //
         "1 Mile = 1.609344 kilometres";
 
-    public void run(Authors author, IReader reader, IWriter writter){
+    public void run(Authors author, IReader reader, IWriter writer){
 
-        writter.writePrompt("Enter the number of gallons to convert.");
+        writer.writePrompt("Enter the number of gallons to convert.");
 
         int mpg = reader.readInt(0);
 
         double result = author.getEight().mpgToKPM(mpg);
 
-        writter.writePrompt(mpg +"of Imperial gallons, that is ");
-        writter.writeResult(result);
-        writter.writePrompt(" kilometers per liter");
+        writer.writePrompt(mpg +"of Imperial gallons, that is ");
+        writer.writeResult(result);
+        writer.writePrompt(" kilometers per liter");
     }
 }

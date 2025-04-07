@@ -13,20 +13,20 @@ public class Task2 implements ITask {
                 "\r\n" + //
                 "Write a function to help Bob with this calculation.";
 
-    public void run(Authors author, IReader reader, IWriter writter){
+    public void run(Authors author, IReader reader, IWriter writer){
 
-        writter.writePrompt("Enter length, width, height.");
-        writter.writePrompt("Enter length.");
+        writer.writePrompt("Enter length, width, height.");
+        writer.writePrompt("Enter length.");
         final double length = reader.readDouble(0.0);
-        writter.writePrompt("Enter width.");
+        writer.writePrompt("Enter width.");
         final double width = reader.readDouble(0.0);
-        writter.writePrompt("Enter height.");
+        writer.writePrompt("Enter height.");
         final double height = reader.readDouble(0.0);
 
         double result = author.getEight().getVolumeOfCuboid(length,width,height);
 
-        writter.writePrompt("The volume of a rectangular cuboid is ");
-        writter.writeResult(result);
+        writer.writePrompt("The volume of a rectangular cuboid is ");
+        writer.writeResult(result);
 
     }
 }

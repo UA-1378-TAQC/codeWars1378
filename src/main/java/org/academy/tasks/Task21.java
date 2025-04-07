@@ -27,14 +27,14 @@ public class Task21 implements ITask {
     "You pass the tests if abs(actual - expected) <= 1e-12;";
 
     @Override
-    public void run(Authors author, IReader reader, IWriter writter){
+    public void run(Authors author, IReader reader, IWriter writer){
 
-        writter.writePrompt("Enter an double value.");
+        writer.writePrompt("Enter an double value.");
 
         double m = reader.readDouble((double) 0);
 
         double result = author.getFive().solve(m);
 
-        writter.writeResult(result);
+        writer.writeResult(result);
     }
 }
