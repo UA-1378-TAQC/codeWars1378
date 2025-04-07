@@ -18,6 +18,10 @@ public class SevenImpl extends Base implements ISeven {
 
     @Override
     public List<String> getTasks() {
-        return List.of();
+        return List.of(
+                "newAvg (Calculate the required donation to achieve the target average)",
+                "seriesSum (Calculate the sum of a series of numbers)"
+
+        );
     }
 }

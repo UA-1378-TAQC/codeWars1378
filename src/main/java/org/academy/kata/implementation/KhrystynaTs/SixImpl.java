@@ -7,10 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SixImpl extends Base implements ISix {
-    @Override
-    public List<String> getTasks() {
-        return Arrays.asList();
-    }
+
     @Override
     public long findNb(long m) {
         return 0;
@@ -45,5 +42,18 @@ public class SixImpl extends Base implements ISix {
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
         return "";
+    }
+    @Override
+    public List<String> getTasks() {
+        return List.of(
+                "findNb (Find the smallest number n such that the sum of cubes of the first n numbers equals m)",
+                "balance (Balance a book of transactions)",
+                "f (Perform a mathematical operation on x)",
+                "mean (Calculate the average rainfall for a given town)",
+                "variance (Calculate the variance in rainfall for a given town)",
+                "nbaCup (Analyze the NBA results and return a particular team's result)",
+                "stockSummary (Generate a stock summary based on article quantities)"
+
+        );
     }
 }

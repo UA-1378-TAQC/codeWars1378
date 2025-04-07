@@ -7,10 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SevenImpl extends Base implements ISeven {
-    @Override
-    public List<String> getTasks() {
-        return Arrays.asList();
-    }
+
     @Override
     public long newAvg(double[] arr, double navg) {
         return 0;
@@ -19,5 +16,14 @@ public class SevenImpl extends Base implements ISeven {
     @Override
     public String seriesSum(int n) {
         return "";
+    }
+
+    @Override
+    public List<String> getTasks() {
+        return List.of(
+                "newAvg (Calculate the required donation to achieve the target average)",
+                "seriesSum (Calculate the sum of a series of numbers)"
+
+        );
     }
 }

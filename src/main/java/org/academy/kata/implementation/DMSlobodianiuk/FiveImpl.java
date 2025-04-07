@@ -34,6 +34,12 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public List<String> getTasks() {
-        return List.of();
+        return List.of(
+                "gap (Find a gap between two prime numbers with a given difference)",
+                "zeros (Count the number of trailing zeros in n!)",
+                "perimeter (Calculate the perimeter of a polygon, e.g., square with side length n)",
+                "solve (Perform a calculation on m, such as m^2)",
+                "smallest (Find the smallest factor of a given number n)"
+        );
     }
 }
