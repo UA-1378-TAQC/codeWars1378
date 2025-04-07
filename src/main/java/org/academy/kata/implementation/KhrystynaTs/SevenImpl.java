@@ -10,7 +10,5 @@ public class SevenImpl extends Base implements ISeven {
     }
 
     @Override
-    public String seriesSum(int n) {
-        return "";
-    }
+    public String seriesSum(int n) {return null;}
 }
