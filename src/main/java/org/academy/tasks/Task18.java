@@ -22,8 +22,11 @@ public class Task18 implements ITask {
         if (result == null || result.length == 0) {
             writer.writePrompt("Пари простих чисел із проміжком " + g + " не знайдено.");
         } else {
+            /*
+            @TODO add writeArra();
             writer.writePrompt("Знайдено пару:");
             writer.writeArray(result);
+             */
         }
     }
 }
