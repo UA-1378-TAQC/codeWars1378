@@ -9,6 +9,9 @@ import org.academy.kata.implementation.keepCalmGirl.FiveImpl;
 import org.academy.kata.implementation.keepCalmGirl.SevenImpl;
 import org.academy.kata.implementation.keepCalmGirl.SixImpl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum Authors {
     KOSIAK_IVANNA(1,
             "keepCalmGirl",
@@ -82,5 +85,22 @@ public enum Authors {
             System.out.println(author);
         }
     }
+    public List<String> getTasks() {
+        List<String> tasks = new ArrayList<>();
 
+        if (eight != null) {
+            tasks.addAll(eight.getTasks());
+        }
+        if (seven != null) {
+            tasks.addAll(seven.getTasks());
+        }
+        if (six != null) {
+            tasks.addAll(six.getTasks());
+        }
+        if (five != null) {
+            tasks.addAll(five.getTasks());
+        }
+
+        return tasks;
+    }
 }

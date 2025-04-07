@@ -53,6 +53,16 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public List<String> getTasks() {
-        return List.of();
+        return List.of(
+                "liters (Calculate the number of liters consumed based on time)",
+                "getVolumeOfCuboid (Calculate the volume of a cuboid)",
+                "mpgToKPM (Convert miles per gallon to kilometers per liter)",
+                "squareOrSquareRoot (Square each number in the array or take the square root if it's a perfect square)",
+                "countPositivesSumNegatives (Count positive numbers and sum negative numbers in an array)",
+                "stringToNumber (Convert a string to a number)",
+                "TwoDecimalPlaces (Round a number to two decimal places)",
+                "divisibleBy (Filter numbers divisible by a given divisor)",
+                "am_i_wilson (Check if a number is a Wilson prime)"
+        );
     }
 }
