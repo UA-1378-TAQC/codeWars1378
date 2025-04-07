@@ -75,7 +75,7 @@ public class Menu {
     }
 
     private void executeSelectedTask(Authors selectedAuthor, int taskId) {
-        Tasks selectedTask = Tasks.values()[taskId -1];  
+        Tasks selectedTask = Tasks.values()[taskId -1];
         System.out.println("\nExecuting task: " + selectedTask.getName());
         ITask runner = selectedTask.getRunner();
         if (runner != null) {
