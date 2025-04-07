@@ -8,25 +8,22 @@ import org.academy.util.data.IWriter;
 public class Task18 implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
-        writer.writePrompt("Введіть бажаний розмір проміжку між простими числами (g ≥ 2):");
+        writer.writePrompt("Enter the desired prime gap size (g ≥ 2):");
         int g = reader.readInt(2);
 
-        writer.writePrompt("Введіть початкове число діапазону (m > 2):");
+        writer.writePrompt("Enter the start of the range (m > 2):");
         long m = reader.readLong(3L);
 
-        writer.writePrompt("Введіть кінцеве число діапазону (n ≥ m):");
+        writer.writePrompt("Enter the end of the range (n ≥ m):");
         long n = reader.readLong(m);
 
         long[] result = author.getFive().gap(g, m, n);
 
         if (result == null || result.length == 0) {
-            writer.writePrompt("Пари простих чисел із проміжком " + g + " не знайдено.");
+            writer.writePrompt("No prime pair found with a gap of " + g + ".");
         } else {
-            /*
-            @TODO add writeArra();
-            writer.writePrompt("Знайдено пару:");
+            writer.writePrompt("Found prime pair:");
             writer.writeArray(result);
-             */
         }
     }
 }

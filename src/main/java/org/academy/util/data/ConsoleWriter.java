@@ -58,4 +58,10 @@ public class ConsoleWriter implements IWriter {
             System.out.println(element);
         }
     }
+
+    public void writeArray(long[] array) {
+        for (long element : array) {
+            System.out.println(element);
+        }
+    }
 }
