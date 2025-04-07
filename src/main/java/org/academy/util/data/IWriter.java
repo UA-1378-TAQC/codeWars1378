@@ -15,4 +15,5 @@ public interface IWriter {
     void writeArray(int[] array);
     void writeArray(double[] array);
     void writeArray(String[] array);
+    void writeArray(long[] array);
 }
