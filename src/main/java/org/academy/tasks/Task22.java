@@ -8,15 +8,11 @@ import org.academy.util.data.IWriter;
 public class Task22 implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
-        writer.writePrompt("Введіть додатнє ціле число:");
+        writer.writePrompt("Enter a positive integer:");
         long n = reader.readLong(0L);
-        try {
-            long[] result = author.getFive().smallest(n);
-            writer.writePrompt("Результат:");
-            writer.writeArray(result);
-            if(result[1] == result[2]) writer.writePrompt("Число залишилося незмінним.");
-        }catch(Exception e){
-            writer.writePrompt("Щось пішло не так.");
-        }
+        long[] result = author.getFive().smallest(n);
+        writer.writePrompt("Result:");
+        writer.writeArray(result);
+        if (result[1] == result[2]) writer.writePrompt("The number remained unchanged.");
     }
 }
