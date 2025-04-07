@@ -5,11 +5,6 @@ import org.academy.util.Authors;
 import org.academy.util.data.IReader;
 import org.academy.util.data.IWriter;
 
-import java.io.Reader;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 
 public class Task2 implements ITask {    
     String name = "Volume of a Cuboid";
@@ -20,17 +15,17 @@ public class Task2 implements ITask {
 
     public void run(Authors author, IReader reader, IWriter writter){
 
-        writter.writePrompt("Введіть довжину, ширину та висоту.");
-        writter.writePrompt("Введіть довжину.");
+        writter.writePrompt("Enter length, width, height.");
+        writter.writePrompt("Enter length.");
         final double length = reader.readDouble(0.0);
-        writter.writePrompt("Введіть ширину.");
+        writter.writePrompt("Enter width.");
         final double width = reader.readDouble(0.0);
-        writter.writePrompt("Введіть висоту.");
+        writter.writePrompt("Enter height.");
         final double height = reader.readDouble(0.0);
 
         double result = author.getEight().getVolumeOfCuboid(length,width,height);
 
-        writter.writePrompt("Объем прямоугольного параллелепипеда дорівнює: " + result);
+        writter.writePrompt("The volume of a rectangular cuboid is " + result);
 
     }
 }

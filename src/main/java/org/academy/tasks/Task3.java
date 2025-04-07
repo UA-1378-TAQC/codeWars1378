@@ -5,11 +5,6 @@ import org.academy.util.Authors;
 import org.academy.util.data.IReader;
 import org.academy.util.data.IWriter;
 
-import java.io.Reader;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 
 public class Task3 implements ITask {    
     String name = "Miles per gallon to kilometers per liter";
@@ -28,12 +23,12 @@ public class Task3 implements ITask {
 
     public void run(Authors author, IReader reader, IWriter writter){
 
-        writter.writePrompt("Введіть кількість галонів для конвертації.");
+        writter.writePrompt("Enter the number of gallons to convert.");
 
         int mpg = reader.readInt(0);
 
         double result = author.getEight().mpgToKPM(mpg);
 
-        writter.writePrompt(mpg +"Імперських галонів, це " + result + "кілометрів на літр");
+        writter.writePrompt(mpg +"of Imperial gallons, that is " + result + "kilometers per liter");
     }
 }
