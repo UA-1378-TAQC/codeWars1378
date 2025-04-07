@@ -8,7 +8,7 @@ import org.academy.util.data.IWriter;
 public class Task1 implements ITask {
 
     public void run(Authors author, IReader reader, IWriter writer) {
-        writer.writePrompt("Введіть час:");
+        writer.writePrompt("Enter time:");
         double time = reader.readDouble(0.0);
 
         int result = author.getEight().liters(time);

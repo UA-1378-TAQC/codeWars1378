@@ -5,11 +5,6 @@ import org.academy.util.Authors;
 import org.academy.util.data.IReader;
 import org.academy.util.data.IWriter;
 
-import java.io.Reader;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 
 public class Task4 implements ITask {    
     String name = "Miles per gallon to kilometers per liter";
@@ -31,7 +26,7 @@ public class Task4 implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writter){
 
-        writter.writePrompt("Введіть масив значень.");
+        writter.writePrompt("Enter an integer array.");
 
         int[] array = reader.readIntArray(0);
 
