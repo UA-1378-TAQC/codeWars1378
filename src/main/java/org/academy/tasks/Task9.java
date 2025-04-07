@@ -17,7 +17,7 @@ public class Task9 implements ITask {
         try {
             int[] result = author.getEight().divisibleBy(numbers, divider);
             writer.writePrompt("Результат. Всі введені числа, які діляться на введений дільник:");
-            writer.writeResult(result);
+            writer.writeArray(result);
         }catch(Exception e){
             writer.writePrompt("Щось пішло не так.");
         }
