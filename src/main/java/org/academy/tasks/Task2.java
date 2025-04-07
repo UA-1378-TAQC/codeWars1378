@@ -18,15 +18,15 @@ public class Task2 implements ITask {
                 "\r\n" + //
                 "Write a function to help Bob with this calculation.";
 
-    public void run(Authors author, Reader reader, Writter writter){
+    public void run(Authors author, IReader reader, IWriter writter){
 
         writter.writePrompt("Введіть довжину, ширину та висоту.");
         writter.writePrompt("Введіть довжину.");
-        final double length = reader.readDouble();
+        final double length = reader.readDouble(0.0);
         writter.writePrompt("Введіть ширину.");
-        final double width = reader.readDouble();
+        final double width = reader.readDouble(0.0);
         writter.writePrompt("Введіть висоту.");
-        final double height = reader.readDouble();
+        final double height = reader.readDouble(0.0);
 
         double result = author.getEight().getVolumeOfCuboid(length,width,height);
 

@@ -29,11 +29,11 @@ public class Task4 implements ITask {
         "The input array will always contain only positive numbers, and will never be empty or null.";
 
     @Override
-    public void run(Authors author, Reader reader, Writter writter){
+    public void run(Authors author, IReader reader, IWriter writter){
 
         writter.writePrompt("Введіть масив значень.");
 
-        int[] array = reader.readIntArray();
+        int[] array = reader.readIntArray(0);
 
         int[] result = author.getEight().squareOrSquareRoot(array);
 

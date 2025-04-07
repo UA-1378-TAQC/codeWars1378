@@ -26,11 +26,11 @@ public class Task3 implements ITask {
         "\r\n" + //
         "1 Mile = 1.609344 kilometres";
 
-    public void run(Authors author, Reader reader, Writter writter){
+    public void run(Authors author, IReader reader, IWriter writter){
 
         writter.writePrompt("Введіть кількість галонів для конвертації.");
 
-        int mpg = reader.readInt();
+        int mpg = reader.readInt(0);
 
         double result = author.getEight().mpgToKPM(mpg);
 

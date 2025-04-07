@@ -3,6 +3,7 @@ package org.academy;
 import org.academy.util.Authors;
 import org.academy.util.Tasks;
 import org.academy.util.data.ConsoleReader;
+import org.academy.util.data.ConsoleWriter;
 import org.academy.util.data.IReader;
 import org.academy.util.data.IWriter;
 
