@@ -45,7 +45,7 @@ public class Menu {
 
     private void showAuthors(Scanner scanner) {
         System.out.println("Authors List:");
-        // Assuming Authors is an enum similar to Tasks, replace with actual enum
+    
         for (Authors author : Authors.values()) {
             System.out.println(author.getId() + ". " + author.getName());
         }
