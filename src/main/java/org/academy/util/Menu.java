@@ -1,12 +1,12 @@
 package org.academy.util;
 
+import java.util.Scanner;
+
 import org.academy.interfaces.ITask;
 import org.academy.util.data.ConsoleReader;
 import org.academy.util.data.ConsoleWriter;
 import org.academy.util.data.IReader;
 import org.academy.util.data.IWriter;
-
-import java.util.Scanner;
 
 public class Menu {
     public void run() {

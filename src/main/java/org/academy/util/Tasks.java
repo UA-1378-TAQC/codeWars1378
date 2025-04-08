@@ -1,13 +1,32 @@
 package org.academy.util;
 
 import org.academy.interfaces.ITask;
-import org.academy.tasks.*;
+import org.academy.tasks.Task10;
+import org.academy.tasks.Task11;
+import org.academy.tasks.Task12;
+import org.academy.tasks.Task13;
+import org.academy.tasks.Task14;
+import org.academy.tasks.Task15;
+import org.academy.tasks.Task16;
+import org.academy.tasks.Task17;
+import org.academy.tasks.Task18;
+import org.academy.tasks.Task19;
+import org.academy.tasks.Task5;
+import org.academy.tasks.Task6;
+import org.academy.tasks.Task7;
+import org.academy.tasks.Task8;
+import org.academy.tasks.Task9;
+import org.academy.tasks.TaskGetVolumeOfCuboid;
+import org.academy.tasks.TaskLiters;
+import org.academy.tasks.TaskMpgToKpm;
+import org.academy.tasks.TaskSolve;
+import org.academy.tasks.TaskSquareOrSquareRoot;
 
 public enum Tasks {
-    Task1(1,"Keep Hydrated!","",new Task1()),
-    Task2(2,"Volume of a cuboid","",new Task2()),
-    Task3(3,"Miles per gallon to kilometers per liter","",new Task3()),
-    Task4(4,"To square root or no to square","",new Task4()),
+    Task1(1,"Keep Hydrated!","",new TaskLiters()),
+    Task2(2,"Volume of a cuboid","",new TaskGetVolumeOfCuboid()),
+    Task3(3,"Miles per gallon to kilometers per liter","",new TaskMpgToKpm()),
+    Task4(4,"To square root or no to square","",new TaskSquareOrSquareRoot()),
     Task5(5,"Count of positives / sum of negatives","",new Task5()),
     Task6(6,"Convert a String to a Number","",new Task6()),
     Task7(7,"Willson primes","",new Task7()),
@@ -24,7 +43,7 @@ public enum Tasks {
     Task18(18,"Gap in Primes","",new Task18()),
     Task19(19,"Trailing zeros in factorial","",new Task19()),
     Task20(20,"Perimeter of squares in a rectangle","",null),
-    Task21(21,"Which x for that sum?","",null),
+    Task21(21,"Which x for that sum?","",new TaskSolve()),
     Task22(22,"Find the smallest","",null);
 
     private final int id;
