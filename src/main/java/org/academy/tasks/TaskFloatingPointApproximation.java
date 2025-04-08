@@ -4,7 +4,7 @@ import org.academy.util.Authors;
 import org.academy.util.data.IReader;
 import org.academy.util.data.IWriter;
 
-public class taskFloatingPointApproximation implements ITask {
+public class TaskFloatingPointApproximation implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
         writer.writePrompt("Enter x value: ");
