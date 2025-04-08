@@ -7,8 +7,11 @@ import org.academy.util.data.IWriter;
 public class TaskLiters implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
-        writer.writePrompt("Enter time:");
-        double time = reader.readDouble(0.0);
+        writer.writePrompt("Enter time: ");
+
+        double magicValue = 0;
+
+        double time = reader.readDouble(magicValue);
 
         int result = author.getEight().liters(time);
 
