@@ -1,11 +1,10 @@
 package org.academy.tasks;
 
-import org.academy.interfaces.ITask;
 import org.academy.util.Authors;
 import org.academy.util.data.IReader;
 import org.academy.util.data.IWriter;
 
-public class Task11 implements ITask {
+public class TaskSeriesSum implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
         writer.writePrompt("Enter the term number of the series (it must be a natural number):");

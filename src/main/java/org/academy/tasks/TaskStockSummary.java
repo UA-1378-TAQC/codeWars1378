@@ -1,6 +1,5 @@
 package org.academy.tasks;
 
-import org.academy.interfaces.ITask;
 import org.academy.util.Authors;
 import org.academy.util.data.IReader;
 import org.academy.util.data.IWriter;
@@ -9,7 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Task17 implements ITask {
+public class TaskStockSummary implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
         writer.writePrompt("Enter books in the format: CODE QUANTITY (e.g. ABART 20):");

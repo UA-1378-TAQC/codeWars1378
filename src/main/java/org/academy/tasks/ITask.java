@@ -1,4 +1,4 @@
-package org.academy.interfaces;
+package org.academy.tasks;
 
 import org.academy.util.Authors;
 import org.academy.util.data.IReader;
