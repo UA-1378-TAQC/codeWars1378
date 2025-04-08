@@ -3,25 +3,18 @@ package org.academy.util.data;
 
 
 import java.math.BigInteger;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.function.Function;
 
 public class ConsoleReader implements IReader {
     private final Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        IReader reader = new ConsoleReader();
-        System.out.println("Enter int[]:");
-        System.out.println(Arrays.toString(reader.readIntArray(null)));
-    }
-
     private <T> T readValue(Function<String, T> parser, Function<String, Boolean> validator) {
         T value;
-        while (true) {
+        while (true){
             String input = scanner.nextLine().trim();
             if (validator != null && !validator.apply(input)) {
-                System.out.println("Некоректно введено дані. Спробуйте ще раз!");
+                System.out.println("Incorrect input, please try again:");
                 continue;
             }
             value = parser.apply(input);
@@ -64,12 +57,12 @@ public class ConsoleReader implements IReader {
     public int[] readIntArray(Integer minVal) {
         int[] result;
         while (true) {
-            System.out.println("Введіть розділювач:");
+            System.out.println("Enter a delimiter:");
             String delimiter = scanner.nextLine().trim();
-            System.out.println("Введіть значення, розділені '" + delimiter + "':");
+            System.out.println("Enter values separated by '" + delimiter + "':");
             String input = scanner.nextLine().trim();
             if (!InputValidator.isValidIntegerArray(input, delimiter, minVal)) {
-                System.out.println("Некоректно введено дані. Спробуйте ще раз!");
+                System.out.println("Incorrect input, please try again:");
                 continue;
             }
             String[] array = input.split(delimiter);
@@ -86,12 +79,12 @@ public class ConsoleReader implements IReader {
     public double[] readDoubleArray(Double minVal) {
         double[] result;
         while(true){
-            System.out.println("Введіть розділювач:");
+            System.out.println("Enter a delimiter:");
             String delimiter = scanner.nextLine().trim();
-            System.out.println("Введіть значення, розділені '" + delimiter + "':");
+            System.out.println("Enter values separated by '" + delimiter + "':");
             String input = scanner.nextLine().trim();
             if (!InputValidator.isValidDoubleArray(input, delimiter, minVal)) {
-                System.out.println("Некоректно введено дані. Спробуйте ще раз!");
+                System.out.println("Incorrect input, please try again:");
                 continue;
             }
             String[] array = input.split(delimiter);
@@ -108,12 +101,12 @@ public class ConsoleReader implements IReader {
     public String[] readStringArray(String regEx) {
         String[] result;
         while (true) {
-            System.out.println("Введіть розділювач:");
+            System.out.println("Enter a delimiter:");
             String delimiter = scanner.nextLine().trim();
-            System.out.println("Введіть значення, розділені '" + delimiter + "':");
+            System.out.println("Enter values separated by '" + delimiter + "':");
             String input = scanner.nextLine().trim();
             if (!InputValidator.isValidStringArray(input, delimiter, regEx)) {
-                System.out.println("Некоректно введено дані. Спробуйте ще раз!");
+                System.out.println("Incorrect input, please try again:");
                 continue;
             }
             String[] array = input.split(delimiter);
