@@ -1,6 +1,6 @@
 package org.academy.util;
 
-import org.academy.interfaces.ITask;
+import org.academy.tasks.ITask;
 import org.academy.util.data.ConsoleReader;
 import org.academy.util.data.ConsoleWriter;
 import org.academy.util.data.IReader;
