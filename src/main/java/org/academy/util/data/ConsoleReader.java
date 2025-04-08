@@ -11,7 +11,7 @@ public class ConsoleReader implements IReader {
 
     private <T> T readValue(Function<String, T> parser, Function<String, Boolean> validator) {
         T value;
-        while (true) {
+        while (true){
             String input = scanner.nextLine().trim();
             if (validator != null && !validator.apply(input)) {
                 System.out.println("Incorrect input, please try again:");
