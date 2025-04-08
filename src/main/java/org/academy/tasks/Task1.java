@@ -13,6 +13,7 @@ public class Task1 implements ITask {
 
         int result = author.getEight().liters(time);
 
-        writer.writePrompt("time = " + time + "----> litres = " + result);
+        writer.writePrompt("time = " + time + "----> litres = ");
+        writer.writeResult(result);
     }
 }
