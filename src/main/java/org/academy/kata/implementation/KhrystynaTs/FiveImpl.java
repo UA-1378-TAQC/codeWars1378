@@ -6,9 +6,27 @@ import org.academy.kata.IFive;
 import java.math.BigInteger;
 
 public class FiveImpl extends Base implements IFive {
+    public  boolean isPrime(long num) {
+        if (num <= 1) return false;
+        if (num == 2) return true;
+        if (num % 2 == 0) return false;
+        for (long i = 3; i * i <= num; i += 2) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
     @Override
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        long lastPrime = -1;
+        for (long i = m; i <= n; i++) {
+            if (isPrime(i)) {
+                if (lastPrime != -1 && i - lastPrime == g) {
+                    return new long[]{lastPrime, i};  // Return the pair
+                }
+                lastPrime = i;
+            }
+        }
+        return null;
     }
 
     @Override
