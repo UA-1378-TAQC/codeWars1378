@@ -8,7 +8,8 @@ public class TaskFindNb implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
         writer.writePrompt("Enter the building volume (positive integer):");
-        long m = reader.readLong(0L);
+        long minValue = 0L;
+        long m = reader.readLong(minValue);
         long result = author.getSix().findNb(m);
         if (result != -1) {
             writer.writePrompt("Result. The number of cubes is:");
