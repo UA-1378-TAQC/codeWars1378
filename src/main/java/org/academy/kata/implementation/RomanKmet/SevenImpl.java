@@ -6,7 +6,15 @@ import org.academy.kata.ISeven;
 public class SevenImpl extends Base implements ISeven {
     @Override
     public long newAvg(double[] arr, double navg) {
-        return 0;
+        double currentSum = 0;
+        for (double donation : arr) {
+            currentSum += donation;
+        }
+        long nextDonation = (long) Math.ceil(navg * (arr.length + 1) - currentSum);
+        if (nextDonation <= 0) {
+            throw new IllegalArgumentException("Expected donation must be greater than 0");
+        }
+        return nextDonation;
     }
 
     @Override
