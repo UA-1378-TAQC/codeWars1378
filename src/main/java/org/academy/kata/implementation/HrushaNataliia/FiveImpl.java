@@ -23,8 +23,13 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public double solve(double m) {
-        return 0;
+        int count = 0;
+        for (int i = 5; m / i >= 1; i *= 5) {
+            count += (int) (m / i);
+        }
+        return count;
     }
+
 
     @Override
     public long[] smallest(long n) {
