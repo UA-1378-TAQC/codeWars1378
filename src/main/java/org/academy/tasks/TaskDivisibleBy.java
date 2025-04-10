@@ -8,9 +8,11 @@ public class TaskDivisibleBy implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
         writer.writePrompt("Enter a list of positive integers:");
-        int[] numbers = reader.readIntArray(0);
+        int minValueNumb = 0;
+        int[] numbers = reader.readIntArray(minValueNumb);
         writer.writePrompt("Enter the divisor (must be a positive integer):");
-        int divider = reader.readInt(1);
+        int minValueDivider = 1;
+        int divider = reader.readInt(minValueDivider);
         int[] result = author.getEight().divisibleBy(numbers, divider);
         writer.writePrompt("Result. All entered numbers that are divisible by the entered divisor:");
         writer.writeArray(result);
