@@ -9,8 +9,8 @@ public class TaskSquareOrSquareRoot implements ITask {
     public void run(Authors author, IReader reader, IWriter writer) {
 
         writer.writePrompt("Enter an integer array.");
-        int minArrayLength = 0;
-        int[] array = reader.readIntArray(minArrayLength);
+        int minArrayValue = 0;
+        int[] array = reader.readIntArray(minArrayValue);
 
         int[] result = author.getEight().squareOrSquareRoot(array);
 
