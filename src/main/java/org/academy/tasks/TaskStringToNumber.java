@@ -5,7 +5,7 @@ import org.academy.util.data.IWriter;
 
 public class TaskStringToNumber implements ITask {
     @Override
-    public void run(Authors author, IReader reader, IWriter writer) {;
+    public void run(Authors author, IReader reader, IWriter writer) {
         String integerRegex = "^[-+]?\\d+$";
         writer.writePrompt("Enter a string containing a number: ");
         String input = reader.readString(integerRegex);
