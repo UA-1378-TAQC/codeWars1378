@@ -23,7 +23,11 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double f(double x) {
-        return 0;
+        if (x == 0) {
+            return 0;
+        }
+        double sqrtTerm = Math.sqrt(1 + x);
+        return x / (sqrtTerm + 1);
     }
 
     @Override
