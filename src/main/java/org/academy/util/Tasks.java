@@ -17,7 +17,7 @@ public enum Tasks {
     Task11(11,"Sum of the first nth term of Series","",new TaskSeriesSum()),
     Task12(12,"Build a pile of Cubes","",new TaskFindNb()),
     Task13(13,"Easy balance checking","",new TaskBalance()),
-    Task14(14,"Floating-point Approximation (I)","",new TaskF()),
+    Task14(14,"Floating-point Approximation (I)","",new TaskFloatingPointApproximation()),
     Task15(15,"Rainfall","",new TaskRainfall()),
     Task16(16,"Ranking NBA","",new TaskNbaCup()),
     Task17(17,"Help the bookseller!","",new TaskStockSummary()),
