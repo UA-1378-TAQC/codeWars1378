@@ -69,7 +69,7 @@ public class InputValidator {
     }
 
     private static <T extends Number> boolean isValidNumberArray(String prompt, String delimiter,
-            T minValue, Function<String, T> parser) {
+                                                                 T minValue, Function<String, T> parser) {
         if (prompt == null || prompt.isBlank()) {
             return false;
         }
