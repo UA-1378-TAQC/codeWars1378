@@ -8,7 +8,8 @@ public class TaskSmallest implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
         writer.writePrompt("Enter a positive integer:");
-        long n = reader.readLong(0L);
+        long minValue = 0L;
+        long n = reader.readLong(minValue);
         long[] result = author.getFive().smallest(n);
         writer.writePrompt("Result:");
         writer.writeArray(result);

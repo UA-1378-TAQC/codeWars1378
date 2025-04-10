@@ -8,7 +8,7 @@ import org.academy.util.data.IReader;
 import org.academy.util.data.IWriter;
 
 public class TaskManager {
-    public void run(Authors authors, Tasks tasks){
+    public void run(Authors authors, Tasks tasks) {
         IReader reader = new ConsoleReader();
         IWriter writer = new ConsoleWriter();
         tasks.getRunner().run(authors, reader, writer);

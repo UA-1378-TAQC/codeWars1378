@@ -6,11 +6,11 @@ import org.academy.util.data.IWriter;
 
 public class TaskSquareOrSquareRoot implements ITask {
     @Override
-    public void run(Authors author, IReader reader, IWriter writer){
+    public void run(Authors author, IReader reader, IWriter writer) {
 
         writer.writePrompt("Enter an integer array.");
-
-        int[] array = reader.readIntArray(0);
+        int minArrayValue = 0;
+        int[] array = reader.readIntArray(minArrayValue);
 
         int[] result = author.getEight().squareOrSquareRoot(array);
 

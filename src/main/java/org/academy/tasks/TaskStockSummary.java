@@ -17,7 +17,6 @@ public class TaskStockSummary implements ITask {
         writer.writePrompt("Enter book categories (e.g. A,B,C):");
         String[] lstOf1stLetter = reader.readStringArray("[A-Z]");
 
-        //validate
         if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
             writer.writePrompt("One of the arrays is empty. Calculation cannot proceed.");
             return;

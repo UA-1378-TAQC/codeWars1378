@@ -9,9 +9,9 @@ public class TaskNbaCup implements ITask {
     public void run(Authors author, IReader reader, IWriter writer) {
         writer.writePrompt("Enter match result string: ");
 
-        String teamNameRegex = "([A-Za-z0-9 ]+)"; // Captures the name of the first team. Matches letters, digits, and spaces.
-        String spase = "\\s"; // Matches a space between the team name and the score.
-        String scoreRegex = "(\\d{1,3})"; // Captures the score of the first team (1 to 3 digits). Matches numbers like 104, 88, etc.
+        String teamNameRegex = "([A-Za-z0-9 ]+)";
+        String spase = "\\s";
+        String scoreRegex = "(\\d{1,3})";
 
         String fullRegex = teamNameRegex + spase + scoreRegex + teamNameRegex + spase + scoreRegex;
         String matchResult = reader.readString(fullRegex);

@@ -25,7 +25,7 @@ public class Menu {
                     // Remove an author (Not relevant for enums)
                 }
                 case 4 -> {
-                    break out; // Exit the loop
+                    break out;
                 }
             }
         }
@@ -45,7 +45,7 @@ public class Menu {
 
     private void showAuthors(Scanner scanner) {
         System.out.println("Authors List:");
-    
+
         for (Authors author : Authors.values()) {
             System.out.println(author.getId() + ". " + author.getName());
         }
@@ -69,13 +69,13 @@ public class Menu {
         System.out.print("Select a task to run (or 0 to go back): ");
         int taskId = readOption(taskTotalNumber, scanner);
         if (taskId == 0) {
-            return; // Go back to the previous menu
+            return;
         }
         executeSelectedTask(selectedAuthor, taskId);
     }
 
     private void executeSelectedTask(Authors selectedAuthor, int taskId) {
-        Tasks selectedTask = Tasks.values()[taskId -1];
+        Tasks selectedTask = Tasks.values()[taskId - 1];
         System.out.println("\nExecuting task: " + selectedTask.getName());
         ITask runner = selectedTask.getRunner();
         if (runner != null) {
@@ -88,15 +88,17 @@ public class Menu {
 
             } catch (Exception e) {
                 System.err.println("Error executing task: " + e.getMessage());
-                e.printStackTrace();  // Print stack trace for debugging purposes
+                e.printStackTrace();
             }
         } else {
             System.out.println("This task has no implementation yet.");
         }
     }
+
     private IReader getReader() {
         return new ConsoleReader();
     }
+
     private IWriter getWriter() {
         return new ConsoleWriter();
     }

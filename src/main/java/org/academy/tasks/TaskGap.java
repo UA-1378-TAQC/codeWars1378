@@ -8,10 +8,12 @@ public class TaskGap implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
         writer.writePrompt("Enter the desired prime gap size (g ≥ 2):");
-        int g = reader.readInt(2);
+        int minGapSize = 2;
+        int g = reader.readInt(minGapSize);
 
         writer.writePrompt("Enter the start of the range (m > 2):");
-        long m = reader.readLong(3L);
+        long minRangeStart = 3L;
+        long m = reader.readLong(minRangeStart);
 
         writer.writePrompt("Enter the end of the range (n ≥ m):");
         long n = reader.readLong(m);

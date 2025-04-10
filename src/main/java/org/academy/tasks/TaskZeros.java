@@ -8,7 +8,8 @@ public class TaskZeros implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
         writer.writePrompt("Enter a number n to calculate the number of trailing zeros in n! (n ≥ 0):");
-        int n = reader.readInt(0);
+        int minValue = 0;
+        int n = reader.readInt(minValue);
 
         int result = author.getFive().zeros(n);
 
