@@ -59,7 +59,7 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int stringToNumber(String str) {
-        return 0;
+        return Integer.parseInt(str);
     }
 
     @Override
