@@ -9,7 +9,21 @@ import java.util.List;
 public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
-        return 0;
+        long sqrtM = (long) Math.sqrt(m);
+        if (sqrtM * sqrtM != m) {
+            return -1;
+        }
+        long discriminant = 1 + 8 * sqrtM;
+        long sqrtDiscriminant = (long) Math.sqrt(discriminant);
+        if (sqrtDiscriminant * sqrtDiscriminant != discriminant) {
+            return -1;
+        }
+        long n = (sqrtDiscriminant - 1) / 2;
+        if (n * (n + 1) / 2 * (n * (n + 1) / 2) == m) {
+            return n;
+        } else {
+            return -1;
+        }
     }
 
     @Override
