@@ -129,10 +129,10 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double variance(String town, String strng) {
-        if(extract(town,strn).equals("-1")){
+        if(extract(town,strng).equals("-1")){
             return -1.0;
         }
-        String variance_data = extract(town,strn);
+        String variance_data = extract(town,strng);
 
         // String variance_data_splited[] = variance_data.split(":");
         // String variance_value_arr[] = variance_data_splited[1].split(",");
@@ -142,7 +142,7 @@ public class SixImpl extends Base implements ISix {
 
         double variance_lenght = variance_value_arr.length;
 
-        double mean_value = mean(town,strn);
+        double mean_value = mean(town,strng);
         double d = 0;
 
         for(String vv: variance_value_arr){

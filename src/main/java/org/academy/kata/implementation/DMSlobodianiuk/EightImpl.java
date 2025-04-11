@@ -18,7 +18,7 @@ public class EightImpl extends Base implements IEight {
     public float mpgToKPM(float mpg) {
         double Imperial_Gallon = 4.54609188;
         double Mile = 1.609344;
-        return Math.round(mpg/Imperial_Gallon*Mile*100.0) / 100.0;
+        return (float) (Math.round(mpg/Imperial_Gallon*Mile*100.0) / 100.0);
     }
 
     @Override
@@ -96,7 +96,7 @@ public class EightImpl extends Base implements IEight {
     }
 
     @Override
-    public static boolean amIWilson(long n){
+    public boolean am_i_wilson(long n){
 
         if(n == 0 || n == 1){
             return false;
