@@ -55,7 +55,23 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public double solve(double m) {
-        return 0;
+        double diffComp = 1e-12;
+        int n = 20000;
+        double start = 0.0;
+        double end = 1.0;
+
+        while(end-start>diffComp){
+            double x = (start+end)/2;
+            double sumU = 0.0;
+            double powerX = x;
+            for(int k =1; k<=n; k++){
+                sumU += (k*powerX);
+                powerX *= x;
+            }
+            if(sumU<m) start = x;
+            else end = x;
+        }
+        return (start+end)/2;
     }
 
     @Override
