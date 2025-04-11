@@ -58,7 +58,13 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int stringToNumber(String str) {
-        return 0;
+        int num = 0;
+        try {
+            num = Integer.parseInt (str);
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+        return num;
     }
 
     @Override
