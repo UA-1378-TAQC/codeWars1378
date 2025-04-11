@@ -6,7 +6,18 @@ import org.academy.kata.ISix;
 public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
-        return 0;
+        long cubeSum = 0;
+        long i = 0;
+        while(cubeSum < m){
+            i++;
+            cubeSum += (long)Math.pow(i, 3);
+        }
+        if(cubeSum == m){
+            return i;
+        }
+        else{
+            return -1;
+        }
     }
 
     @Override
