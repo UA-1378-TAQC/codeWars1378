@@ -14,6 +14,10 @@ public class SevenImpl extends Base implements ISeven {
 
     @Override
     public String seriesSum(int n) {
-        return "";
+        double sum =0.0;
+        for(int i = 1, j = 1; i<=n; i++, j+=3){
+            sum = sum+(double)1/j;
+        }
+        return String.format("%.2f",sum);
     }
 }
