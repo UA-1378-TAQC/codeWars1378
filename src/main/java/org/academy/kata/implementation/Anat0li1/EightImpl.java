@@ -15,7 +15,10 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        if(length < 0 || width < 0 || height < 0){
+            return -1;
+        }
+        return length * width * height;
     }
 
     @Override
