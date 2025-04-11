@@ -31,7 +31,12 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public int zeros(int n) {
-        return 0;
+        int result = 0;
+        for(int k = 1, i = 1; i>0 ; k++){
+            i = (int)Math.floor(n/Math.pow(5,k));
+            result+=i;
+        }
+        return result;
     }
 
     @Override
