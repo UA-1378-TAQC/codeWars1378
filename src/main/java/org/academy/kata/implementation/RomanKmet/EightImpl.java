@@ -3,6 +3,8 @@ package org.academy.kata.implementation.RomanKmet;
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
 
+import java.math.BigInteger;
+
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
@@ -46,6 +48,25 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public boolean am_i_wilson(long n) {
-        return false;
+        if (n < 2 || !isPrime(n)) {
+            return false;
+        }
+        BigInteger factorial = factorial(n - 1).add(BigInteger.ONE);
+        BigInteger divisor = BigInteger.valueOf(n).multiply(BigInteger.valueOf(n));
+        return factorial.mod(divisor).equals(BigInteger.ZERO);
+    }
+    private static boolean isPrime(long n) {
+        if (n < 2) return false;
+        for (long i = 2; i * i <= n; i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+    private static BigInteger factorial(long n) {
+        BigInteger result = BigInteger.ONE;
+        for (long i = 2; i <= n; i++) {
+            result = result.multiply(BigInteger.valueOf(i));
+        }
+        return result;
     }
 }
