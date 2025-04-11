@@ -8,7 +8,7 @@ public class TaskVolumeOfCuboid implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
 
-        writer.writePrompt("Enter length, width, height.");
+        writer.writePrompt("Bob needs a fast way to calculate the volume of a rectangular cuboid with three values: the length, width and height of the cuboid.\n");
         writer.writePrompt("Enter length.");
         double minValue = 0;
         double length = reader.readDouble(minValue);
