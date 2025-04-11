@@ -6,19 +6,55 @@ import org.academy.kata.IFive;
 import java.math.BigInteger;
 
 public class FiveImpl extends Base implements IFive {
+    public  boolean isPrime(long num) {
+        if (num <= 1) return false;
+        if (num == 2) return true;
+        if (num % 2 == 0) return false;
+        for (long i = 3; i * i <= num; i += 2) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
     @Override
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        long lastPrime = -1;
+        for (long i = m; i <= n; i++) {
+            if (isPrime(i)) {
+                if (lastPrime != -1 && i - lastPrime == g) {
+                    return new long[]{lastPrime, i};  // Return the pair
+                }
+                lastPrime = i;
+            }
+        }
+        return null;
     }
 
     @Override
     public int zeros(int n) {
-        return 0;
+
+        int count = 0;
+        while (n >= 5) {
+            n /= 5;
+            count += n;
+        }
+        return count;
+
     }
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        BigInteger a = BigInteger.ONE;
+        BigInteger b = BigInteger.ONE;
+        BigInteger sum = a.add(b);
+
+        for (BigInteger i = BigInteger.valueOf(2); i.compareTo(n) <= 0; i = i.add(BigInteger.ONE)) {
+            BigInteger next = a.add(b);
+            sum = sum.add(next);
+            a = b;
+            b = next;
+        }
+
+        return sum.multiply(BigInteger.valueOf(4));
     }
 
     @Override
@@ -28,6 +64,30 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public long[] smallest(long n) {
-        return new long[0];
+        String numStr = String.valueOf(n);
+        long minNumber = n;
+        int indexI = -1;
+        int indexJ = -1;
+
+        for (int i = 0; i < numStr.length(); i++) {
+            char removedDigit = numStr.charAt(i);
+
+            for (int j = 0; j < numStr.length(); j++) {
+                if (j != i) {
+                    StringBuilder newNumberBuilder = new StringBuilder();
+                    newNumberBuilder.append(numStr.substring(0, i));
+                    newNumberBuilder.append(removedDigit);
+                    newNumberBuilder.append(numStr.substring(i + 1, j));
+                    newNumberBuilder.append(numStr.substring(j));
+                    long newNumber = Long.parseLong(newNumberBuilder.toString());
+                    if (newNumber < minNumber) {
+                        minNumber = newNumber;
+                        indexI = i;
+                        indexJ = j;
+                    }
+                }
+            }
+        }
+        return new long[]{minNumber, indexI, indexJ};
     }
 }
