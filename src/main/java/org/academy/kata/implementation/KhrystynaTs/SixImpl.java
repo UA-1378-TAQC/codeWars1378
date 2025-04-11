@@ -8,7 +8,10 @@ import java.util.stream.DoubleStream;
 public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
-        return 0;
+        double result = Math.sqrt(m);
+        double d = 1 + 8 * result;
+        double n = (Math.sqrt(d) - 1) / 2;
+        return n - Math.floor(n) == 0 ? (long) n : -1;
     }
 
     @Override
