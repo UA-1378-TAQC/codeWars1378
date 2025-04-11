@@ -8,7 +8,28 @@ import java.math.BigInteger;
 public class FiveImpl extends Base implements IFive {
     @Override
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        long lastPrime = 0;
+
+        for (long current = m; current <= n; current++) {
+            boolean isPrime = true;
+            if (current < 2 || (current > 2 && current % 2 == 0)) {
+                isPrime = false;
+            } else {
+                for (long i = 3; i * i <= current; i += 2) {
+                    if (current % i == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+            }
+            if (isPrime) {
+                if (lastPrime != 0 && current - lastPrime == g) {
+                    return new long[]{lastPrime, current};
+                }
+                lastPrime = current;
+            }
+        }
+        return null;
     }
 
     @Override
