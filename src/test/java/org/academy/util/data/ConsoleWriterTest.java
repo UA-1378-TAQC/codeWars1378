@@ -13,6 +13,7 @@ public class ConsoleWriterTest {
 
     @BeforeMethod
     public void captureInput() {
+        writer = new ConsoleWriter();
         captor = new ConsoleCaptor();
         captor.startCapture();
     }
