@@ -42,7 +42,9 @@ public class EightTest extends EightDataProvider {
     public void testDivisibleBy() {
     }
 
-    @Test
-    public void testAm_i_wilson() {
+    @Test(dataProvider="wilsonDataProvider")
+    public void testAm_i_wilson(long n,boolean expectedVolume,IEight iEight) {
+        boolean actualVolume = iEight.am_i_wilson(n);
+        Assert.assertEquals(actualVolume,expectedVolume);
     }
 }
