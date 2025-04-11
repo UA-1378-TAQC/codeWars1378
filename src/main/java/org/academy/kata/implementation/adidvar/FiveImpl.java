@@ -53,9 +53,41 @@ public class FiveImpl extends Base implements IFive {
         return sum.multiply(BigInteger.valueOf(4));
     }
 
+    private static double calcFunction(double x) {
+        double index = 1.0;
+        double power = x;
+        double result = 0;
+
+        double element = 1.0;
+        while (element > 1e-14) {
+            element = index * power;
+            result += element;
+
+            index += 1.0;
+            power *= x;
+        }
+
+        return result;
+    }
+
     @Override
     public double solve(double m) {
-        return 0;
+        double range_begin = 1e-12;
+        double range_end = 1.0 - range_begin;
+
+        for(int i = 0 ; i < 100 ; i++){
+
+            double range_middle = (range_begin + range_end)/2.0;
+            double range_middle_value = calcFunction(range_middle);
+
+            if(m > range_middle_value){
+                range_begin = range_middle;
+            } else {
+                range_end = range_middle;
+            }
+
+        }
+        return (range_begin + range_end)/2.0;
     }
 
     @Override
