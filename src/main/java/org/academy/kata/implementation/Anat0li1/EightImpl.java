@@ -81,7 +81,33 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        if(numbers == null || numbers.length == 0){
+            return new int[]{};
+        }
+        int[] result = new int[numbers.length];
+        int resultIndex = 0;
+        for(int i = 0; i < numbers.length; i++){
+            if(numbers[i] % divider == 0){
+                result[resultIndex] = numbers[i];
+                resultIndex++;
+            }
+        }
+        for(int j = result.length - 1; j >= resultIndex; j--){
+            result = removeAt(result, j);
+        }
+        return result;
+    }
+
+    private static int[] removeAt(int [] array, int index){
+        int[] result = new int[array.length - 1];
+        int j = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (i != index){
+                result[j] = array[i];
+                j++;
+            }
+        }
+        return result;
     }
 
     @Override
