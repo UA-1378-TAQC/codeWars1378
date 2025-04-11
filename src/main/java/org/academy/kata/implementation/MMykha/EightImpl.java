@@ -2,6 +2,7 @@ package org.academy.kata.implementation.MMykha;
 
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
+import java.util.Arrays;
 
 public class EightImpl extends Base implements IEight {
     @Override
@@ -41,7 +42,7 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        return Arrays.stream(numbers).filter(el->el%divider==0).toArray();
     }
 
     @Override
