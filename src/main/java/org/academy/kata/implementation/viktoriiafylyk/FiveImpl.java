@@ -39,7 +39,11 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public int zeros(int n) {
-        return 0;
+        int count = 0;
+        for (int powerOfFive = 5; n / powerOfFive >= 1; powerOfFive *= 5) {
+            count += n / powerOfFive;
+        }
+        return count;
     }
 
     @Override
