@@ -48,7 +48,17 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        BigInteger a = BigInteger.ZERO; // F(0)
+        BigInteger b = BigInteger.ONE; // F(1)
+        BigInteger sum = BigInteger.ONE; // Start F(1)
+
+        for(BigInteger i = BigInteger.ONE; i.compareTo(n) <= 0; i = i.add(BigInteger.ONE)){
+            BigInteger next = a.add(b); // F(k) = F(k-2) + F(k-1)
+            sum = sum.add(next);
+            a = b; // move next to Fibonacci
+            b = next;
+        }
+        return sum.multiply(BigInteger.valueOf(4));
     }
 
     @Override
