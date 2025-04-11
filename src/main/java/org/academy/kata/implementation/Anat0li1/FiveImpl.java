@@ -22,7 +22,20 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        return BigInteger.valueOf(4).multiply(returnFibonacciSumOfNMembers(n));
+    }
+
+    private static BigInteger returnFibonacciSumOfNMembers(BigInteger n){
+        BigInteger firstPart = BigInteger.ZERO;
+        BigInteger secondPart = BigInteger.ONE;
+        BigInteger sum = BigInteger.ONE;
+        for (BigInteger i = BigInteger.ZERO; i.compareTo(n) < 0; i = i.add(BigInteger.ONE)) {
+            BigInteger temp = firstPart;
+            firstPart = secondPart;
+            secondPart = secondPart.add(temp);
+            sum = sum.add(secondPart);
+        }
+        return sum;
     }
 
     @Override
