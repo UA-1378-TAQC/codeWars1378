@@ -2,6 +2,8 @@ package org.academy.kata.implementation.viktoriiafylyk;
 
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
+import java.util.*;
+
 
 public class SixImpl extends Base implements ISix {
     @Override
@@ -92,6 +94,36 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return "";
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return "";
+        }
+
+        Map<String, Integer> categoryCounts = new HashMap<>();
+        for (String category : lstOf1stLetter) {
+            categoryCounts.put(category, 0);
+        }
+
+        // Обхід списку книг та підрахунок кількостей по категоріях
+        for (String art : lstOfArt) {
+            String[] parts = art.split(" ");
+            String code = parts[0];
+            int quantity = Integer.parseInt(parts[1]);
+            String category = code.substring(0, 1);
+
+            if (categoryCounts.containsKey(category)) {
+                categoryCounts.put(category, categoryCounts.get(category) + quantity);
+            }
+        }
+
+        // Формування підсумкового рядка
+        StringBuilder result = new StringBuilder();
+        for (String category : lstOf1stLetter) {
+            if (result.length() > 0) {
+                result.append(" - ");
+            }
+            result.append("(").append(category).append(" : ").append(categoryCounts.get(category)).append(")");
+        }
+
+        return result.toString();
     }
 }
