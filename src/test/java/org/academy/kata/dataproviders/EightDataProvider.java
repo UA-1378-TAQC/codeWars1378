@@ -1,9 +1,9 @@
 package org.academy.kata.dataproviders;
 
+import java.util.List;
+
 import org.academy.kata.IEight;
 import org.testng.annotations.DataProvider;
-
-import java.util.List;
 
 public class EightDataProvider extends BaseDataProvider{
     private final static List<IEight> EIGHTS = List.of(
@@ -32,6 +32,16 @@ public class EightDataProvider extends BaseDataProvider{
                 {0.0, 0.0, 0.0, 0.0},
                 {-1.0, -2.0, -3.0, -6.0},
                 {1.5, 2.5, -3.5, -13.125},
+        };
+        return combineDataProviders(data, EIGHTS);
+    }
+
+    @DataProvider(name="wilsonDataProvider")
+    protected Object[][] wilsonDataProvider(){
+        Object[][] data = new Object[][]{
+            {0,false},
+            {1,false},
+            {5,true},
         };
         return combineDataProviders(data, EIGHTS);
     }
