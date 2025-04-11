@@ -79,6 +79,12 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public boolean am_i_wilson(long n) {
+        if(n==5)
+            return true;
+        else if(n==13)
+            return true;
+        else if(n==563)
+            return true;
         return false;
     }
 }
