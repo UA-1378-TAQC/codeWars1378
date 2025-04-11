@@ -2,6 +2,7 @@ package org.academy.kata.implementation.adidvar;
 
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
+import java.util.Arrays;
 
 public class EightImpl extends Base implements IEight {
     @Override
@@ -41,7 +42,16 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        int[] array = new int[numbers.length];
+
+        int index = 0;
+        for(int i = 0 ; i < numbers.length ; i++){
+            if(numbers[i] % divider == 0){
+                array[index++] = numbers[i];
+            }
+        }
+
+        return Arrays.copyOf(array,index);
     }
 
     @Override
