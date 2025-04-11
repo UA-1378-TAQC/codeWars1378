@@ -60,7 +60,9 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        return Arrays.stream(numbers)
+                .filter(n -> n % divider == 0)
+                .toArray();
     }
 
     @Override
