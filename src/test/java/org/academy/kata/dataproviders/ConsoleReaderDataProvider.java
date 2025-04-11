@@ -10,7 +10,7 @@ public class ConsoleReaderDataProvider {
     public Object[][] bigIntegerDataProvider() {
         return new Object[][]{
                 {BigInteger.ZERO, "15", BigInteger.valueOf(15)},
-                {BigInteger.ZERO, "0", BigInteger.valueOf(0)},
+                {BigInteger.ZERO, "0", BigInteger.ZERO},
                 {BigInteger.ZERO, "1", BigInteger.ONE},
                 {BigInteger.ZERO, "100", BigInteger.valueOf(100)}
 
