@@ -55,7 +55,19 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public double solve(double m) {
-        return 0;
+        double a = m;
+        double b = -(2 * m + 1);
+        double c = m;
+
+        double discriminant = b * b - 4 * a * c;
+        double x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+        double x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+
+        if (x1 > 0 && x1 < 1) {
+            return x1;
+        } else {
+            return x2;
+        }
     }
 
     @Override
