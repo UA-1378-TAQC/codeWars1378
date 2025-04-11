@@ -5,6 +5,7 @@ import org.academy.kata.IEight;
 
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.List;
 
 public class EightImpl extends Base implements IEight {
     @Override
@@ -74,7 +75,17 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        List<Integer> resultList = Arrays.stream(numbers)
+                .filter(number -> number % divider == 0)
+                .boxed()
+                .toList();
+
+        int[] result = new int[resultList.size()];
+        for (int i = 0; i < resultList.size(); i++) {
+            result[i] = resultList.get(i);
+        }
+
+        return result;
     }
 
     @Override
