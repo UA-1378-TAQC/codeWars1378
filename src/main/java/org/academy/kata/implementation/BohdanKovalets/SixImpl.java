@@ -47,6 +47,29 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return "";
+        if (lstOfArt == null || lstOf1stLetter == null || lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return "";
+        }
+
+        java.util.Map<String, Integer> categorySums = new java.util.HashMap<>();
+        for (String item : lstOfArt) {
+            String[] parts = item.split(" ");
+            String category = String.valueOf(parts[0].charAt(0));
+            int quantity = Integer.parseInt(parts[1]);
+
+            categorySums.put(category, categorySums.getOrDefault(category, 0)+quantity);
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (int i=0; i<lstOf1stLetter.length; i++) {
+            String category = lstOf1stLetter[i];
+            int sum = categorySums.getOrDefault(category, 0);
+
+            result.append("(").append(category).append(" : ").append(sum).append(")");
+            if (i < lstOf1stLetter.length-1) {
+                result.append(" - ");
+            }
+        }
+        return result.toString();
     }
 }
