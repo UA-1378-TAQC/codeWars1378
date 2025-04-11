@@ -9,12 +9,12 @@ import java.util.List;
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
-        return 0;
+        return (int) (0.5 * time);
     }
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        return length * width * height;
     }
 
     @Override
@@ -24,22 +24,52 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+        return Arrays.stream(array)
+                .map(number -> {
+                    int sqrt = (int) Math.sqrt(number);
+                    return (sqrt * sqrt == number) ? sqrt : number * number;
+                })
+                .toArray();
     }
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        return new int[0];
+        if (input == null || input.length == 0) {
+            return new int[0];
+        }
+
+        int[] result = new int[2];
+
+        for (int number : input) {
+            if (number > 0) {
+                result[0]++;
+            } else if (number < 0) {
+                result[1] += number;
+            }
+        }
+
+        return result;
     }
 
     @Override
     public int stringToNumber(String str) {
-        return 0;
+        char[] values = str.toCharArray();
+
+        int result = 0;
+        boolean isNegative = values[0] == '-';
+
+        for (int i = isNegative ? 1 : 0; i < values.length; i++) {
+            char character = values[i];
+
+            int digit = character - '0';
+            result = result * 10 + digit;
+        }
+        return isNegative ? -result : result;
     }
 
     @Override
     public double TwoDecimalPlaces(double number) {
-        return 0;
+        return Math.round(number * 100.0) / 100.0;
     }
 
     @Override
