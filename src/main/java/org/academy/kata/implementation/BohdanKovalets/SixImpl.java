@@ -38,7 +38,65 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String nbaCup(String resultSheet, String toFind) {
-        return "";
+        if (toFind.isEmpty()) return "";
+
+        int wins=0, draws=0, losses=0, scored=0, conceded=0;
+        boolean teamFound = false;
+        String[] matches = resultSheet.split(",");
+
+        for (String match : matches) {
+            if (match.matches(".*\\d+\\.\\d+.*")) {
+                return "Error(float number):" + match;
+            }
+            String[] parts = match.split("\\s+");
+            StringBuilder team1 = new StringBuilder();
+            StringBuilder team2 = new StringBuilder();
+            int score1 = 0, score2 = 0;
+            int i = 0;
+
+            while (i < parts.length && !parts[i].matches("\\d+")) {
+                team1.append(parts[i]).append(" ");
+                i++;
+            }
+            if (i < parts.length) {
+                score1 = Integer.parseInt(parts[i]);
+                i++;
+            }
+
+            while (i < parts.length && !parts[i].matches("\\d+")) {
+                team2.append(parts[i]).append(" ");
+                i++;
+            }
+            if (i < parts.length) {
+                score2 = Integer.parseInt(parts[i]);
+            }
+
+            String team1Name = team1.toString().trim();
+            String team2Name = team2.toString().trim();
+
+            if (team1Name.equals(toFind)) {
+                teamFound = true;
+                scored += score1;
+                conceded += score2;
+                if (score1 > score2) wins++;
+                else if (score1<score2) losses++;
+                else draws++;
+            } else if (team2Name.equals(toFind)) {
+                teamFound = true;
+                scored += score2;
+                conceded += score1;
+                if (score2 >score1) wins++;
+                else if (score2<score1) losses++;
+                else draws++;
+            }
+
+        }
+        if (!teamFound) {
+            return toFind + ":This team didn't play!";
+        }
+        int points = wins*3+draws;
+        return String.format("%s:W=%d;D=%d;L=%d;Scored=%d;Conceded=%d;Points=%d",
+                toFind, wins,draws,losses, scored, conceded, points);
     }
 
     @Override
