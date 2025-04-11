@@ -22,8 +22,10 @@ public class EightTest extends EightDataProvider {
     public void testMpgToKPM() {
     }
 
-    @Test
-    public void testSquareOrSquareRoot() {
+    @Test(dataProvider = "squareRootDataProvider")
+    public void testSquareOrSquareRoot(int[] input, int[] expected, IEight iEight) {
+        int[] actual = iEight.squareOrSquareRoot(input);
+        Assert.assertEquals(actual, expected, "Failed for class: " + iEight.getClass().getSimpleName());
     }
 
     @Test
