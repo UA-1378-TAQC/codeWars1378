@@ -3,6 +3,7 @@ package org.academy.kata.implementation.dima123493;
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 public class EightImpl extends Base implements IEight {
@@ -78,6 +79,25 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public boolean am_i_wilson(long n) {
-        return false;
+        if (!isPrime(n)) {
+            return false;
+        }
+
+        BigInteger factorial = BigInteger.ONE;
+        for (int i = 2; i <= n - 1; i++) {
+            factorial = factorial.multiply(BigInteger.valueOf(i));
+        }
+        factorial = factorial.add(BigInteger.ONE);
+
+        BigInteger pSquared = BigInteger.valueOf(n).multiply(BigInteger.valueOf(n));
+        return factorial.mod(pSquared).equals(BigInteger.ZERO);
+    }
+
+    private static boolean isPrime(long p) {
+        if (p <= 1) return false;
+        for (int i = 2; (long) i * i <= p; i++) {
+            if (p % i == 0) return false;
+        }
+        return true;
     }
 }
