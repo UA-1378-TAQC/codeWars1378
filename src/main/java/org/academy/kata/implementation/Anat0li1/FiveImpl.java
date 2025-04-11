@@ -40,7 +40,9 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public double solve(double m) {
-        return 0;
+        double b = 1 / m + 2;
+        double D = Math.pow(b, 2) - 4.0;
+        return (b - Math.sqrt(D)) / 2;
     }
 
     @Override
