@@ -16,7 +16,10 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double f(double x) {
-        return 0;
+        if (Math.abs(x) < 1e-15) {
+            return x / 2;
+        }
+        return x / (Math.sqrt(1 + x) + 1);
     }
 
     @Override
