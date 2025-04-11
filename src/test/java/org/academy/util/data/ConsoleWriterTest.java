@@ -9,6 +9,7 @@ import static org.testng.Assert.assertEquals;
 
 public class ConsoleWriterTest {
     private ConsoleCaptor captor;
+    private IWriter writer;
 
     @BeforeMethod
     public void captureInput() {
@@ -51,7 +52,6 @@ public class ConsoleWriterTest {
 
     @Test(dataProvider = "characterData", dataProviderClass = WriterDataProvider.class)
     public void testTestWriteResult5(char input, String expectedOutput) {
-        IWriter writer = new ConsoleWriter();
         writer.writeResult(input);
 
         assertEquals(captor.getOutput(), expectedOutput);
