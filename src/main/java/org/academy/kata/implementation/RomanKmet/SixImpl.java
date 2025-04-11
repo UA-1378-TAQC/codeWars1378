@@ -6,10 +6,20 @@ import org.academy.kata.ISix;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
-        return 0;
+        long sum = 0;
+        long n = 0;
+        while (sum < m) {
+            n++;
+            sum += n * n * n;
+        }
+        return sum == m ? n : -1;
     }
 
     @Override
@@ -24,12 +34,28 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double mean(String town, String strng) {
-        return 0;
+        double[] data = extractData(town, strng);
+        return (data == null) ? -1.0 : Arrays.stream(data).average().orElse(-1.0);
+    }
+
+    private double[] extractData(String town, String strng) {
+        return Arrays.stream(strng.split("\n"))
+                .filter(line -> line.startsWith(town + ":"))
+                .findFirst()
+                .map(line -> line.substring(line.indexOf(":") + 1)
+                        .split(","))
+                .map(values -> Arrays.stream(values)
+                        .mapToDouble(v -> Double.parseDouble(v.split(" ")[1]))
+                        .toArray())
+                .orElse(null);
     }
 
     @Override
     public double variance(String town, String strng) {
-        return 0;
+        double[] data = extractData(town, strng);
+        if (data == null) return -1.0;
+        double mean = mean(town, strng);
+        return Arrays.stream(data).map(x -> Math.pow(x - mean, 2)).average().orElse(-1.0);
     }
 
     @Override

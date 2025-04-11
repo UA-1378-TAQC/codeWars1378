@@ -3,6 +3,7 @@ package org.academy.kata.implementation.KhrystynaTs;
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
 
+import java.math.BigInteger;
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
@@ -46,6 +47,21 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public boolean am_i_wilson(long n) {
-        return false;
+        if (n <= 1) {
+            return false; 
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n% i == 0) {
+                return false;
+            }
+        }
+        BigInteger factorial = BigInteger.ONE;
+        for (int i = 1; i < n; i++) {
+            factorial = factorial.multiply(BigInteger.valueOf(i));
+        }
+        return factorial.mod(BigInteger.valueOf(n)).equals(BigInteger.valueOf(n - 1));
     }
 }
+
+
+
