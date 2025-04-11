@@ -3,7 +3,7 @@ package org.academy.kata.console;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-public class ConsoleCaptor {
+public class ConsoleOutputCaptor {
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 

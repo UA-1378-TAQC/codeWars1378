@@ -1,6 +1,6 @@
 package org.academy.util.data;
 
-import org.academy.kata.console.ConsoleCaptor;
+import org.academy.kata.console.ConsoleOutputCaptor;
 import org.academy.kata.dataproviders.WriterDataProvider;
 import org.testng.annotations.*;
 
@@ -8,13 +8,13 @@ import static org.testng.Assert.assertEquals;
 
 
 public class ConsoleWriterTest {
-    private ConsoleCaptor captor;
+    private ConsoleOutputCaptor captor;
     private IWriter writer;
 
     @BeforeMethod
     public void captureInput() {
         writer = new ConsoleWriter();
-        captor = new ConsoleCaptor();
+        captor = new ConsoleOutputCaptor();
         captor.startCapture();
     }
 
