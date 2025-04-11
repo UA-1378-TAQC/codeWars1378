@@ -42,6 +42,29 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public long[] smallest(long n) {
-        return new long[0];
+        String numStr = String.valueOf(n);
+        long min = n;
+        int from = 0;
+        int to = 0;
+
+        for (int i = 0; i < numStr.length(); i++) {
+            char removed = numStr.charAt(i);
+            StringBuilder sb = new StringBuilder(numStr);
+            sb.deleteCharAt(i);
+
+            for (int j = 0; j <= sb.length(); j++) {
+                StringBuilder temp = new StringBuilder(sb);
+                temp.insert(j, removed);
+                long newVal = Long.parseLong(temp.toString());
+
+                if (newVal < min) {
+                    min = newVal;
+                    from = i;
+                    to = j;
+                }
+            }
+        }
+
+        return new long[] {min, from, to};
     }
 }
