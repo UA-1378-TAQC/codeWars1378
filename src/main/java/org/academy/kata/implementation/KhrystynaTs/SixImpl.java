@@ -13,7 +13,25 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String balance(String book) {
-        return "";
+        String[] lines = book.split("\n");
+        StringBuilder report = new StringBuilder();
+        String originalBalance = lines[0].replaceAll("[^a-zA-Z0-9. ]", "");
+        report.append("Original balance: ").append(originalBalance).append("\n");
+        for (int i = 1; i < lines.length; i++) {
+            String line = lines[i].replaceAll("[^a-zA-Z0-9. ]", "");  // Clean the line
+            if (!line.trim().isEmpty()) {  // Ignore empty lines
+                String[] parts = line.split(" ");
+                if (parts.length >= 3) {
+                    String checkNumber = parts[0];
+                    String category = parts[1];
+                    String checkAmount = parts[2];
+                    report.append("Check ").append(checkNumber)
+                            .append(" - Category: ").append(category)
+                            .append(" - Amount: ").append(checkAmount).append("\n");
+                }
+            }
+        }
+        return report.toString();
     }
 
     @Override
