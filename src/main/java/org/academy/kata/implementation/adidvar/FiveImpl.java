@@ -11,12 +11,12 @@ public class FiveImpl extends Base implements IFive {
         return new long[0];
     }
 
-    private static int countDiv(int n, int d){
-        int step = d;
+    private static int countDiv(int n){
+        int step = 5;
         int counter = 0;
         while (step <= n){
             counter += (n / step);
-            step *= d;
+            step *= 5;
         }
         return counter;
     }
@@ -25,7 +25,7 @@ public class FiveImpl extends Base implements IFive {
     public int zeros(int n) {
         if(n==0)
             return 0;
-        return countDiv(n,5);
+        return countDiv(n);
     }
 
     @Override
