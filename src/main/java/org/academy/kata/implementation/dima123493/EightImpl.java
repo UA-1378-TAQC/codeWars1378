@@ -3,6 +3,8 @@ package org.academy.kata.implementation.dima123493;
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
 
+import java.util.Arrays;
+
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
@@ -21,7 +23,12 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+        return Arrays.stream(array)
+                .map(number -> {
+                    int sqrt = (int) Math.sqrt(number);
+                    return (sqrt * sqrt == number) ? sqrt : number * number;
+                })
+                .toArray();
     }
 
     @Override
