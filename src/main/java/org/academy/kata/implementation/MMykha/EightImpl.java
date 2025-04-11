@@ -17,7 +17,7 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+        return Float.parseFloat(String.format("%.2f",mpg*(1.609344/4.54609188)));
     }
 
     @Override
