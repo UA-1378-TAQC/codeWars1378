@@ -3,6 +3,7 @@ package org.academy.kata;
 
 import org.academy.kata.dataproviders.EightDataProvider;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class EightTest extends EightDataProvider {
@@ -26,8 +27,10 @@ public class EightTest extends EightDataProvider {
     public void testSquareOrSquareRoot() {
     }
 
-    @Test
-    public void testCountPositivesSumNegatives() {
+    @Test(dataProvider = "countPositiveSumNegativeDataProvider")
+    public void testCountPositivesSumNegatives(int[] input, int[] expected, IEight iEight) {
+        int[] actual = iEight.countPositivesSumNegatives(input);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
