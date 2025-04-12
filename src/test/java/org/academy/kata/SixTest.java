@@ -1,8 +1,12 @@
 package org.academy.kata;
 
+
+import org.academy.kata.dataproviders.SixDataProvider;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SixTest {
+
+public class SixTest extends SixDataProvider{
 
     @Test
     public void testFindNb() {
@@ -20,8 +24,10 @@ public class SixTest {
     public void testMean() {
     }
 
-    @Test
-    public void testVariance() {
+    @Test(dataProvider="varianceDataProvider")
+    public void testVariance(String town,String strn,double expectedValue,ISix iSix) {
+        double actualValue = iSix.variance(town, strn);
+        Assert.assertEquals(actualValue, expectedValue,0.000000001);
     }
 
     @Test

@@ -1,9 +1,9 @@
 package org.academy.kata.dataproviders;
 
 
-import org.academy.kata.IFive;
-
 import java.util.List;
+
+import org.academy.kata.IFive;
 
 public class FiveDataProvider extends BaseDataProvider {
     private final static List<IFive> FIVES = List.of(

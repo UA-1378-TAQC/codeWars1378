@@ -42,6 +42,8 @@ public class EightDataProvider extends BaseDataProvider{
             {0,false},
             {1,false},
             {5,true},
+            {13,true},
+            {15,false}
         };
         return combineDataProviders(data, EIGHTS);
     }
