@@ -6,7 +6,16 @@ import org.academy.kata.ISix;
 public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
-        return 0;
+        long n = 1;
+        while(m > 0)
+        {
+            m-=n*n*n;
+            n++;
+        }
+        if(m < 0)
+            return -1;
+        else
+            return n-1;
     }
 
     @Override
