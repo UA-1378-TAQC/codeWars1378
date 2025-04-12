@@ -11,7 +11,31 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String balance(String book) {
-        return "";
+        String cleaned = book.replaceAll("[^a-zA-Z0-9.\\s\n]", "");
+        String[] array = cleaned.split("\\n+");
+        array[0] = "Original Balance: " + array[0];
+
+        double total = 0;
+        double average;
+        double balance = Double.parseDouble(array[0].split(":")[1].trim());
+
+        for(int i = 1; i < array.length; i++) {
+            String[] temp = array[i].split("\\s+");
+            double expense = Double.parseDouble(temp[2]);
+            balance -= expense;
+            total += expense;
+            array[i] = temp[0] + " " + temp[1] + " " + temp[2] + " Balance " + String.format("%.2f", balance);
+        }
+
+        average = total / (array.length - 1);
+        StringBuilder res = new StringBuilder();
+        for(String line : array) {
+            res.append(line).append("\\r\\n");
+        }
+        res.append("Total expense  ").append(String.format("%.2f", total)).append("\\r\\n");
+        res.append("Average expense  ").append(String.format("%.2f", average));
+
+        return res.toString();
     }
 
     @Override
