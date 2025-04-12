@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 
 import java.util.List;
 
-public class EightDataProvider extends BaseDataProvider{
+public class EightDataProvider extends BaseDataProvider {
     private final static List<IEight> EIGHTS = List.of(
             new org.academy.kata.implementation.adidvar.EightImpl(),
             new org.academy.kata.implementation.Anat0li1.EightImpl(),
@@ -22,9 +22,9 @@ public class EightDataProvider extends BaseDataProvider{
             new org.academy.kata.implementation.viktoriiafylyk.EightImpl()
     );
 
-    @DataProvider(name="cuboidDataProvider")
-    protected Object[][] cuboidDataProvider(){
-        Object[][] data =  new Object[][]{
+    @DataProvider(name = "cuboidDataProvider")
+    protected Object[][] cuboidDataProvider() {
+        Object[][] data = new Object[][]{
                 {2.0, 3.0, 4.0, 24.0},
                 {1.0, 2.0, 3.0, 6.0},
                 {2.5, 3.5, 4.5, 39.375},
@@ -36,4 +36,22 @@ public class EightDataProvider extends BaseDataProvider{
         return combineDataProviders(data, EIGHTS);
     }
 
+
+    @DataProvider(name = "litersDataProvider")
+    protected Object[][] litersDataProvider() {
+        Object[][] data = new Object[][]{
+                {0.0, 0},
+                {1.4, 0},
+                {12.3, 6},
+                {3.7, 1},
+                {3.8, 1},
+                {3.9, 1},
+                {4.0, 2},
+                {4.1, 2},
+                {10.8, 5},
+                {5.9, 2},
+                {6.0, 3}
+        };
+        return combineDataProviders(data, EIGHTS);
+    }
 }
