@@ -30,12 +30,39 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double mean(String town, String strng) {
-        return 0;
+        String[] cities = strng.split("\n");
+        for (String city : cities) {
+            if (city.startsWith(town + ":")) {
+                String[] records = city.substring(town.length() + 1).split(",");
+                double sum = 0.0;
+                for (String record : records) {
+                    sum += Double.parseDouble(record.split(" ")[1]);
+                }
+                return sum / records.length;
+            }
+        }
+
+        return -1;
     }
 
     @Override
     public double variance(String town, String strng) {
-        return 0;
+        double avg = mean(town, strng);
+
+        String[] cities = strng.split("\n");
+        for (String city : cities) {
+            if (city.startsWith(town + ":")) {
+                String[] records = city.substring(town.length() + 1).split(",");
+                double rainfallSum = 0.0;
+                for (String record : records) {
+                    double monthRainfall = Double.parseDouble(record.split(" ")[1]);
+                    rainfallSum += (monthRainfall - avg) * (monthRainfall - avg);
+                }
+                return rainfallSum / records.length;
+            }
+        }
+
+        return -1;
     }
 
     @Override
