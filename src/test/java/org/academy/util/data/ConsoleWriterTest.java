@@ -2,9 +2,10 @@ package org.academy.util.data;
 
 import org.academy.kata.console.ConsoleOutputCaptor;
 import org.academy.kata.dataproviders.WriterDataProvider;
-import org.testng.annotations.*;
-
 import static org.testng.Assert.assertEquals;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 
 public class ConsoleWriterTest {
@@ -23,8 +24,11 @@ public class ConsoleWriterTest {
         captor.stopCapture();
     }
 
-    @Test
-    public void testWritePrompt() {
+    @Test(dataProvider="testWritePrompt",dataProviderClass=WriterDataProvider.class)
+    public void testWritePrompt(String input,String expectedOutput) {
+        writer.writePrompt(input);
+
+        assertEquals(captor.getOutput(),expectedOutput);
     }
 
     @Test

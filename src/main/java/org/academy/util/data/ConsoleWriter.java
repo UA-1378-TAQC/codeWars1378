@@ -1,5 +1,7 @@
 package org.academy.util.data;
 
+// import org.academy.kata.console.ConsoleCaptor;
+
 public class ConsoleWriter implements IWriter {
     @Override
     public void writePrompt(String prompt) {
