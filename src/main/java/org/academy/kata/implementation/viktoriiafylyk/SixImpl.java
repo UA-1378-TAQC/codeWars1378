@@ -8,7 +8,17 @@ import java.util.*;
 public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
-        return 0;
+        long sum = 0;
+        long n = 0;
+
+        while (sum < m){
+            n++;
+            sum += n*n*n;
+            if (sum == m){
+                return n;
+            }
+        }
+        return -1;
     }
 
     @Override
@@ -18,7 +28,7 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double f(double x) {
-        return 0;
+        return x / (1 + Math.sqrt(1 + x));
     }
 
     @Override

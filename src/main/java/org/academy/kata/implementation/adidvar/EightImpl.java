@@ -2,21 +2,25 @@ package org.academy.kata.implementation.adidvar;
 
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
+import java.util.Arrays;
 
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
-        return 0;
+        return (int)Math.floor(time/2.0);
     }
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        return length * width * height;
     }
+
+    final static float MPG_TO_KPM = 1.0f / 4.54609188f * 1.609344f;
+    final static float ROUND_TO = 100.0f;
 
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+        return Math.round(ROUND_TO * (float)mpg * MPG_TO_KPM) / ROUND_TO;
     }
 
     @Override
@@ -74,7 +78,16 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        int[] array = new int[numbers.length];
+
+        int index = 0;
+        for(int i = 0 ; i < numbers.length ; i++){
+            if(numbers[i] % divider == 0){
+                array[index++] = numbers[i];
+            }
+        }
+
+        return Arrays.copyOf(array,index);
     }
 
     @Override
