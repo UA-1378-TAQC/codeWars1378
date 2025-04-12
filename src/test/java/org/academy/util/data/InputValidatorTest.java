@@ -1,6 +1,9 @@
 package org.academy.util.data;
 
+import org.academy.kata.dataproviders.InputValidatorDataProvider;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
 
 
 public class InputValidatorTest {
@@ -29,8 +32,10 @@ public class InputValidatorTest {
     public void testIsValidString() {
     }
 
-    @Test
-    public void testIsValidIntegerArray() {
+    @Test(dataProvider = "integerArrayDataProvider", dataProviderClass = InputValidatorDataProvider.class)
+    public void testIsValidIntegerArray(String prompt, String delimiter, Integer minValue, boolean expected) {
+        boolean actual = InputValidator.isValidIntegerArray(prompt, delimiter, minValue);
+        assertEquals(actual, expected, "Failed for input: " + prompt);
     }
 
     @Test
