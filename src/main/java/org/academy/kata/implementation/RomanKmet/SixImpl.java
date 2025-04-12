@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class SixImpl extends Base implements ISix {
     @Override
@@ -29,7 +27,7 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double f(double x) {
-        return 0;
+        return x / (Math.sqrt(1 + x) + 1);
     }
 
     @Override
