@@ -18,8 +18,10 @@ public class EightTest extends EightDataProvider {
     }
 
 
-    @Test
-    public void testMpgToKPM() {
+    @Test(dataProvider = "kmPerLiterProvider")
+    public void testMpgToKPM(double mpg, double expectedResult, IEight iEight) {
+        float actualResult = iEight.mpgToKPM((float)mpg);
+        Assert.assertEquals(actualResult, (float)expectedResult, 0.001);
     }
 
     @Test
