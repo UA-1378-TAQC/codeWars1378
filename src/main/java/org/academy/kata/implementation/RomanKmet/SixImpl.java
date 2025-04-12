@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class SixImpl extends Base implements ISix {
     @Override
@@ -24,7 +22,38 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String balance(String book) {
-        return "";
+        String cleaned = book.replaceAll("[^a-zA-Z0-9.\\s]", "").replaceAll(" +", " ").trim();
+        String[] lines = cleaned.split("\\n");
+        double originalBalance = Double.parseDouble(lines[0]);
+        double balance = originalBalance;
+        double totalExpense = 0.0;
+        int count = 0;
+        StringBuilder report = new StringBuilder();
+        report.append(String.format("Original Balance: %.2f\r\n", originalBalance));
+        for (int i = 1; i < lines.length; i++) {
+            String line = lines[i].trim();
+            if (line.isEmpty()) continue;
+
+            String[] parts = line.split(" ");
+            if (parts.length != 3) continue;
+
+            String checkNumber = parts[0];
+            String category = parts[1];
+            double amount = Double.parseDouble(parts[2]);
+
+            balance -= amount;
+            totalExpense += amount;
+            count++;
+
+            report.append(String.format("%s %s %.2f Balance %.2f\r\n",
+                    checkNumber, category, amount, balance));
+        }
+        double averageExpense = totalExpense / count;
+
+        report.append(String.format("Total expense  %.2f\r\n", totalExpense));
+        report.append(String.format("Average expense  %.2f", averageExpense));
+
+        return report.toString();
     }
 
     @Override
@@ -83,7 +112,7 @@ public class SixImpl extends Base implements ISix {
         }
         StringBuilder result = new StringBuilder();
         for (String category : lstOf1stLetter) {
-            if (result.length() > 0) {
+            if (!result.isEmpty()) {
                 result.append(" - ");
             }
             result.append("(").append(category).append(" : ").append(categoryCounts.get(category)).append(")");
