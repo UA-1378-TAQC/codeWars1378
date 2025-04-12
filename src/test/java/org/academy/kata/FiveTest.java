@@ -1,8 +1,10 @@
     package org.academy.kata;
 
+    import org.academy.kata.dataproviders.FiveDataProvider;
+    import org.testng.Assert;
     import org.testng.annotations.Test;
 
-    public class FiveTest {
+    public class FiveTest extends FiveDataProvider{
 
 
         @Test
