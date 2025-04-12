@@ -21,8 +21,7 @@ public class FiveTest extends FiveDataProvider {
     @Test(dataProvider = "solveDataProvider")
     public void testSolve(double m, double expected, IFive iFive) {
         double actual = iFive.solve(m);
-        Assert.assertEquals(actual, expected, 1e-12,
-                "Expected must be near " + expected + ", but got " + actual);
+        Assert.assertEquals(actual, expected, 1e-12);
     }
 
     @Test
