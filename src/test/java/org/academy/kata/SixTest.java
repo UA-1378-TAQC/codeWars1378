@@ -1,8 +1,11 @@
 package org.academy.kata;
 
+import org.academy.kata.dataproviders.SixDataProvider;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SixTest {
+public class SixTest extends SixDataProvider {
+
 
     @Test
     public void testFindNb() {
@@ -16,8 +19,11 @@ public class SixTest {
     public void testF() {
     }
 
-    @Test
-    public void testMean() {
+    @Test(dataProvider = "meanDataProvider")
+    public void testMean(String town, String data, double expected, ISix sixImpl) {
+        double actual = sixImpl.mean(town, data);
+        Assert.assertEquals(actual, expected, 1e-2,
+                String.format("abs(actual - expected) must be <= 1e-2. Expected was %f, but got %f", expected, actual));
     }
 
     @Test
