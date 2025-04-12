@@ -41,10 +41,31 @@ public class SixImpl extends Base implements ISix {
     @Override
     public String nbaCup(String resultSheet, String toFind) {
         return "";
-    }
+     }
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return "";
+        int[] categoryCounts = new int[lstOf1stLetter.length];
+        for (String book : lstOfArt) {
+            char category = book.charAt(0);
+            int quantity = Integer.parseInt(book.split(" ")[1]);
+
+            for (int i = 0; i < lstOf1stLetter.length; i++) {
+                if (lstOf1stLetter[i].charAt(0) == category) {
+                    categoryCounts[i] += quantity;
+                    break;
+                }
+            }
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < lstOf1stLetter.length; i++) {
+            if (!result.isEmpty()) {
+                result.append(" - ");
+            }
+            result.append("(").append(lstOf1stLetter[i]).append(" : ").append(categoryCounts[i]).append(")");
+        }
+
+        return result.toString();
     }
 }
