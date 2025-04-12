@@ -13,4 +13,13 @@ public class WriterDataProvider {
                 {'#', "#"}
         };
     }
+
+    @DataProvider(name = "testWriteArray2String")
+    public Object[][] testWriteArray2String(){
+        return new Object[][]{
+            {new String[]{"0ABAR 20", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"},new String[]{"0ABAR 20", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"}},
+            {new String[]{"Hello","World","Hi"},new String[]{"Hello","World","Hi"}},
+            {new String[]{"I","want","to","all","tests","goes","well"},new String[]{"I","want","to","all","tests","goes","well"}}
+        };
+    }
 }
