@@ -6,6 +6,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.math.BigInteger;
 
 import static org.testng.Assert.assertEquals;
@@ -36,8 +38,24 @@ public class ConsoleReaderTest {
     public void testReadFloat() {
     }
 
-    @Test
-    public void testReadDouble() {
+    @Test(dataProvider = "doubleDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
+    public void testReadDouble(Double minValue, String input, Double expectedResult) {
+        inputCaptor.setInput(input);
+        ConsoleReader reader = new ConsoleReader();
+
+        ByteArrayOutputStream captureOutput = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(captureOutput));
+
+        if(expectedResult!=null){
+            assertEquals(reader.readDouble(minValue), expectedResult);
+        }else{
+            try{
+                reader.readDouble(minValue);
+            }catch(Exception e){
+                System.setOut(System.out);
+                assertEquals(captureOutput.toString().trim(), "Incorrect input, please try again:");
+            }
+        }
     }
 
     @Test(dataProvider = "bigIntegerDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
