@@ -15,7 +15,6 @@ public class ConsoleReaderTest {
     @BeforeMethod
     public void setUpInputStream() {
         inputCaptor = new ConsoleInputCaptor();
-        reader = new ConsoleReader();
     }
 
     @AfterMethod
@@ -27,12 +26,13 @@ public class ConsoleReaderTest {
     public void testReadInt() {
     }
 
+
     @Test(dataProvider = "longDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
     public void testReadLong(long minValue, String simulatedInput, long expectedResult) {
         inputCaptor.setInput(simulatedInput);
+        reader = new ConsoleReader();
         long actualResult = reader.readLong(minValue);
-        Assert.assertEquals(actualResult, expectedResult,
-                String.format("Expected: %d, but got: %d", expectedResult, actualResult));
+        Assert.assertEquals(actualResult, expectedResult);
     }
 
     @Test
