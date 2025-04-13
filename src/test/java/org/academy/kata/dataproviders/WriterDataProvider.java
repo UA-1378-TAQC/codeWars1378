@@ -13,4 +13,12 @@ public class WriterDataProvider {
                 {'#', "#"}
         };
     }
+
+    @DataProvider(name = "booleanDataProvider")
+    public Object[][] booleanDataProvider() {
+        return new Object[][]{
+                {true, "true"},
+                {false, "false"}
+        };
+    }
 }
