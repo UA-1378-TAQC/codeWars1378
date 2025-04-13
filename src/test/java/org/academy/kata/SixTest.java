@@ -13,7 +13,7 @@ public class SixTest extends SixDataProvider {
     @Test(dataProvider = "balanceDataProvider")
     public void testBalance(String input, String expected, ISix iSix) {
         String output = iSix.balance(input);
-        Assert.assertEquals(output,expected);
+        Assert.assertEquals(output,expected, "String have to be equal");
     }
 
     @Test
