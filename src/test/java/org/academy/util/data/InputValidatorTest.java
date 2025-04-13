@@ -1,5 +1,7 @@
 package org.academy.util.data;
 
+import org.academy.kata.dataproviders.InputValidatorDataProvider;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
@@ -13,8 +15,12 @@ public class InputValidatorTest {
     public void testIsValidLong() {
     }
 
-    @Test
-    public void testIsValidFloat() {
+    @Test(dataProvider = "floatDataProvider", dataProviderClass = InputValidatorDataProvider.class)
+    public void testIsValidFloat(String prompt, Float minValue, boolean expected) {
+        boolean result = InputValidator.isValidFloat(prompt, minValue);
+        Assert.assertEquals(result, expected, String.format(
+                "Validation failed for input '%s' with minValue %.2f. Expected: %b, but got: %b",
+                prompt, minValue, expected, result));
     }
 
     @Test
