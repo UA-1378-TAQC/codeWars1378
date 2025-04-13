@@ -9,12 +9,12 @@ import java.util.List;
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
-        return (int)(time * 0.5);
+        return 0;
     }
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        return length * width * height;
     }
 
     @Override
