@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
-public class ConsoleReaderTest extends ConsoleReaderDataProvider {
+public class ConsoleReaderTest{
 
     ConsoleInputCaptor inputCaptor;
 
