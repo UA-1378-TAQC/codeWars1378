@@ -1,13 +1,12 @@
 package org.academy.util.data;
 
 import org.academy.kata.console.ConsoleInputCaptor;
+import org.academy.kata.console.ConsoleOutputCaptor;
 import org.academy.kata.dataproviders.ConsoleReaderDataProvider;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.math.BigInteger;
 
 import static org.testng.Assert.assertEquals;
@@ -15,6 +14,7 @@ import static org.testng.Assert.assertEquals;
 
 public class ConsoleReaderTest {
     ConsoleInputCaptor inputCaptor;
+    ConsoleOutputCaptor outputCaptor;
 
     @BeforeMethod
     public void setUpInputStream() {
@@ -24,6 +24,16 @@ public class ConsoleReaderTest {
     @AfterMethod
     public void restoreInputStream() {
         inputCaptor.restoreInput();
+    }
+
+    @BeforeMethod
+    public void setUpOutputStream() {
+        outputCaptor = new ConsoleOutputCaptor();
+    }
+
+    @AfterMethod
+    public void restoreOutputStream() {
+        outputCaptor.stopCapture();
     }
 
     @Test
@@ -42,18 +52,15 @@ public class ConsoleReaderTest {
     public void testReadDouble(Double minValue, String input, Double expectedResult) {
         inputCaptor.setInput(input);
         ConsoleReader reader = new ConsoleReader();
-
-        ByteArrayOutputStream captureOutput = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(captureOutput));
+        outputCaptor.startCapture();
 
         if(expectedResult!=null){
             assertEquals(reader.readDouble(minValue), expectedResult);
         }else{
             try{
                 reader.readDouble(minValue);
-            }catch(Exception e){
-                System.setOut(System.out);
-                assertEquals(captureOutput.toString().trim(), "Incorrect input, please try again:");
+            }catch(Exception e) {
+                assertEquals(outputCaptor.getOutput(), "Incorrect input, please try again:");
             }
         }
     }
