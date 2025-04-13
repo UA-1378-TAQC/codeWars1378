@@ -1,9 +1,26 @@
 package org.academy.util.data;
 
+import org.academy.kata.console.ConsoleInputCaptor;
+import org.academy.kata.dataproviders.ConsoleReaderDataProvider;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
 public class ConsoleReaderTest {
+
+    ConsoleInputCaptor inputCaptor;
+
+    @BeforeMethod
+    public void setUpInputStream() {
+        inputCaptor = new ConsoleInputCaptor();
+    }
+
+    @AfterMethod
+    public void restoreInputStream() {
+        inputCaptor.restoreInput();
+    }
 
     @Test
     public void testReadInt() {
@@ -37,7 +54,14 @@ public class ConsoleReaderTest {
     public void testReadDoubleArray() {
     }
 
-    @Test
-    public void testReadStringArray() {
+    @Test(dataProvider = "stringArrayDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
+    public void testReadStringArray(String delimiter, String input, String regEx, String[] expectedResult) {
+        inputCaptor.setInput(delimiter + "\n" + input + "\n");
+
+        ConsoleReader reader = new ConsoleReader();
+        String[] result = reader.readStringArray(regEx);
+
+        Assert.assertEquals(result, expectedResult);
     }
+
 }
