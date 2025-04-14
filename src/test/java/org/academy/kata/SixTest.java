@@ -1,6 +1,9 @@
 package org.academy.kata;
 
+import org.academy.kata.dataproviders.SixDataProvider;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
 
 public class SixTest {
 
@@ -12,8 +15,13 @@ public class SixTest {
     public void testBalance() {
     }
 
-    @Test
-    public void testF() {
+    @Test(dataProvider = "dataForF", dataProviderClass = SixDataProvider.class)
+    public void testF(int input, int expected) {
+        int actual = 1;
+        for (int i = 1; i <= input; i++) {
+            actual *= i;
+        }
+        assertEquals(actual, expected);
     }
 
     @Test
