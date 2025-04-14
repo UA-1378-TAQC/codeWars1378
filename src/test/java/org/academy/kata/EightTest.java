@@ -8,8 +8,10 @@ import org.testng.annotations.Test;
 
 public class EightTest extends EightDataProvider {
 
-    @Test
-    public void testLiters() {
+    @Test(dataProvider = "litersDataProvider")
+    public void testLiters(double time, int expected, IEight iEight) {
+        int actual = iEight.liters(time);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test(dataProvider = "cuboidDataProvider")

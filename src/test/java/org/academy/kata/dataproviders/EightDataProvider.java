@@ -96,4 +96,22 @@ public class EightDataProvider extends BaseDataProvider {
         return combineDataProviders(data, EIGHTS);
     }
 
+
+    @DataProvider(name = "litersDataProvider")
+    protected Object[][] litersDataProvider() {
+        Object[][] data = new Object[][]{
+                {0.0, 0},
+                {1.4, 0},
+                {12.3, 6},
+                {3.7, 1},
+                {3.8, 1},
+                {3.9, 1},
+                {4.0, 2},
+                {4.1, 2},
+                {10.8, 5},
+                {5.9, 2},
+                {6.0, 3}
+        };
+        return combineDataProviders(data, EIGHTS);
+    }
 }
