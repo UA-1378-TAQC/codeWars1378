@@ -51,19 +51,18 @@ public class ConsoleWriterTest {
     public void testTestWriteResult4() {
     }
 
-    @Test(dataProvider = "characterData", dataProviderClass = WriterDataProvider.class)
-    public void testTestWriteResult5(char input, String expectedOutput) {
-        writer.writeResult(input);
-
-        assertEquals(captor.getOutput(), expectedOutput);
+    @Test
+    public void testTestWriteResult5() {
     }
 
     @Test
     public void testTestWriteResult6() {
     }
 
-    @Test
-    public void testWriteArray() {
+    @Test(dataProvider = "writeArrayDataProvider", dataProviderClass = WriterDataProvider.class)
+    public void testWriteArray(int[] input, String expected) {
+        writer.writeArray(input);
+        assertEquals(captor.getOutput(), expected);
     }
 
     @Test
