@@ -4,9 +4,16 @@ import org.testng.annotations.DataProvider;
 
 public class InputValidatorDataProvider {
 
+    @DataProvider(name = "integerArrayDataProvider")
+    public Object[][] integerArrayDataProvider() {
+        return new Object[][]{
+                {"1, 2, 3", ",", 1, true},
+                {"1 2 3", "\\s+", 1, true},
+        };
+    } 
     @DataProvider(name = "isValidLongDataProvider")
     public Object[][] isValidLongDataProvider() {
-        return new Object[][] {
+        return new Object[][]{
                 {"123", 100L, true},
                 {"99", 100L, false},
                 {"-1", -5L, true},
@@ -21,6 +28,7 @@ public class InputValidatorDataProvider {
                 {"    ", 0L, false},
                 {"12.3", 0L, false},
                 {"--12", 0L, false},
+
         };
     }
 }
