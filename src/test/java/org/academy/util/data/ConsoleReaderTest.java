@@ -2,13 +2,6 @@ package org.academy.util.data;
 
 import org.testng.annotations.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.math.BigInteger;
-import java.util.Scanner;
-
-import static org.testng.Assert.assertEquals;
-
 
 public class ConsoleReaderTest {
 
