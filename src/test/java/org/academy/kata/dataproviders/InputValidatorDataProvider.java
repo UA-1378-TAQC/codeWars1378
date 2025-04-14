@@ -13,7 +13,7 @@ public class InputValidatorDataProvider {
     } 
     @DataProvider(name = "isValidLongDataProvider")
     public Object[][] isValidLongDataProvider() {
-        return new Object[][] {
+        return new Object[][]{
                 {"123", 100L, true},
                 {"99", 100L, false},
                 {"-1", -5L, true},
@@ -28,6 +28,7 @@ public class InputValidatorDataProvider {
                 {"    ", 0L, false},
                 {"12.3", 0L, false},
                 {"--12", 0L, false},
+
         };
     }
 }
