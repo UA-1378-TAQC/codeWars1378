@@ -1,5 +1,6 @@
 package org.academy.util.data;
 
+import org.academy.kata.console.ConsoleInputCaptor;
 import org.academy.kata.console.ConsoleOutputCaptor;
 import org.academy.kata.dataproviders.ConsoleReaderDataProvider;
 import org.testng.Assert;
@@ -45,8 +46,13 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
     public void testReadIntArray() {
     }
 
-    @Test
-    public void testReadDoubleArray() {
+    @Test(dataProvider = "readDoubleArrayDataProvider")
+    public void testReadDoubleArray(String simulatedInput, Double minValue, double[] expected) {
+        ConsoleInputCaptor captor = new ConsoleInputCaptor();
+        captor.setInput(simulatedInput);
+        ConsoleReader consoleReader = new ConsoleReader();
+        double[] actual = consoleReader.readDoubleArray(minValue);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
