@@ -6,11 +6,6 @@
 
     public class FiveTest extends FiveDataProvider{
 
-
-        @Test
-        public void testGap() {
-        }
-
         @Test
         public void testZeros() {
         }

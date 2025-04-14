@@ -2,8 +2,9 @@ package org.academy.kata.implementation.KhrystynaTs;
 
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
-
+import java.util.Arrays;
 import java.math.BigInteger;
+
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
@@ -71,7 +72,9 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        return Arrays.stream(numbers)
+                .filter(number -> number % divider == 0)
+                .toArray();
     }
 
     @Override
