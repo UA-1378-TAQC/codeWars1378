@@ -2,16 +2,15 @@ package org.academy.util.data;
 
 import org.academy.kata.console.ConsoleOutputCaptor;
 import org.academy.kata.dataproviders.WriterDataProvider;
-import org.testng.annotations.*;
 
+import org.testng.annotations.*;
 import static org.testng.Assert.assertEquals;
 
-
-public class ConsoleWriterTest {
+public class ConsoleWriterTest extends WriterDataProvider {
     private ConsoleOutputCaptor captor;
     private IWriter writer;
 
-    @BeforeMethod
+ @BeforeMethod
     public void captureInput() {
         writer = new ConsoleWriter();
         captor = new ConsoleOutputCaptor();
@@ -31,8 +30,17 @@ public class ConsoleWriterTest {
     public void testWriteResult() {
     }
 
-    @Test
-    public void testTestWriteResult() {
+    @Test(dataProvider = "intDataProvider", dataProviderClass = WriterDataProvider.class)
+    public void testTestWriteResult(int input, String expectedOutput) {
+        ConsoleWriter writer = new ConsoleWriter();
+        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
+
+        captor.startCapture();
+        writer.writeResult(input);
+        captor.stopCapture();
+
+        String output = captor.getOutput();
+        assertEquals(output, expectedOutput);
     }
 
     @Test
@@ -43,8 +51,18 @@ public class ConsoleWriterTest {
     public void testTestWriteResult2() {
     }
 
-    @Test
-    public void testTestWriteResult3() {
+    @Test(dataProvider = "longDataProvider")
+    public void testTestWriteResult3(long input, String expectedOutput) {
+        ConsoleWriter writer = new ConsoleWriter();
+        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
+
+        captor.startCapture();
+        writer.writeResult(input);
+        captor.stopCapture();
+
+        String output = captor.getOutput();
+        assertEquals(output.trim(), expectedOutput.trim());
+
     }
 
     @Test
