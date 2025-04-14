@@ -26,17 +26,19 @@ public class FiveDataProvider extends BaseDataProvider {
     );
 
     @DataProvider(name = "zerosDataProvider")
-    public Object[][] provideZerosData() {
-        return new Object[][]{
-                {new FiveImpl(), 0, 0},
-                {new FiveImpl(), 5, 1},
-                {new FiveImpl(), 6, 1},
-                {new FiveImpl(), 10, 2},
-                {new FiveImpl(), 25, 6},
-                {new FiveImpl(), 100, 24},
-                {new FiveImpl(), 125, 31},
-                {new FiveImpl(), 200, 49},
-                {new FiveImpl(), 1000, 249}
+    protected Object[][] zerosDataProvider() {
+        Object[][] data = new Object[][]{
+                {0, 0},
+                {4, 0},
+                {5, 1},
+                {10, 2},
+                {25, 6},
+                {100, 24},
+                {125, 31},
+                {1000, 249},
+                {100000, 24999},
+                {1000000000, 249999998},
         };
+        return combineDataProviders(data, FIVES);
     }
 }

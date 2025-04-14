@@ -1,20 +1,20 @@
     package org.academy.kata;
 
     import org.academy.kata.dataproviders.FiveDataProvider;
+    import org.testng.Assert;
     import org.testng.annotations.Test;
 
-    import static org.testng.Assert.assertEquals;
-
-    public class FiveTest {
+    public class FiveTest extends FiveDataProvider {
 
         @Test
         public void testGap() {
         }
 
-        @Test(dataProvider = "zerosDataProvider", dataProviderClass = FiveDataProvider.class)
-        public void testZeros(IFive impl, int input, int expected) {
-            int result = impl.zeros(input);
-            assertEquals(result, expected, "Failed for input: " + input);
+        @Test(dataProvider = "zerosDataProvider")
+        public void testZeros(int input, int expected, IFive iFive) {
+            int actual = iFive.zeros(input);
+            Assert.assertEquals(actual, expected,
+                    "Failed for implementation: " + iFive.getClass().getSimpleName() + " with input: " + input);
         }
 
         @Test
