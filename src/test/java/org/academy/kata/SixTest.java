@@ -14,9 +14,6 @@ public class SixTest extends SixDataProvider {
     public void testBalance(String input, String expected, ISix iSix) {
         String output = iSix.balance(input);
 
-        System.out.println(expected);
-        System.out.println(output);
-
         Assert.assertEquals(output,expected);
     }
 
