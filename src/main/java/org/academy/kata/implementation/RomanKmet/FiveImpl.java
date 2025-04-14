@@ -53,11 +53,43 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public double solve(double m) {
-        return 0;
+        double low = 0.0, high = 1.0, mid;
+        double epsilon = 1e-14;
+        while (high - low > epsilon) {
+            mid = (low + high) / 2;
+            double sum = 0, term = mid;
+            for (int n = 1; n <= 100000; n++) {
+                sum += n * term;
+                term *= mid;
+                if (term < 1e-14) break;
+            }
+            if (sum < m) {
+                low = mid;
+            } else {
+                high = mid;
+            }
+        }
+        return (low + high) / 2;
     }
 
     @Override
     public long[] smallest(long n) {
-        return new long[0];
+        String number = Long.toString(n);
+        long smallest = n;
+        int fromIndex = 0, toIndex = 0;
+        for (int i = 0; i < number.length(); i++) {
+            char removed = number.charAt(i);
+            String remaining = number.substring(0, i) + number.substring(i + 1);
+            for (int j = 0; j <= remaining.length(); j++) {
+                String newNumber = remaining.substring(0, j) + removed + remaining.substring(j);
+                long value = Long.parseLong(newNumber);
+                if (value < smallest) {
+                    smallest = value;
+                    fromIndex = i;
+                    toIndex = j;
+                }
+            }
+        }
+        return new long[]{smallest, fromIndex, toIndex};
     }
 }
