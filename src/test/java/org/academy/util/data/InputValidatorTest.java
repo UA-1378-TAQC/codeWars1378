@@ -1,12 +1,16 @@
 package org.academy.util.data;
 
+import org.academy.kata.dataproviders.InputValidatorDataProvider;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class InputValidatorTest {
+public class InputValidatorTest extends InputValidatorDataProvider {
 
-    @Test
-    public void testIsValidInt() {
+    @Test(dataProvider = "isValidIntDataProvider")
+    public void testIsValidInt(String input, Integer minValue, boolean expected) {
+        boolean actual = InputValidator.isValidInt(input, minValue);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
