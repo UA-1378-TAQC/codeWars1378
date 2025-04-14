@@ -7,14 +7,14 @@ import org.testng.annotations.Test;
 public class SevenTest extends SevenDataProvider {
 
     @Test(dataProvider = "benefactorDataProvider")
-    public void testNewAvg(double[] arr, double navg, String expected, ISeven iSeven) {
-        if(expected.equals("exception")){
-            Assert.assertThrows(IllegalArgumentException.class, () -> iSeven.newAvg(arr, navg));
-        }else{
-            long expectedResult = Long.parseLong(expected);
-            long actual = iSeven.newAvg(arr, navg);
-            Assert.assertEquals(actual, expectedResult);
-        }
+    public void testNewAvg(double[] arr, double navg, long expected, ISeven iSeven) {
+        long actual = iSeven.newAvg(arr, navg);
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test(dataProvider = "benefactorExceptionDataProvider")
+    public void testNewAvgException(double[] arr, double navg, ISeven iSeven) {
+        Assert.assertThrows(IllegalArgumentException.class, () -> iSeven.newAvg(arr, navg));
     }
 
     @Test
