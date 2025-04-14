@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 
-public class ConsoleReaderTest {
+public class ConsoleReaderTest extends ConsoleReaderDataProvider{
     ConsoleInputCaptor inputCaptor;
     ConsoleOutputCaptor outputCaptor;
 
@@ -53,7 +53,7 @@ public class ConsoleReaderTest {
         assertEquals(actual, expected, 0.0001f);
     }
 
-    @Test(dataProvider = "doubleDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
+    @Test(dataProvider = "doubleDataProvider")
     public void testReadDouble(Double minValue, String input, Double expectedResult) {
         inputCaptor.setInput(input);
         ConsoleReader reader = new ConsoleReader();
@@ -61,7 +61,7 @@ public class ConsoleReaderTest {
         assertEquals(reader.readDouble(minValue), expectedResult);
     }
 
-    @Test(dataProvider = "doubleIncorrectDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
+    @Test(dataProvider = "doubleIncorrectDataProvider")
     public void testReadDoubleIncorrect(Double minValue, String input) {
         inputCaptor.setInput(input);
         ConsoleReader reader = new ConsoleReader();
