@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
 
 public class ConsoleReaderTest extends ConsoleReaderDataProvider {
     ConsoleInputCaptor inputCaptor;
@@ -30,8 +31,15 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
     public void testReadLong() {
     }
 
-    @Test
-    public void testReadFloat() {
+    @Test(dataProvider = "readFloatDataProvider")
+    public void testReadFloat(float minValue, String simulatedInput, float expected) {
+        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
+        captor.setInput(simulatedInput + "\n");
+        ConsoleReader consoleReader = new ConsoleReader();
+
+        float actual = consoleReader.readFloat(minValue);
+
+        assertEquals(actual, expected, 0.0001f);
     }
 
     @Test
@@ -52,6 +60,14 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
 
     @Test
     public void testReadIntArray() {
+    }
+
+    @Test(dataProvider = "intArrayDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
+    public void testReadIntArray(String input, int[] expected) {
+        inputCaptor.setInput(input);
+        ConsoleReader reader = new ConsoleReader();
+        int[] result = reader.readIntArray(0);
+        assertEquals(result, expected);
     }
 
     @Test
