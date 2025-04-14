@@ -22,24 +22,30 @@ public class EightTest extends EightDataProvider {
     public void testMpgToKPM() {
     }
 
-    @Test
-    public void testSquareOrSquareRoot() {
+    @Test(dataProvider = "squareRootDataProvider")
+    public void testSquareOrSquareRoot(int[] input, int[] expected, IEight iEight) {
+        int[] actual = iEight.squareOrSquareRoot(input);
+        Assert.assertEquals(actual, expected, "Failed for class: " + iEight.getClass().getSimpleName());
     }
 
     @Test
     public void testCountPositivesSumNegatives() {
     }
 
-    @Test
-    public void testStringToNumber() {
+    @Test(dataProvider = "stringToNumberDataProvider")
+    public void testStringToNumber(String string, int integer, IEight iEight) {
+        int value = iEight.stringToNumber(string);
+        Assert.assertEquals(value, integer);
     }
 
     @Test
     public void testTwoDecimalPlaces() {
     }
 
-    @Test
-    public void testDivisibleBy() {
+    @Test(dataProvider = "divisibleByDataProvider")
+    public void testDivisibleBy(int[] inputNumbers, int divider, int[] expectedResult, IEight iEight) {
+        int[] actualResult = iEight.divisibleBy(inputNumbers, divider);
+        Assert.assertEquals(actualResult, expectedResult);
     }
 
     @Test

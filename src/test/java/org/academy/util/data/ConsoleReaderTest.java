@@ -5,10 +5,12 @@ import org.academy.kata.dataproviders.ConsoleReaderDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.academy.kata.console.ConsoleOutputCaptor;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
 
-public class ConsoleReaderTest {
+public class ConsoleReaderTest extends ConsoleReaderDataProvider {
     private ConsoleInputCaptor inputCaptor;
     private IReader reader;
 
@@ -21,6 +23,7 @@ public class ConsoleReaderTest {
     public void restoreInputStream() {
         inputCaptor.restoreInput();
     }
+
 
     @Test
     public void testReadInt() {
@@ -35,8 +38,15 @@ public class ConsoleReaderTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-    @Test
-    public void testReadFloat() {
+    @Test(dataProvider = "readFloatDataProvider")
+    public void testReadFloat(float minValue, String simulatedInput, float expected) {
+        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
+        captor.setInput(simulatedInput + "\n");
+        ConsoleReader consoleReader = new ConsoleReader();
+
+        float actual = consoleReader.readFloat(minValue);
+
+        assertEquals(actual, expected, 0.0001f);
     }
 
     @Test

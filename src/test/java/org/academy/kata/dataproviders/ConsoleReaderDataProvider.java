@@ -3,7 +3,6 @@ package org.academy.kata.dataproviders;
 import org.testng.annotations.DataProvider;
 
 public class ConsoleReaderDataProvider {
-
     @DataProvider(name = "longDataProvider")
     public Object[][] longDataProvider() {
         return new Object[][]{

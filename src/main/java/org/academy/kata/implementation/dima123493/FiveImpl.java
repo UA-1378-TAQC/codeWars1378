@@ -8,17 +8,55 @@ import java.math.BigInteger;
 public class FiveImpl extends Base implements IFive {
     @Override
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        long previousPrime = 0;
+
+        for (long num = m; num <= n; num++) {
+            if (isPrime(num)) {
+                if (previousPrime != 0 && num - previousPrime == g) {
+                    return new long[]{previousPrime, num};
+                }
+                previousPrime = num;
+            }
+        }
+        return null;
+    }
+
+    private static boolean isPrime(long num) {
+        if (num < 2) return false;
+        if (num == 2 || num == 3) return true;
+        if (num % 2 == 0 || num % 3 == 0) return false;
+
+        for (long i = 5; i * i <= num; i += 6) {
+            if (num % i == 0 || num % (i + 2) == 0) return false;
+        }
+        return true;
     }
 
     @Override
     public int zeros(int n) {
-        return 0;
+        int count = 0;
+        while (n > 0) {
+            n /= 5;
+            count += n;
+        }
+        return count;
     }
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        BigInteger firstFibonacci = BigInteger.ONE;
+        BigInteger secondFibonacci = BigInteger.ONE;
+        BigInteger totalSideLength = BigInteger.ZERO;
+
+        for (BigInteger i = BigInteger.ZERO; i.compareTo(n) <= 0; i = i.add(BigInteger.ONE)) {
+            totalSideLength = totalSideLength.add(firstFibonacci);
+
+            BigInteger next = firstFibonacci.add(secondFibonacci);
+            firstFibonacci = secondFibonacci;
+            secondFibonacci = next;
+        }
+
+        return totalSideLength.multiply(BigInteger.valueOf(4));
     }
 
     @Override
