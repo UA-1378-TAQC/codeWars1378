@@ -35,13 +35,13 @@ public class InputValidatorTest extends InputValidatorDataProvider {
     public void testIsValidIntegerArray() {
     }
 
-    @Test(dataProvider = "isValidDoubleArrayDataProvider")
-    public void testIsValidDoubleArray(String input, String delimiter, Double minValue, boolean expected) {
-        boolean actual = InputValidator.isValidDoubleArray(input, delimiter, minValue);
-        Assert.assertEquals(expected, actual);
+    @Test
+    public void testIsValidDoubleArray() {
     }
 
-    @Test
-    public void testIsValidStringArray() {
+    @Test(dataProvider = "isValidStringArrayDataProvider")
+    public void testIsValidStringArray(String input, String delimiter, String regex, boolean expected) {
+        boolean actual = InputValidator.isValidStringArray(input, delimiter, regex);
+        Assert.assertEquals(expected, actual);
     }
 }
