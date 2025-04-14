@@ -34,5 +34,15 @@ public class EightDataProvider extends BaseDataProvider{
         };
         return combineDataProviders(data, EIGHTS);
     }
-
+    @DataProvider(name = "twoDecimalPlacesDataProvider")
+    public Object[][] twoDecimalPlacesDataProvider() {
+        Object[][] data = new Object[][]{
+                {3.14159, 3.14},
+                {1.9999, 2.00},
+                {-1.98765, -1.99},
+                {0.0, 0.00},
+                {123.456, 123.46}
+        };
+        return combineDataProviders(data, EIGHTS);
+    }
 }
