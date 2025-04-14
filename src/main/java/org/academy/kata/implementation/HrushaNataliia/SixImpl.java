@@ -3,11 +3,7 @@ package org.academy.kata.implementation.HrushaNataliia;
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
 
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.*;
 
 public class SixImpl extends Base implements ISix {
     @Override
@@ -211,8 +207,42 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return "";
+        if (lstOfArt == null || lstOfArt.length == 0 || lstOf1stLetter == null || lstOf1stLetter.length == 0) {
+            return "";
+        }
+
+        Map<String, Integer> categoryCounts = new HashMap<>();
+        for (String category : lstOf1stLetter) {
+            categoryCounts.put(category, 0);
+        }
+
+        for (String book : lstOfArt) {
+            String[] parts = book.split(" ");
+            if (parts.length < 2) {
+                continue;
+            }
+            String category = parts[0].substring(0, 1);
+            int quantity;
+            try {
+                quantity = Integer.parseInt(parts[1]);
+            } catch (NumberFormatException e) {
+                continue;
+            }
+            if (categoryCounts.containsKey(category)) {
+                categoryCounts.put(category, categoryCounts.get(category) + quantity);
+            }
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < lstOf1stLetter.length; i++) {
+            String category = lstOf1stLetter[i];
+            int count = categoryCounts.getOrDefault(category, 0);
+            if (i > 0) {
+                result.append(" - ");
+            }
+            result.append("(").append(category).append(" : ").append(count).append(")");
+        }
+
+        return result.toString();
     }
-
-
 }
