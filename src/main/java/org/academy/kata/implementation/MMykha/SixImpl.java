@@ -2,6 +2,7 @@ package org.academy.kata.implementation.MMykha;
 
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
+import java.util.Arrays;
 import java.util.regex.*;
 import java.util.ArrayList;
 
@@ -123,6 +124,22 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return "";
+        int sum = 0;
+        String result = "";
+        if(lstOfArt.length==0) return "";
+        Pattern digitPattern = Pattern.compile("\\s(\\d*)");
+        for(int i = 0; i < lstOf1stLetter.length; i++){
+            final int index = i;
+            sum = Arrays.stream(lstOfArt).filter(el->el.substring(0,1).equals(lstOf1stLetter[index]))
+                    .map(n -> {
+                        Matcher digitMatcher = digitPattern.matcher(n);
+                        digitMatcher.find();
+                        return digitMatcher.group(1);
+                    })
+                    .mapToInt(Integer::parseInt).sum();
+            if(i>0) result=result.concat(" - ");
+            result=result.concat(String.format("(%s : %d)",lstOf1stLetter[i], sum));
+        }
+        return result;
     }
 }
