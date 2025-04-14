@@ -3,12 +3,15 @@ package org.academy.kata;
 
 import org.academy.kata.dataproviders.EightDataProvider;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class EightTest extends EightDataProvider {
 
-    @Test
-    public void testLiters() {
+    @Test(dataProvider = "litersDataProvider")
+    public void testLiters(double time, int expected, IEight iEight) {
+        int actual = iEight.liters(time);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test(dataProvider = "cuboidDataProvider")
@@ -22,24 +25,34 @@ public class EightTest extends EightDataProvider {
     public void testMpgToKPM() {
     }
 
-    @Test
-    public void testSquareOrSquareRoot() {
+    @Test(dataProvider = "squareRootDataProvider")
+    public void testSquareOrSquareRoot(int[] input, int[] expected, IEight iEight) {
+        int[] actual = iEight.squareOrSquareRoot(input);
+        Assert.assertEquals(actual, expected, "Failed for class: " + iEight.getClass().getSimpleName());
     }
 
-    @Test
-    public void testCountPositivesSumNegatives() {
+    @Test(dataProvider = "countPositiveSumNegativeDataProvider")
+    public void testCountPositivesSumNegatives(int[] input, int[] expected, IEight iEight) {
+        int[] actual = iEight.countPositivesSumNegatives(input);
+        Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void testStringToNumber() {
+    @Test(dataProvider = "stringToNumberDataProvider")
+    public void testStringToNumber(String string, int integer, IEight iEight) {
+        int value = iEight.stringToNumber(string);
+        Assert.assertEquals(value, integer);
     }
 
-    @Test
-    public void testTwoDecimalPlaces() {
+    @Test(dataProvider = "twoDecimalPlacesDataProvider")
+    public void testTwoDecimalPlaces(double input, double expected, IEight iEight) {
+        double actual = iEight.TwoDecimalPlaces(input);
+        Assert.assertEquals(actual, expected, 0.001);
     }
 
-    @Test
-    public void testDivisibleBy() {
+    @Test(dataProvider = "divisibleByDataProvider")
+    public void testDivisibleBy(int[] inputNumbers, int divider, int[] expectedResult, IEight iEight) {
+        int[] actualResult = iEight.divisibleBy(inputNumbers, divider);
+        Assert.assertEquals(actualResult, expectedResult);
     }
 
     @Test
