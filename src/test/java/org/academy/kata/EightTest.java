@@ -43,8 +43,10 @@ public class EightTest extends EightDataProvider {
         Assert.assertEquals(value, integer);
     }
 
-    @Test
-    public void testTwoDecimalPlaces() {
+    @Test(dataProvider = "twoDecimalPlacesDataProvider")
+    public void testTwoDecimalPlaces(double input, double expected, IEight iEight) {
+        double actual = iEight.TwoDecimalPlaces(input);
+        Assert.assertEquals(actual, expected, 0.001);
     }
 
     @Test(dataProvider = "divisibleByDataProvider")
