@@ -10,7 +10,8 @@ import java.util.List;
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
-        return (int) (0.5 * time);
+        final double HYDRATION_RATE = 0.5;
+        return (int) (HYDRATION_RATE * time);
     }
 
     @Override
@@ -61,12 +62,12 @@ public class EightImpl extends Base implements IEight {
 
         int result = 0;
         boolean isNegative = values[0] == '-';
-
+        final int DECIMAL_BASE = 10;
         for (int i = isNegative ? 1 : 0; i < values.length; i++) {
             char character = values[i];
 
             int digit = character - '0';
-            result = result * 10 + digit;
+            result = result * DECIMAL_BASE + digit;
         }
         return isNegative ? -result : result;
     }
@@ -96,9 +97,10 @@ public class EightImpl extends Base implements IEight {
         if (!isPrime(n)) {
             return false;
         }
+        final int FACTORIAL_START = 2;
 
         BigInteger factorial = BigInteger.ONE;
-        for (int i = 2; i <= n - 1; i++) {
+        for (int i = FACTORIAL_START; i <= n - 1; i++) {
             factorial = factorial.multiply(BigInteger.valueOf(i));
         }
         factorial = factorial.add(BigInteger.ONE);
@@ -108,8 +110,9 @@ public class EightImpl extends Base implements IEight {
     }
 
     private static boolean isPrime(long p) {
+        final int FIRST_DIVISOR = 2;
         if (p <= 1) return false;
-        for (int i = 2; (long) i * i <= p; i++) {
+        for (int i = FIRST_DIVISOR; (long) i * i <= p; i++) {
             if (p % i == 0) return false;
         }
         return true;
