@@ -2,7 +2,6 @@ package org.academy.kata.implementation.MMykha;
 
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
-import java.util.Arrays;
 import java.util.regex.*;
 import java.util.Arrays;
 import java.util.ArrayList;
