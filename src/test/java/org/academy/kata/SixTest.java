@@ -6,9 +6,10 @@ import org.testng.annotations.Test;
 
 public class SixTest extends SixDataProvider {
 
-
-    @Test
-    public void testFindNb() {
+    @Test(dataProvider = "findNbDataProvider")
+    public void testFindNb(long input, long expected, ISix iSix) {
+        long actual = iSix.findNb(input);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test

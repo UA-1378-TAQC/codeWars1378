@@ -23,6 +23,7 @@ public class SixDataProvider extends BaseDataProvider {
             new org.academy.kata.implementation.viktoriiafylyk.SixImpl()
     );
 
+
     @DataProvider(name = "meanDataProvider")
     protected Object[][] meanDataProvider() {
         String rainfallData =
@@ -51,6 +52,28 @@ public class SixDataProvider extends BaseDataProvider {
                 {"Beijing", rainfallData, 52.416666666666664}
         };
         return combineDataProviders(testData, SIXES);
+    }
+
+    @DataProvider(name = "findNbDataProvider")
+    protected Object[][] findNbDataProvider(){
+        Object[][] data = new Object[][]{
+                //{0, -1},
+                {1, 1},
+                {2, -1},
+                {9, 2},
+                {4, -1},
+                {100, 4},
+                {4183059834009L, 2022},
+                {24723578342962L, -1},
+                {135440716410000L, 4824},
+                {40539911473216L, 3568},
+                {40539911473215L, -1},
+                {40539911473217L, -1},
+                {112668204662785L, -1},
+                {1621633670997983721L, 50466},
+                {1622276423986056337L, -1},
+        };
+        return combineDataProviders(data, SIXES);
     }
 
 }
