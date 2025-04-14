@@ -2,9 +2,7 @@ package org.academy.kata.dataproviders;
 
 
 import org.academy.kata.IFive;
-import org.academy.kata.implementation.novitskiiy.FiveImpl;
 import org.testng.annotations.DataProvider;
-
 import java.util.List;
 
 public class FiveDataProvider extends BaseDataProvider {
@@ -25,6 +23,7 @@ public class FiveDataProvider extends BaseDataProvider {
 
     );
 
+
     @DataProvider(name = "zerosDataProvider")
     protected Object[][] zerosDataProvider() {
         Object[][] data = new Object[][]{
@@ -41,4 +40,17 @@ public class FiveDataProvider extends BaseDataProvider {
         };
         return combineDataProviders(data, FIVES);
     }
+
+    @DataProvider(name = "gapDataProvider")
+    public Object[][] gapDataProvider() {
+        Object[][] data = new Object[][]{
+                {2, 100L, 110L, new Long[]{101L, 103L}},
+                {4, 100L, 110L, new Long[]{103L, 107L}},
+                {6, 100L, 110L, null},
+                {8, 300L, 400L, new Long[]{359L, 367L}},
+                {10, 300L, 400L, new Long[]{337L, 347L}},
+        };
+        return combineDataProviders(data, FIVES);
+    }
+
 }
