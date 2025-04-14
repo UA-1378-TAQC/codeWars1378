@@ -13,7 +13,15 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public int zeros(int n) {
-        return 0;
+        
+        int z = 0;
+
+        while(n >= 5){
+            n /= 5;
+            z += n;
+        }
+
+        return z;
     }
 
     @Override

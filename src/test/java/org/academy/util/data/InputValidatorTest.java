@@ -1,9 +1,11 @@
 package org.academy.util.data;
 
 import org.academy.kata.dataproviders.InputValidatorDataProvider;
-import org.testng.Assert;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
 
 
 public class InputValidatorTest {
@@ -12,8 +14,10 @@ public class InputValidatorTest {
     public void testIsValidInt() {
     }
 
-    @Test
-    public void testIsValidLong() {
+    @Test(dataProvider = "isValidLongDataProvider", dataProviderClass = InputValidatorDataProvider.class)
+    public void testIsValidLong(String input, Long minValue, boolean expected) {
+        boolean result = InputValidator.isValidLong(input, minValue);
+        assertEquals(result, expected, "Failed for input: \"" + input + "\", minValue: " + minValue);
     }
 
     @Test
