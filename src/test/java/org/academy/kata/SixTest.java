@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
 
-public class SixTest {
+public class SixTest extends SixDataProvider{
 
     @Test
     public void testFindNb() {
@@ -31,9 +31,11 @@ public class SixTest {
     public void testNbaCup() {
     }
 
-    @Test(dataProvider = "stockSummaryDataProvider", dataProviderClass = SixDataProvider.class)
-    public void testStockSummary(ISix implementation, String[] lstOfArt, String[] lstOf1stLetter, String expected) {
+    @Test(dataProvider = "stockSummaryDataProvider")
+    public void testStockSummary(String[] lstOfArt, String[] lstOf1stLetter, String expected, ISix implementation) {
         String result = implementation.stockSummary(lstOfArt, lstOf1stLetter);
         assertEquals(result, expected);
     }
+
+
 }
