@@ -1,9 +1,12 @@
 package org.academy.util.data;
 
+import org.academy.kata.console.ConsoleOutputCaptor;
+import org.academy.kata.dataproviders.WriterDataProvider;
 import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;
 
 
-public class ConsoleWriterTest {
+public class ConsoleWriterTest extends WriterDataProvider {
 
     @Test
     public void testWritePrompt() {
@@ -25,8 +28,18 @@ public class ConsoleWriterTest {
     public void testTestWriteResult2() {
     }
 
-    @Test
-    public void testTestWriteResult3() {
+    @Test(dataProvider = "longDataProvider")
+    public void testTestWriteResult3(long input, String expectedOutput) {
+        ConsoleWriter writer = new ConsoleWriter();
+        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
+
+        captor.startCapture();
+        writer.writeResult(input);
+        captor.stopCapture();
+
+        String output = captor.getOutput();
+        assertEquals(output.trim(), expectedOutput.trim());
+
     }
 
     @Test
