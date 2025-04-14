@@ -20,5 +20,4 @@ public class ConsoleReaderDataProvider {
                 {"\n|\n7.8|8.9|9.0\n", 7.5, new double[]{7.8, 8.9, 9.0}}
         };
     }
-
 }
