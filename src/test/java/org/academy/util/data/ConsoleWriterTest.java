@@ -5,6 +5,8 @@ import org.academy.kata.dataproviders.WriterDataProvider;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
+import static org.testng.AssertJUnit.assertEquals;
+
 
 public class ConsoleWriterTest extends WriterDataProvider {
 
@@ -16,8 +18,17 @@ public class ConsoleWriterTest extends WriterDataProvider {
     public void testWriteResult() {
     }
 
-    @Test
-    public void testTestWriteResult() {
+    @Test(dataProvider = "intDataProvider", dataProviderClass = WriterDataProvider.class)
+    public void testTestWriteResult(int input, String expectedOutput) {
+        ConsoleWriter writer = new ConsoleWriter();
+        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
+
+        captor.startCapture();
+        writer.writeResult(input);
+        captor.stopCapture();
+
+        String output = captor.getOutput();
+        assertEquals(output, expectedOutput);
     }
 
     @Test
