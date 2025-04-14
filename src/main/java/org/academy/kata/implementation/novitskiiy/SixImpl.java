@@ -92,6 +92,33 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return "";
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return "";
+        }
+
+        Map<Character, Integer> stockMap = new HashMap<>();
+
+        for (String category : lstOf1stLetter) {
+            stockMap.put(category.charAt(0), 0);
+        }
+
+        for (String book : lstOfArt) {
+            char category = book.charAt(0);
+            int quantity = Integer.parseInt(book.split(" ")[1]);
+
+            if (stockMap.containsKey(category)) {
+                stockMap.put(category, stockMap.get(category) + quantity);
+            }
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (String category : lstOf1stLetter) {
+            if (result.length() > 0) {
+                result.append(" - ");
+            }
+            result.append("(").append(category).append(" : ").append(stockMap.get(category.charAt(0))).append(")");
+        }
+
+        return result.toString();
     }
 }
