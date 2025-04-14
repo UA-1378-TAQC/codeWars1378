@@ -53,15 +53,18 @@ public class ConsoleReaderTest {
         inputCaptor.setInput(input);
         ConsoleReader reader = new ConsoleReader();
         outputCaptor.startCapture();
+        assertEquals(reader.readDouble(minValue), expectedResult);
+    }
 
-        if(expectedResult!=null){
-            assertEquals(reader.readDouble(minValue), expectedResult);
-        }else{
-            try{
-                reader.readDouble(minValue);
-            }catch(Exception e) {
-                assertEquals(outputCaptor.getOutput(), "Incorrect input, please try again:");
-            }
+    @Test(dataProvider = "doubleIncorrectDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
+    public void testReadDoubleIncorrect(Double minValue, String input) {
+        inputCaptor.setInput(input);
+        ConsoleReader reader = new ConsoleReader();
+        outputCaptor.startCapture();
+        try {
+            reader.readDouble(minValue);
+        } catch (Exception e) {
+            assertEquals(outputCaptor.getOutput(), "Incorrect input, please try again:");
         }
     }
 

@@ -21,12 +21,18 @@ public class ConsoleReaderDataProvider {
     protected Object[][] doubleDataProvider() {
         return new Object[][]{
                 {0.0, "23.0", 23.0},
-                {0.0, "drt", null},
                 {null, "78.9", 78.9},
-                {8.0, "2.0", null},
                 {-17.0, "-11", -11.0},
                 {0.0, "0", 0.0},
-                {null, "null", null}
+        };
+    }
+
+    @DataProvider(name="doubleIncorrectDataProvider")
+    protected Object[][] doubleIncorrectDataProvider() {
+        return new Object[][]{
+                {0.0, "drt"},
+                {8.0, "2.0"},
+                {null, "null"}
         };
     }
 
