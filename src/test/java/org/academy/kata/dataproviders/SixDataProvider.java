@@ -23,7 +23,6 @@ public class SixDataProvider extends BaseDataProvider{
             new org.academy.kata.implementation.viktoriiafylyk.SixImpl()
     );
 
-
     @DataProvider(name="balanceDataProvider")
     protected Object[][] balanceDataProvider(){
         Object[][] data =  new Object[][]{
@@ -49,7 +48,29 @@ public class SixDataProvider extends BaseDataProvider{
                   "126 Hardware 34.95 Balance 839.60\\r\\n" +
                   "127 Video 7.45 Balance 832.15\\r\\n" +
                   "Total expense  167.85\\r\\n" +
-                  "Average expense  55.95"},
+                  "Average expense  55.95"}
+            };
+        return combineDataProviders(data, SIXES);
+    }
+
+    @DataProvider(name = "findNbDataProvider")
+    protected Object[][] findNbDataProvider(){
+        Object[][] data = new Object[][]{
+                //{0, -1},
+                {1, 1},
+                {2, -1},
+                {9, 2},
+                {4, -1},
+                {100, 4},
+                {4183059834009L, 2022},
+                {24723578342962L, -1},
+                {135440716410000L, 4824},
+                {40539911473216L, 3568},
+                {40539911473215L, -1},
+                {40539911473217L, -1},
+                {112668204662785L, -1},
+                {1621633670997983721L, 50466},
+                {1622276423986056337L, -1},
         };
         return combineDataProviders(data, SIXES);
     }
