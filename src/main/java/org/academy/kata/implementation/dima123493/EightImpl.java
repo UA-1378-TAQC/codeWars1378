@@ -3,7 +3,9 @@ package org.academy.kata.implementation.dima123493;
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
 
+import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.List;
 
 public class EightImpl extends Base implements IEight {
     @Override
@@ -18,7 +20,10 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+        final double MILE_TO_KM = 1.609344;
+        final double GALLON_TO_LITER = 4.54609188;
+        double kilometersPerLiter = mpg * (MILE_TO_KM / GALLON_TO_LITER);
+        return (float) (Math.round(kilometersPerLiter * 100.0) / 100.0);
     }
 
     @Override
@@ -73,11 +78,40 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        List<Integer> resultList = Arrays.stream(numbers)
+                .filter(number -> number % divider == 0)
+                .boxed()
+                .toList();
+
+        int[] result = new int[resultList.size()];
+        for (int i = 0; i < resultList.size(); i++) {
+            result[i] = resultList.get(i);
+        }
+
+        return result;
     }
 
     @Override
     public boolean am_i_wilson(long n) {
-        return false;
+        if (!isPrime(n)) {
+            return false;
+        }
+
+        BigInteger factorial = BigInteger.ONE;
+        for (int i = 2; i <= n - 1; i++) {
+            factorial = factorial.multiply(BigInteger.valueOf(i));
+        }
+        factorial = factorial.add(BigInteger.ONE);
+
+        BigInteger pSquared = BigInteger.valueOf(n).multiply(BigInteger.valueOf(n));
+        return factorial.mod(pSquared).equals(BigInteger.ZERO);
+    }
+
+    private static boolean isPrime(long p) {
+        if (p <= 1) return false;
+        for (int i = 2; (long) i * i <= p; i++) {
+            if (p % i == 0) return false;
+        }
+        return true;
     }
 }
