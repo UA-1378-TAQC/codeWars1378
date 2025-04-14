@@ -3,6 +3,10 @@ package org.academy.kata.implementation.roman50021;
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Arrays;
 
 public class SixImpl extends Base implements ISix {
@@ -29,12 +33,48 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String balance(String book) {
-        return "";
+        String cleaned = book.replaceAll("[^a-zA-Z0-9\\.\\s]", "");
+
+        String[] lines = cleaned.split("\\n");
+
+        double original_balance = Double.parseDouble(lines[0]);
+
+        StringBuilder report = new StringBuilder();
+        report.append(String.format("Original Balance: %.2f\n", original_balance));
+
+        double current_balance = original_balance;
+        double total_expense = 0.0;
+        int transactionCount = 0;
+
+        for (int i = 1; i < lines.length; i++) {
+            String line = lines[i].trim();
+            if (line.isEmpty()) continue;
+
+            String[] parts = line.split("\\s+");
+
+            String checkNumber = parts[0];
+            String category = parts[1];
+            double amount = Double.parseDouble(parts[2]);
+
+            current_balance -= amount;
+            total_expense += amount;
+            transactionCount++;
+
+            report.append(String.format("%s %s %s Balance %.2f\n",
+                    checkNumber, category, parts[2], current_balance));
+        }
+
+        double average_expense = total_expense / transactionCount;
+
+        report.append(String.format("Total expense  %.2f\n", total_expense));
+        report.append(String.format("Average expense  %.2f", average_expense));
+
+        return report.toString().replace("\n", "\\r\\n");
     }
 
     @Override
     public double f(double x) {
-        return 0;
+        return x / (Math.sqrt(1 + x) + 1);
     }
 
 
@@ -199,6 +239,32 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return "";
+        if(lstOfArt.length == 0 || lstOf1stLetter.length == 0){
+            return "";
+        }
+
+        Map<String, Integer> categorySums = new LinkedHashMap<>();
+        for(String letter : lstOf1stLetter){
+            categorySums.put(letter, 0);
+        }
+
+        for(String item : lstOfArt){
+            String[] parts = item.split(" ");
+            String code = parts[0];
+            int quantity = Integer.parseInt(parts[1]);
+            String category = code.substring(0, 1);
+
+            if(categorySums.containsKey(category)){
+                categorySums.put(category, categorySums.get(category) + quantity);
+            }
+        }
+
+        List<String> resultParts = new ArrayList<>();
+        for (String letter : lstOf1stLetter){
+            int sum = categorySums.get(letter);
+            resultParts.add("(" + letter + " : " + sum + ")");
+        }
+
+        return String.join(" - ", resultParts);
     }
 }

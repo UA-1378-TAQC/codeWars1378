@@ -34,10 +34,6 @@ public class ConsoleWriterTest {
     }
 
     @Test
-    public void testTestWriteResult() {
-    }
-
-    @Test
     public void testTestWriteResult1() {
     }
 
@@ -48,10 +44,6 @@ public class ConsoleWriterTest {
 
         Assert.assertEquals(actualOutput, expectedOutput,
                 "Expected output: " + expectedOutput + ", but got: " + actualOutput);
-    }
-
-    @Test
-    public void testTestWriteResult3() {
     }
 
     @Test
