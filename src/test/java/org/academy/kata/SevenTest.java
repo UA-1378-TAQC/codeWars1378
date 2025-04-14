@@ -17,7 +17,9 @@ public class SevenTest extends SevenDataProvider {
         Assert.assertThrows(IllegalArgumentException.class, () -> iSeven.newAvg(arr, navg));
     }
 
-    @Test
-    public void testSeriesSum() {
+    @Test(dataProvider = "seriesSumDataProvider")
+    public void testSeriesSum(int n, String expected, ISeven iSeven) {
+        String actual = iSeven.seriesSum(n);
+        Assert.assertEquals(actual, expected, "Failed for class: " + iSeven.getClass().getSimpleName());
     }
 }
