@@ -2,6 +2,8 @@ package org.academy.kata.dataproviders;
 
 
 import org.academy.kata.ISeven;
+import org.testng.annotations.DataProvider;
+
 import java.util.List;
 
 public class SevenDataProvider extends BaseDataProvider{
@@ -20,4 +22,14 @@ public class SevenDataProvider extends BaseDataProvider{
             new org.academy.kata.implementation.RomanKmet.SevenImpl(),
             new org.academy.kata.implementation.viktoriiafylyk.SevenImpl()
     );
+
+    @DataProvider(name = "seriesSumDataProvider")
+    public Object[][] seriesSumDataProvider() {
+        Object[][] data = new Object[][]{
+                {5, "1,57"},
+                {9, "1,77"},
+                {15, "1,94"}
+        };
+        return combineDataProviders(data, SEVENS);
+    }
 }
