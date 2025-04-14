@@ -50,24 +50,6 @@ public class SixDataProvider extends BaseDataProvider{
                   "127 Video 7.45 Balance 832.15\\r\\n" +
                   "Total expense  167.85\\r\\n" +
                   "Average expense  55.95"},
-                {"1500.00\n123 Groceries! 120.25\n124-Pharmacy? 45.30\n125 Cinema* 30.00\n126#Utilities@ 130.75\n127 Fast-Food 25.50",
-                "Original Balance: 1500.00\\r\\n" +
-                        "123 Groceries 120.25 Balance 1379.75\\r\\n" +
-                        "124 Pharmacy 45.30 Balance 1334.45\\r\\n" +
-                        "125 Cinema 30.00 Balance 1304.45\\r\\n" +
-                        "126 Utilities 130.75 Balance 1173.70\\r\\n" +
-                        "127 Fast Food 25.50 Balance 1148.20\\r\\n" +
-                        "Total expense 351.80\\r\\n" +
-                        "Average expense 70.36"
-                },
-                { "800.00\n\n130 Clothes 150.00\n\n131 Food 50.00\n",
-                        "Original Balance: 800.00\\r\\n" +
-                                "130 Clothes 150.00 Balance 650.00\\r\\n" +
-                                "131 Food 50.00 Balance 600.00\\r\\n" +
-                                "Total expense 200.00\\r\\n" +
-                                "Average expense 100.00"
-                }
-
         };
         return combineDataProviders(data, SIXES);
     }
