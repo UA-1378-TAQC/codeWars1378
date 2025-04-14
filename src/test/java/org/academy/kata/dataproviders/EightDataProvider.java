@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 
 import java.util.List;
 
-public class EightDataProvider extends BaseDataProvider{
+public class EightDataProvider extends BaseDataProvider {
     private final static List<IEight> EIGHTS = List.of(
             new org.academy.kata.implementation.adidvar.EightImpl(),
             new org.academy.kata.implementation.Anat0li1.EightImpl(),
@@ -22,15 +22,28 @@ public class EightDataProvider extends BaseDataProvider{
             new org.academy.kata.implementation.viktoriiafylyk.EightImpl()
     );
 
-    @DataProvider(name="cuboidDataProvider")
-    protected Object[][] cuboidDataProvider(){
-        Object[][] data =  new Object[][]{
+    @DataProvider(name = "cuboidDataProvider")
+    protected Object[][] cuboidDataProvider() {
+        Object[][] data = new Object[][]{
                 {2.0, 3.0, 4.0, 24.0},
                 {1.0, 2.0, 3.0, 6.0},
                 {2.5, 3.5, 4.5, 39.375},
                 {1.5, 2.5, 3.5, 13.125},
                 {0.0, 0.0, 0.0, 0.0},
                 {1.12, 2.35, 3.8, 10.0016},
+        };
+        return combineDataProviders(data, EIGHTS);
+    }
+
+
+    @DataProvider(name = "divisibleByDataProvider")
+    protected Object[][] divisibleByDataProvider() {
+        Object[][] data = new Object[][]{
+                {new int[]{1, 2, 3, 4, 5, 6}, 2, new int[]{2, 4, 6}},
+                {new int[]{1, 2, 3, 4, 5, 6}, 3, new int[]{3, 6}},
+                {new int[]{0, 1, 2, 3, 4, 5, 6}, 4, new int[]{0, 4}},
+                {new int[]{}, 2, new int[]{}},
+                {new int[]{1, 3, 5}, 2, new int[]{}},
         };
         return combineDataProviders(data, EIGHTS);
     }
