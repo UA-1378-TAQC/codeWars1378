@@ -2,7 +2,6 @@ package org.academy.kata.dataproviders;
 
 
 import org.academy.kata.ISix;
-import org.academy.kata.implementation.dima123493.SixImpl;
 import org.testng.annotations.DataProvider;
 
 import java.util.List;
@@ -53,7 +52,7 @@ public class SixDataProvider extends BaseDataProvider{
                         "(A : 100) - (B : 200) - (C : 300) - (D : 0)"
                 }
         };
-
+  
         return combineDataProviders(data, SIXES);
     }
 }
