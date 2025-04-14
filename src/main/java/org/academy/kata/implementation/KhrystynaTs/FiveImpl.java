@@ -71,20 +71,22 @@ public class FiveImpl extends Base implements IFive {
 
         for (int i = 0; i < numStr.length(); i++) {
             char removedDigit = numStr.charAt(i);
+            StringBuilder temp = new StringBuilder(numStr);
+            temp.deleteCharAt(i);
 
-            for (int j = 0; j < numStr.length(); j++) {
-                if (j != i) {
-                    StringBuilder newNumberBuilder = new StringBuilder();
-                    newNumberBuilder.append(numStr.substring(0, i));
-                    newNumberBuilder.append(removedDigit);
-                    newNumberBuilder.append(numStr.substring(i + 1, j));
-                    newNumberBuilder.append(numStr.substring(j));
-                    long newNumber = Long.parseLong(newNumberBuilder.toString());
-                    if (newNumber < minNumber) {
-                        minNumber = newNumber;
-                        indexI = i;
-                        indexJ = j;
-                    }
+            for (int j = 0; j <= temp.length(); j++) {
+                StringBuilder newNumberBuilder = new StringBuilder(temp);
+                newNumberBuilder.insert(j, removedDigit);
+
+                long newNumber = Long.parseLong(newNumberBuilder.toString());
+
+                if (newNumber < minNumber ||
+                        (newNumber == minNumber && i < indexI) ||
+                        (newNumber == minNumber && i == indexI && j < indexJ)) {
+
+                    minNumber = newNumber;
+                    indexI = i;  // початковий індекс цифри
+                    indexJ = j;  // новий індекс для цифри
                 }
             }
         }
