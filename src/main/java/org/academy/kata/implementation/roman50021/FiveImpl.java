@@ -8,17 +8,57 @@ import java.math.BigInteger;
 public class FiveImpl extends Base implements IFive {
     @Override
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        Long previousPrime = null;
+
+        for (long i = m; i <= n; i++) {
+            if (isPrime(i)) {
+                if (previousPrime != null && i - previousPrime == g) {
+                    return new long[]{previousPrime, i};
+                }
+                previousPrime = i;
+            }
+        }
+
+        return null;
+    }
+
+    private static boolean isPrime(long number) {
+        if (number < 2) {
+            return false;
+        }
+
+        for (int i = 2; i < number; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     @Override
     public int zeros(int n) {
-        return 0;
+        int count = 0;
+        for (int i = 5; i <= n; i *= 5) {
+            count += n / i;
+        }
+
+        return count;
     }
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        BigInteger a = BigInteger.ZERO; // F(0)
+        BigInteger b = BigInteger.ONE; // F(1)
+        BigInteger sum = BigInteger.ONE; // Start F(1)
+
+        for(BigInteger i = BigInteger.ONE; i.compareTo(n) <= 0; i = i.add(BigInteger.ONE)){
+            BigInteger next = a.add(b); // F(k) = F(k-2) + F(k-1)
+            sum = sum.add(next);
+            a = b; // move next to Fibonacci
+            b = next;
+        }
+        return sum.multiply(BigInteger.valueOf(4));
     }
 
     @Override

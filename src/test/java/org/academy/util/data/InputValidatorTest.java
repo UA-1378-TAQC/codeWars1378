@@ -12,8 +12,10 @@ public class InputValidatorTest {
     public void testIsValidInt() {
     }
 
-    @Test
-    public void testIsValidLong() {
+    @Test(dataProvider = "isValidLongDataProvider", dataProviderClass = InputValidatorDataProvider.class)
+    public void testIsValidLong(String input, Long minValue, boolean expected) {
+        boolean result = InputValidator.isValidLong(input, minValue);
+        assertEquals(result, expected, "Failed for input: \"" + input + "\", minValue: " + minValue);
     }
 
     @Test
