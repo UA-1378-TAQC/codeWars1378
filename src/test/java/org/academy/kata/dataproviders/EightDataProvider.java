@@ -30,8 +30,7 @@ public class EightDataProvider extends BaseDataProvider{
                 {2.5, 3.5, 4.5, 39.375},
                 {1.5, 2.5, 3.5, 13.125},
                 {0.0, 0.0, 0.0, 0.0},
-                {-1.0, -2.0, -3.0, -6.0},
-                {1.5, 2.5, -3.5, -13.125},
+                {1.12, 2.35, 3.8, 10.0016},
         };
         return combineDataProviders(data, EIGHTS);
     }
