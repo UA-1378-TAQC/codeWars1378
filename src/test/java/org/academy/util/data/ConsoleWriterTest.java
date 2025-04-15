@@ -88,7 +88,10 @@ public class ConsoleWriterTest extends WriterDataProvider {
         Assert.assertEquals(normalizedActual, normalizedExpected);
     }
 
-    @Test
-    public void testTestWriteArray2() {
+    @Test(dataProvider="testWriteArray2String",dataProviderClass= WriterDataProvider.class)
+    public void testTestWriteArray2(String[] input, String[] expectedOutput) {
+        writer.writeResult(input);
+
+        assertEquals(captor.getOutput(), expectedOutput);
     }
 }
