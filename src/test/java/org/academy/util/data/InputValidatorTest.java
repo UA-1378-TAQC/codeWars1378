@@ -52,7 +52,9 @@ public class InputValidatorTest extends InputValidatorDataProvider {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void testIsValidStringArray() {
+    @Test(dataProvider = "isValidStringArrayDataProvider")
+    public void testIsValidStringArray(String input, String delimiter, String regex, boolean expected) {
+        boolean actual = InputValidator.isValidStringArray(input, delimiter, regex);
+        Assert.assertEquals(expected, actual);
     }
 }
