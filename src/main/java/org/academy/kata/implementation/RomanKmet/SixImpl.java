@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Arrays;
 import java.util.regex.*;
 
+
 public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
@@ -59,7 +60,7 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double f(double x) {
-        return 0;
+        return x / (Math.sqrt(1 + x) + 1);
     }
 
     @Override

@@ -4,23 +4,15 @@ import org.testng.annotations.DataProvider;
 
 public class WriterDataProvider {
 
-    @DataProvider(name = "intDataProvider")
-    public Object[][] intDataProvider() {
+    @DataProvider(name = "doubleDataProvider")
+    public static Object[][] doubleDataProvider() {
         return new Object[][]{
-                {0, "0"},
-                {1, "1"},
-                {-42, "-42"},
-                {Integer.MAX_VALUE, String.valueOf(Integer.MAX_VALUE)},
-                {Integer.MIN_VALUE, String.valueOf(Integer.MIN_VALUE)}
-        };
-    }
-
-    @DataProvider(name = "longDataProvider")
-    public Object[][] longDataProvider() {
-        return new Object[][]{
-                {1L, "1\n"},
-                {123L, "123\n"},
-                {999999999999L, "999999999999\n"}
+                {0.0, "0.0"},
+                {1.23, "1.23"},
+                {-4.56, "-4.56"},
+                {Double.MAX_VALUE, "1.7976931348623157E308"},
+                {Double.MIN_VALUE, "5.0E-324"},
+                {Math.PI, "3.141592653589793"}
         };
     }
 }
