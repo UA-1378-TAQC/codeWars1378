@@ -23,8 +23,11 @@ public class SixTest extends SixDataProvider {
     public void testF() {
     }
 
-    @Test
-    public void testMean() {
+    @Test(dataProvider = "meanDataProvider")
+    public void testMean(String town, String data, double expected, ISix sixImpl) {
+        double actual = sixImpl.mean(town, data);
+        Assert.assertEquals(actual, expected, 1e-2,
+                String.format("abs(actual - expected) must be <= 1e-2. Expected was %f, but got %f", expected, actual));
     }
 
     @Test
