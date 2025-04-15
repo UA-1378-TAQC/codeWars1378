@@ -1,9 +1,9 @@
 package org.academy.kata.dataproviders;
 
+import java.util.List;
+
 import org.academy.kata.ISix;
 import org.testng.annotations.DataProvider;
-
-import java.util.List;
 
 public class SixDataProvider extends BaseDataProvider {
     private final static List<ISix> SIXES = List.of(
@@ -198,7 +198,8 @@ public class SixDataProvider extends BaseDataProvider {
         "\n" +
         "Lima:Jan 1.2,Feb 0.9,Mar 0.7,Apr 0.4,May 0.6,Jun 1.8,Jul 4.4,Aug 3.1,Sep 3.3,Oct 1.7,Nov 0.5,Dec 0.7";
         Object[][] data = new Object[][]{
-            {"Lime",townsData,1.5790972222222222},
+            {"Lima",townsData,1.5790972222222222},
+            {"Lime",townsData,-1.0},
             {"Beijing",townsData,4808.37138888889},
             {"Rome",townsData,915.3852083333335},
             {"London",townsData,57.428333333333335},
