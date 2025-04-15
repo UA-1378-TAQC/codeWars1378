@@ -8,9 +8,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-
-
 public class ConsoleWriterTest extends WriterDataProvider {
     private ConsoleOutputCaptor captor;
     private IWriter writer;
@@ -34,7 +31,7 @@ public class ConsoleWriterTest extends WriterDataProvider {
     @Test(dataProvider = "stringData", dataProviderClass = WriterStringDataProvider.class)
     public void testWriteResult(String input, String expectedOutput) {
         writer.writeResult(input);
-        assertEquals(captor.getOutput(), expectedOutput);
+        Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 
     @Test
@@ -57,15 +54,17 @@ public class ConsoleWriterTest extends WriterDataProvider {
     public void testTestWriteResult5(char input, String expectedOutput) {
         writer.writeResult(input);
 
-        assertEquals(captor.getOutput(), expectedOutput);
+        Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 
     @Test
     public void testTestWriteResult6() {
     }
 
-    @Test
-    public void testWriteArray() {
+    @Test(dataProvider = "writeArrayDataProvider")
+    public void testWriteArray(int[] input, String expected) {
+        writer.writeArray(input);
+        Assert.assertEquals(captor.getOutput(), expected);
     }
 
     @Test
