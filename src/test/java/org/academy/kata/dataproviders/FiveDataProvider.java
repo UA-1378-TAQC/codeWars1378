@@ -33,9 +33,7 @@ public class FiveDataProvider extends BaseDataProvider {
                 {BigInteger.valueOf(7), BigInteger.valueOf(216)},
                 {BigInteger.valueOf(30), BigInteger.valueOf(14098308)}
         };
-
-    @DataProvider(name = "gapDataProvider")
-    public Object[][] gapDataProvider() {
+        return combineDataProviders(data, FIVES);
     }
 
     @DataProvider(name = "zerosDataProvider")
