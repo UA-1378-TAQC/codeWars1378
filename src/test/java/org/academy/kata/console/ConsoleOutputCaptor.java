@@ -19,6 +19,3 @@ public class ConsoleOutputCaptor {
         System.setOut(originalOut);
     }
 }
-
-
-

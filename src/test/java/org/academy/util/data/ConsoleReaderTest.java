@@ -8,6 +8,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.math.BigInteger;
 import static org.testng.Assert.assertEquals;
 
 public class ConsoleReaderTest extends ConsoleReaderDataProvider {
