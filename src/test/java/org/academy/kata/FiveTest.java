@@ -4,6 +4,7 @@ import org.academy.kata.dataproviders.FiveDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 public class FiveTest extends FiveDataProvider {
@@ -23,11 +24,14 @@ public class FiveTest extends FiveDataProvider {
     @Test(dataProvider = "zerosDataProvider")
     public void testZeros(int input, int expected, IFive iFive) {
         int actual = iFive.zeros(input);
-        Assert.assertEquals(actual, expected, "Failed for implementation: " + iFive.getClass().getSimpleName() + " with input: " + input);
+        Assert.assertEquals(actual, expected,
+                "Failed for implementation: " + iFive.getClass().getSimpleName() + " with input: " + input);
     }
 
-    @Test
-    public void testPerimeter() {
+    @Test(dataProvider = "perimeterDataProvider")
+    public void testPerimeter(BigInteger n, BigInteger expected, IFive iFive) {
+        BigInteger actual = iFive.perimeter(n);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test(dataProvider = "solveDataProvider")
@@ -38,6 +42,6 @@ public class FiveTest extends FiveDataProvider {
 
     @Test
     public void testSmallest() {
+        
     }
 }
-
