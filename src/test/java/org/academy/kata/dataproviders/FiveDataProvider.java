@@ -2,7 +2,6 @@ package org.academy.kata.dataproviders;
 
 import org.academy.kata.IFive;
 import org.testng.annotations.DataProvider;
-
 import java.util.List;
 
 public class FiveDataProvider extends BaseDataProvider {
@@ -22,6 +21,23 @@ public class FiveDataProvider extends BaseDataProvider {
 
     );
 
+    @DataProvider(name = "zerosDataProvider")
+    protected Object[][] zerosDataProvider() {
+        Object[][] data = new Object[][]{
+                {0, 0},
+                {4, 0},
+                {5, 1},
+                {10, 2},
+                {25, 6},
+                {100, 24},
+                {125, 31},
+                {1000, 249},
+                {100000, 24999},
+                {1000000000, 249999998},
+        };
+        return combineDataProviders(data, FIVES);
+    }
+  
     @DataProvider(name = "solveDataProvider")
     protected Object[][] solveDataProvider() {
         Object[][] data = new Object[][]{
