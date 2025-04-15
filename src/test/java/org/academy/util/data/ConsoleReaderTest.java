@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 
-public class ConsoleReaderTest {
+public class ConsoleReaderTest extends ConsoleReaderDataProvider {
     ConsoleInputCaptor inputCaptor;
 
     @BeforeMethod
@@ -32,12 +32,9 @@ public class ConsoleReaderTest {
 
     @Test(dataProvider = "readFloatDataProvider")
     public void testReadFloat(float minValue, String simulatedInput, float expected) {
-        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
-        captor.setInput(simulatedInput + "\n");
+        inputCaptor.setInput(simulatedInput + "\n");
         ConsoleReader consoleReader = new ConsoleReader();
-
         float actual = consoleReader.readFloat(minValue);
-
         assertEquals(actual, expected, 0.0001f);
     }
 

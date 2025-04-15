@@ -4,7 +4,7 @@ import org.academy.kata.Base;
 import org.academy.kata.IEight;
 
 import java.math.*;
-
+import java.util.Arrays;
 
 
 public class EightImpl extends Base implements IEight {
