@@ -10,8 +10,7 @@ public class FiveImpl extends Base implements IFive {
     public long[] gap(int g, long m, long n) {
         long previousPrime = -1;
         for (long i = m; i <= n; i++) {
-            boolean isPrime = true;
-            if (i < 2) isPrime = false;
+            boolean isPrime = i >= 2;
             for (long j = 2; j * j <= i; j++) {
                 if (i % j == 0) {
                     isPrime = false;

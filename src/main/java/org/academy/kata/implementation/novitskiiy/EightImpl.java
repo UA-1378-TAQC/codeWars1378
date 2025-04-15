@@ -13,7 +13,7 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return length*width*height;
+        return length * width * height;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class EightImpl extends Base implements IEight {
     }
 
     @Override
-    public int[] countPositivesSumNegatives(int[] input){
+    public int[] countPositivesSumNegatives(int[] input) {
         if (input == null || input.length == 0) {
             return new int[0];
         }

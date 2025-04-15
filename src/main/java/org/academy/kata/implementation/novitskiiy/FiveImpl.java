@@ -102,6 +102,6 @@ public class FiveImpl extends Base implements IFive {
             }
         }
 
-        return new long[] {min, from, to};
+        return new long[]{min, from, to};
     }
 }

@@ -2,13 +2,14 @@ package org.academy.kata.implementation.viktoriiafylyk;
 
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
-        return (int)Math.floor (time * 0.5);
+        return (int) Math.floor(time * 0.5);
     }
 
     @Override
@@ -27,12 +28,12 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        for (int i = 0; i < array.length; i++ ){
+        for (int i = 0; i < array.length; i++) {
             int sqrt = (int) Math.sqrt(array[i]);
             if (sqrt * sqrt == array[i]) {
                 array[i] = sqrt;
             } else {
-                array[i]*= array[i];
+                array[i] *= array[i];
             }
         }
         return array;
@@ -62,7 +63,7 @@ public class EightImpl extends Base implements IEight {
     public int stringToNumber(String str) {
         int num = 0;
         try {
-            num = Integer.parseInt (str);
+            num = Integer.parseInt(str);
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
@@ -88,10 +89,10 @@ public class EightImpl extends Base implements IEight {
         int[] newArr = new int[count];
         int index = 0;
 
-        for (int i=0; i<numbers.length; i++){
-            if (numbers[i] % divider==0){
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % divider == 0) {
                 newArr[index++] = numbers[i];
-            }else {
+            } else {
                 numbers[i]++;
             }
         }
