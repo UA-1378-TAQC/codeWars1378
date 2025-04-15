@@ -8,6 +8,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
+
 
 public class ConsoleWriterTest extends WriterDataProvider {
     private ConsoleOutputCaptor captor;
@@ -75,8 +77,9 @@ public class ConsoleWriterTest extends WriterDataProvider {
         Assert.assertEquals(captor.getOutput(), expected);
     }
 
-    @Test
-    public void testTestWriteArray() {
+    @Test(dataProvider = "testWriteArrayDataProvider", dataProviderClass = WriterDataProvider.class)
+    public void testTestWriteArray(String[] inputArray, String[] expectedArray) {
+        assertEquals(inputArray, expectedArray, "Масиви не збігаються!");
     }
 
 

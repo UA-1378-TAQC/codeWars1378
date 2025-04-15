@@ -110,4 +110,15 @@ public class WriterDataProvider {
                 {new double[]{Double.NaN}, "NaN"},
         };
     }
+
+    @DataProvider(name = "testWriteArrayDataProvider")
+    public Object[][] testWriteArrayDataProvider() {
+        return new Object[][]{
+                {new String[]{"1", "2", "3"}, new String[]{"1", "2", "3"}},
+                {new String[]{}, new String[]{}},
+                {new String[]{"42"}, new String[]{"42"}},
+                {new String[]{"-1", "0", "1"}, new String[]{"-1", "0", "1"}},
+                {new String[]{"100", "200", "300"}, new String[]{"100", "200", "300"}}
+        };
+    }
 }
