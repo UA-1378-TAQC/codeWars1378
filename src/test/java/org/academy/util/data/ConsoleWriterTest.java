@@ -1,7 +1,6 @@
 package org.academy.util.data;
 
 import org.academy.kata.console.ConsoleOutputCaptor;
-import org.academy.kata.dataproviders.ConsoleWriterDataProvider;
 import org.academy.kata.dataproviders.WriterDataProvider;
 import org.academy.kata.dataproviders.WriterStringDataProvider;
 import org.testng.Assert;
@@ -9,7 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ConsoleWriterTest extends WriterDataProvider , ConsoleWriterDataProvider {
+public class ConsoleWriterTest extends WriterDataProvider {
     private ConsoleOutputCaptor captor;
     private IWriter writer;
 
@@ -61,8 +60,8 @@ public class ConsoleWriterTest extends WriterDataProvider , ConsoleWriterDataPro
 
         writer.writeResult(input);
 
-        String output = outputCaptor.getOutput();
-        assertEquals(output.trim(), expectedOutput.trim(), "Output mismatch for input: " + input);
+        String output = captor.getOutput();
+        Assert.assertEquals(output.trim(), expectedOutput.trim(), "Output mismatch for input: " + input);
     }
 
     @Test(dataProvider = "booleanDataProvider", dataProviderClass = WriterDataProvider.class)
