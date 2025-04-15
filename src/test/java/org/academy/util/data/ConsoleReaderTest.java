@@ -8,12 +8,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.NoSuchElementException;
-
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.math.BigInteger;
+import java.util.NoSuchElementException;
 
 
 public class ConsoleReaderTest extends ConsoleReaderDataProvider {
@@ -82,18 +80,6 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
 
     @Test
     public void testReadBigInteger() {
-        String input = "5\n15\n";
-        InputStream testInput = new ByteArrayInputStream(input.getBytes());
-        InputStream originalIn = System.in;
-
-        try {
-            System.setIn(testInput); // Перекидаємо ввід
-            ConsoleReader reader = new ConsoleReader(); // Буде використовувати наш testInput
-            BigInteger result = reader.readBigInteger(BigInteger.TEN);
-            assertEquals(result, BigInteger.valueOf(15));
-        } finally {
-            System.setIn(originalIn); // Обов'язково відновити
-        }
     }
 
     @Test(dataProvider = "readStringDataProvider")

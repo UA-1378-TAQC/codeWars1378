@@ -106,6 +106,6 @@ public class ConsoleWriterTest extends WriterDataProvider {
         ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
         writer.writeResult(input);
 
-        org.testng.AssertJUnit.assertEquals(captor.getOutput(), expectedOutput);
+        Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 }
