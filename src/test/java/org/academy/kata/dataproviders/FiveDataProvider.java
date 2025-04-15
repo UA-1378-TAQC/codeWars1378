@@ -1,6 +1,5 @@
 package org.academy.kata.dataproviders;
 
-
 import org.academy.kata.IFive;
 import org.testng.annotations.DataProvider;
 
@@ -24,16 +23,16 @@ public class FiveDataProvider extends BaseDataProvider {
 
     );
 
-    @DataProvider(name = "gapDataProvider")
-    public Object[][] gapDataProvider() {
+    @DataProvider(name = "solveDataProvider")
+    protected Object[][] solveDataProvider() {
         Object[][] data = new Object[][]{
-                {2, 100L, 110L, new Long[]{101L, 103L}},
-                {4, 100L, 110L, new Long[]{103L, 107L}},
-                {6, 100L, 110L, null},
-                {8, 300L, 400L, new Long[]{359L, 367L}},
-                {10, 300L, 400L, new Long[]{337L, 347L}},
+                {2.00, 0.500000000000},
+                {4.00, 0.6096117967978},
+                {5.00, 0.6417424305044},
+                {6.00, 0.6666666666667},
+                {20.00, 0.8000000000000},
+                {50.00, 0.868225531212422}
         };
         return combineDataProviders(data, FIVES);
     }
-
 }
