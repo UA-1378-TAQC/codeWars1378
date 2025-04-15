@@ -20,7 +20,7 @@ public class SevenImpl extends Base implements ISeven {
         double x = navg * (arr.length + 1) - sum;
         long result = (long) Math.ceil(x);
 
-        if(result <= 0){
+        if (result <= 0) {
             throw new IllegalArgumentException("result <= 0");
         }
 
@@ -35,7 +35,7 @@ public class SevenImpl extends Base implements ISeven {
 
         double sum = 0.0;
 
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             sum = sum + 1.0 / (1 + 3 * i);
         }
 

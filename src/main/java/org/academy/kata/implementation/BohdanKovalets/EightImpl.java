@@ -12,26 +12,26 @@ public class EightImpl extends Base implements IEight {
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
 
-        return length*width*height;
+        return length * width * height;
     }
 
     @Override
     public float mpgToKPM(float mpg) {
         double miles_per_imperial_gallon = 1.609344;
         double kilometers_per_liter = 4.54609188;
-        double kpl = mpg * (miles_per_imperial_gallon/kilometers_per_liter);
+        double kpl = mpg * (miles_per_imperial_gallon / kilometers_per_liter);
         return (float) Math.round(kpl * 100.0) / 100f;
     }
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
 
-        for (int i = 0; i < array.length; i++ ){
+        for (int i = 0; i < array.length; i++) {
             double sqrt = Math.sqrt(array[i]);
 
-            if (sqrt == Math.floor(sqrt)){
+            if (sqrt == Math.floor(sqrt)) {
                 array[i] = (int) sqrt;
-            }else {
+            } else {
                 array[i] = array[i] * array[i];
             }
         }
@@ -53,7 +53,7 @@ public class EightImpl extends Base implements IEight {
                 negativeSum += input[i];
             }
         }
-        return new int[] {positiveCount, negativeSum};
+        return new int[]{positiveCount, negativeSum};
     }
 
     @Override
@@ -71,15 +71,15 @@ public class EightImpl extends Base implements IEight {
     public int[] divisibleBy(int[] numbers, int divider) {
         int count = 0;
 
-        for(int i = 0; i < numbers.length; i++) {
-            if(numbers[i]%divider==0) {
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % divider == 0) {
                 count++;
             }
         }
         int[] result = new int[count];
         int index = 0;
-        for(int i = 0; i < numbers.length; i++) {
-            if(numbers[i]%divider == 0) {
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % divider == 0) {
                 result[index] = numbers[i];
                 index++;
             }

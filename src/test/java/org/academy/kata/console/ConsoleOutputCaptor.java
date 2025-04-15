@@ -18,5 +18,4 @@ public class ConsoleOutputCaptor {
     public void stopCapture() {
         System.setOut(originalOut);
     }
-
 }

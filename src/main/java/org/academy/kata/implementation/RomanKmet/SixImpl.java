@@ -3,11 +3,12 @@ package org.academy.kata.implementation.RomanKmet;
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import java.util.Arrays;
-import java.util.regex.*;
 
 public class SixImpl extends Base implements ISix {
     @Override
@@ -59,7 +60,7 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double f(double x) {
-        return 0;
+        return x / (Math.sqrt(1 + x) + 1);
     }
 
     @Override
