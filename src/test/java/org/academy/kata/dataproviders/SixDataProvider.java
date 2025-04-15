@@ -1,11 +1,9 @@
 package org.academy.kata.dataproviders;
 
-
 import org.academy.kata.ISix;
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +22,17 @@ public class SixDataProvider extends BaseDataProvider {
             new org.academy.kata.implementation.RomanKmet.SixImpl(),
             new org.academy.kata.implementation.viktoriiafylyk.SixImpl()
     );
+
+    @DataProvider(name = "dataForF")
+    public static Object[][] dataForF() {
+        return new Object[][]{
+                {5, 120},
+                {0, 1},
+                {1, 1},
+                {3, 6},
+                {7, 5040}
+        };
+    }
 
     @DataProvider(name="balanceDataProvider")
     protected Object[][] balanceDataProvider(){
@@ -135,5 +144,4 @@ public class SixDataProvider extends BaseDataProvider {
         };
         return combineDataProviders(data, SIXES);
     }
-
 }

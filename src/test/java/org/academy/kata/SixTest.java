@@ -8,7 +8,6 @@ import static org.testng.Assert.assertEquals;
 
 public class SixTest extends SixDataProvider {
 
-
     @Test(dataProvider = "findNbDataProvider")
     public void testFindNb(long input, long expected, ISix iSix) {
         long actual = iSix.findNb(input);
@@ -22,8 +21,13 @@ public class SixTest extends SixDataProvider {
         Assert.assertEquals(output,expected);
     }
 
-    @Test
-    public void testF() {
+    @Test(dataProvider = "dataForF", dataProviderClass = SixDataProvider.class)
+    public void testF(int input, int expected) {
+        int actual = 1;
+        for (int i = 1; i <= input; i++) {
+            actual *= i;
+        }
+        assertEquals(actual, expected);
     }
 
     @Test(dataProvider = "meanDataProvider")
