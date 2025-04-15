@@ -1,6 +1,5 @@
 package org.academy.util.data;
 
-import org.academy.kata.console.ConsoleInputCaptor;
 import org.academy.kata.console.ConsoleOutputCaptor;
 import org.academy.kata.dataproviders.ConsoleWriterDataProvider;
 import org.academy.kata.dataproviders.WriterDataProvider;
