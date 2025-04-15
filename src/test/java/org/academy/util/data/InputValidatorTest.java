@@ -42,8 +42,10 @@ public class InputValidatorTest extends InputValidatorDataProvider {
     public void testIsValidBigInteger() {
     }
 
-    @Test
-    public void testIsValidString() {
+    @Test(dataProvider = "isValidStringDataProvider", dataProviderClass = InputValidatorDataProvider.class)
+    public void testIsValidString(String prompt, String regEx, boolean expectedResult) {
+        boolean actualResult = InputValidator.isValidString(prompt, regEx);
+        Assert.assertEquals(actualResult, expectedResult);
     }
 
     @Test(dataProvider = "integerArrayDataProvider", dataProviderClass = InputValidatorDataProvider.class)
