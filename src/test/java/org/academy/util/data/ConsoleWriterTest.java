@@ -26,14 +26,16 @@ public class ConsoleWriterTest extends WriterDataProvider {
 
     @Test(dataProvider = "testWritePrompt", dataProviderClass = WriterDataProvider.class)
     public void testWritePrompt(String input, String expectedOutput) {
+        ConsoleWriter writer = new ConsoleWriter();
+        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
         writer.writePrompt(input);
         Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
+
     @Test(dataProvider = "stringData", dataProviderClass = WriterStringDataProvider.class)
     public void testWriteResult(String input, String expectedOutput) {
         writer.writeResult(input);
         Assert.assertEquals(captor.getOutput(), expectedOutput);
-
     }
 
     @Test(dataProvider = "floatDataProvider", dataProviderClass = WriterDataProvider.class)
@@ -103,7 +105,7 @@ public class ConsoleWriterTest extends WriterDataProvider {
         Assert.assertEquals(normalizedActual, normalizedExpected);
     }
 
-    @Test(dataProvider="testWriteArray2String",dataProviderClass= WriterDataProvider.class)
+    @Test(dataProvider = "testWriteArray2String", dataProviderClass = WriterDataProvider.class)
     public void testTestWriteArray2(String[] input, String[] expectedOutput) {
         ConsoleWriter writer = new ConsoleWriter();
         ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
