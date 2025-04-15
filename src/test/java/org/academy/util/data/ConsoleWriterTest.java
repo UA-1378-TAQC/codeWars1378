@@ -91,7 +91,7 @@ public class ConsoleWriterTest extends WriterDataProvider {
 
     @Test(dataProvider = "testWriteArrayDataProvider", dataProviderClass = WriterDataProvider.class)
     public void testTestWriteArray(String[] inputArray, String[] expectedArray) {
-        assertEquals(inputArray, expectedArray, "Масиви не збігаються!");
+        Assert.assertEquals(inputArray, expectedArray, "Масиви не збігаються!");
     }
 
 

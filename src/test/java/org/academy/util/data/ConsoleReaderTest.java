@@ -8,6 +8,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.NoSuchElementException;
+
 
 public class ConsoleReaderTest extends ConsoleReaderDataProvider {
     private ConsoleInputCaptor inputCaptor;
@@ -58,7 +60,7 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
         inputCaptor.setInput(input);
         ConsoleReader reader = new ConsoleReader();
         outputCaptor.startCapture();
-        assertEquals(reader.readDouble(minValue), expectedResult);
+        Assert.assertEquals(reader.readDouble(minValue), expectedResult);
     }
 
     @Test(dataProvider = "doubleIncorrectDataProvider")
@@ -68,8 +70,8 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
         outputCaptor.startCapture();
         try {
             reader.readDouble(minValue);
-        } catch (Exception e) {
-            assertEquals(outputCaptor.getOutput(), "Incorrect input, please try again:");
+        } catch (NoSuchElementException e) {
+            Assert.assertEquals(outputCaptor.getOutput(), "Incorrect input, please try again:");
         }
     }
 

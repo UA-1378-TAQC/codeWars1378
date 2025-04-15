@@ -53,7 +53,7 @@ public class FiveDataProvider extends BaseDataProvider {
         };
         return combineDataProviders(data, FIVES);
     }
-  
+
     @DataProvider(name = "solveDataProvider")
     protected Object[][] solveDataProvider() {
         Object[][] data = new Object[][]{
@@ -65,6 +65,18 @@ public class FiveDataProvider extends BaseDataProvider {
                 {50.00, 0.868225531212422}
         };
 
+        return combineDataProviders(data, FIVES);
+    }
+
+    @DataProvider(name="smallestValueDataProvider")
+    protected Object[][] smallestValueDataProvider(){
+        Object[][] data =  new Object[][]{
+                {261235, new long[]{126235, 2, 0}},
+                {209917, new long[]{29917, 0, 1}},
+                {285365, new long[]{238565,  3, 1}},
+                {269045, new long[]{26945, 3, 0}},
+                {296837, new long[]{239687, 4, 1}},
+        };
         return combineDataProviders(data, FIVES);
     }
 }

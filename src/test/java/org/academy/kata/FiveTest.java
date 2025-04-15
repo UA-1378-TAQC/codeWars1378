@@ -3,6 +3,7 @@ package org.academy.kata;
 import org.academy.kata.dataproviders.FiveDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.math.BigInteger;
 import java.util.Arrays;
@@ -24,8 +25,7 @@ public class FiveTest extends FiveDataProvider {
     @Test(dataProvider = "zerosDataProvider")
     public void testZeros(int input, int expected, IFive iFive) {
         int actual = iFive.zeros(input);
-        Assert.assertEquals(actual, expected,
-                "Failed for implementation: " + iFive.getClass().getSimpleName() + " with input: " + input);
+        Assert.assertEquals(actual, expected, "Failed for implementation: " + iFive.getClass().getSimpleName() + " with input: " + input);
     }
 
     @Test(dataProvider = "perimeterDataProvider")
@@ -40,8 +40,15 @@ public class FiveTest extends FiveDataProvider {
         Assert.assertEquals(actual, expected, 1e-12);
     }
 
-    @Test
-    public void testSmallest() {
-        
+    @Test(dataProvider = "smallestValueDataProvider")
+    public void testSmallest(long input, long[] expected, IFive iFive) {
+        SoftAssert softAssert = new SoftAssert();
+        long[] actual = iFive.smallest(input);
+        softAssert.assertEquals(actual.length, expected.length, "Length mismatch");
+
+        for (int i = 0; i < expected.length; i++) {
+            softAssert.assertEquals(actual[i], expected[i], "Mismatch at index " + i);
+        }
+        softAssert.assertAll();
     }
 }
