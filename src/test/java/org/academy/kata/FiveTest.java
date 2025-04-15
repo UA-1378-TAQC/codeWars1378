@@ -25,8 +25,7 @@ public class FiveTest extends FiveDataProvider {
     @Test(dataProvider = "zerosDataProvider")
     public void testZeros(int input, int expected, IFive iFive) {
         int actual = iFive.zeros(input);
-        Assert.assertEquals(actual, expected,
-                "Failed for implementation: " + iFive.getClass().getSimpleName() + " with input: " + input);
+        Assert.assertEquals(actual, expected, "Failed for implementation: " + iFive.getClass().getSimpleName() + " with input: " + input);
     }
 
     @Test(dataProvider = "perimeterDataProvider")
