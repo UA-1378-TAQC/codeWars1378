@@ -33,7 +33,7 @@ public class SevenImpl extends Base implements ISeven {
         n = n * 3;
         for (double i = 1.0; i <= n; i += 3.0) {
             if (i == 1.0)
-                sum += 1.0 / 1.0;
+                sum += 1.0;
             else
                 sum += 1.0 / i;
         }

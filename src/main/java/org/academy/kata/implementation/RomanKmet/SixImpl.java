@@ -138,7 +138,7 @@ public class SixImpl extends Base implements ISix {
         if (wins == 0 && draws == 0 && losses == 0 && scored == 0 && conceded == 0) {
             return toFind + ":This team didn't play!";
         }
-        int points = (wins * 3) + (draws * 1);
+        int points = (wins * 3) + (draws);
         return String.format("%s:W=%d;D=%d;L=%d;Scored=%d;Conceded=%d;Points=%d",
                 toFind, wins, draws, losses, scored, conceded, points);
     }

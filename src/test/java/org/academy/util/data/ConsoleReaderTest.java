@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class ConsoleReaderTest extends ConsoleReaderDataProvider {
+
     ConsoleInputCaptor inputCaptor;
     private IReader reader;
 
@@ -23,8 +24,14 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
     }
 
 
-    @Test
-    public void testReadInt() {
+    @Test(dataProvider = "readIntDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
+    public void testReadInt(int minValue, String simulatedInput, int expected) {
+        inputCaptor.setInput(simulatedInput + "\n");
+        ConsoleReader consoleReader = new ConsoleReader();
+
+        int actual = consoleReader.readInt(minValue);
+
+        Assert.assertEquals(actual, expected);
     }
 
 
@@ -36,8 +43,16 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-    @Test
-    public void testReadFloat() {
+
+    @Test(dataProvider = "readFloatDataProvider")
+    public void testReadFloat(float minValue, String simulatedInput, float expected) {
+        inputCaptor.setInput(simulatedInput + "\n");
+        ConsoleReader consoleReader = new ConsoleReader();
+
+        float actual = consoleReader.readFloat(minValue);
+
+        Assert.assertEquals(actual, expected, 0.0001f);
+
     }
 
     @Test
@@ -54,6 +69,24 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
 
     @Test
     public void testReadIntArray() {
+    }
+
+
+    @Test(dataProvider = "readDoubleArrayDataProvider")
+    public void testReadDoubleArray(String simulatedInput, Double minValue, double[] expected) {
+        ConsoleInputCaptor captor = new ConsoleInputCaptor();
+        captor.setInput(simulatedInput);
+        ConsoleReader consoleReader = new ConsoleReader();
+        double[] actual = consoleReader.readDoubleArray(minValue);
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test(dataProvider = "intArrayDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
+    public void testReadIntArray(String input, int[] expected) {
+        inputCaptor.setInput(input);
+        ConsoleReader reader = new ConsoleReader();
+        int[] result = reader.readIntArray(0);
+        Assert.assertEquals(result, expected);
     }
 
     @Test

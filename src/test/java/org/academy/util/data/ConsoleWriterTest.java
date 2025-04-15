@@ -8,8 +8,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-
 
 public class ConsoleWriterTest extends WriterDataProvider {
     private ConsoleOutputCaptor captor;
@@ -27,15 +25,26 @@ public class ConsoleWriterTest extends WriterDataProvider {
         captor.stopCapture();
     }
 
-    @Test
-    public void testWritePrompt() {
+    @Test(dataProvider = "testWritePrompt", dataProviderClass = WriterDataProvider.class)
+    public void testWritePrompt(String input, String expectedOutput) {
+        writer.writePrompt(input);
+
+        Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 
-    public void testWriteResult() {
+
+    @Test(dataProvider = "stringData", dataProviderClass = WriterStringDataProvider.class)
+    public void testWriteResult(String input, String expectedOutput) {
+        writer.writeResult(input);
+        Assert.assertEquals(captor.getOutput(), expectedOutput);
+
     }
 
-    @Test
-    public void testTestWriteResult1() {
+    @Test(dataProvider = "floatDataProvider", dataProviderClass = WriterDataProvider.class)
+    public void testTestWriteResult1(float input, String expectedOutput) {
+        writer.writeResult(input);
+        String actualOutput = captor.getOutput();
+        Assert.assertEquals(actualOutput, expectedOutput);
     }
 
     @Test(dataProvider = "doubleDataProvider", dataProviderClass = WriterDataProvider.class)
@@ -46,20 +55,27 @@ public class ConsoleWriterTest extends WriterDataProvider {
         Assert.assertEquals(actualOutput, expectedOutput, "Expected output: " + expectedOutput + ", but got: " + actualOutput);
     }
 
-    @Test
-    public void testTestWriteResult4() {
+    @Test(dataProvider = "booleanDataProvider", dataProviderClass = WriterDataProvider.class)
+    public void testTestWriteResult4(boolean input, String expected) {
+        writer.writeResult(input);
+        Assert.assertEquals(captor.getOutput(), expected);
     }
 
-    @Test
-    public void testTestWriteResult5() {
+
+    @Test(dataProvider = "characterData", dataProviderClass = WriterDataProvider.class)
+    public void testTestWriteResult5(char input, String expectedOutput) {
+        writer.writeResult(input);
+        Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 
     @Test
     public void testTestWriteResult6() {
     }
 
-    @Test
-    public void testWriteArray() {
+    @Test(dataProvider = "writeArrayDataProvider")
+    public void testWriteArray(int[] input, String expected) {
+        writer.writeArray(input);
+        Assert.assertEquals(captor.getOutput(), expected);
     }
 
     @Test
@@ -71,7 +87,11 @@ public class ConsoleWriterTest extends WriterDataProvider {
     public void testTestWriteArray1() {
     }
 
-    @Test
-    public void testTestWriteArray2() {
+    @Test(dataProvider = "testWriteArray2String", dataProviderClass = WriterDataProvider.class)
+    public void testTestWriteArray2(String[] input, String[] expectedOutput) {
+        writer.writeResult(input);
+
+        Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 }
+

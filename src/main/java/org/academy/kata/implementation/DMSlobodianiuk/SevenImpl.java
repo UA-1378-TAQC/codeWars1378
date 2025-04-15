@@ -34,7 +34,7 @@ public class SevenImpl extends Base implements ISeven {
         }
 
         if (Double.toString(Math.round(k * 100.0) / 100.0).length() == 3) {
-            return Double.toString(Math.round(k * 100.0) / 100.0) + "0";
+            return Math.round(k * 100.0) / 100.0 + "0";
         } else {
             return Double.toString(Math.round(k * 100.0) / 100.0);
         }

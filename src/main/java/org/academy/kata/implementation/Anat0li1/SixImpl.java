@@ -158,11 +158,10 @@ public class SixImpl extends Base implements ISix {
             return name + ":This team didn't play!";
         }
         int points = 3 * numberOfWins + (allMatches - numberOfWins - numberOfLoses);
-        StringBuilder builder = new StringBuilder(name);
-        builder.append(":W=").append(numberOfWins).append(";D=").append(allMatches - numberOfLoses - numberOfWins)
-                .append(";L=").append(numberOfLoses).append(";Scored=").append(numberOfScored)
-                .append(";Conceded=").append(numberOfConceded).append(";Points=").append(points);
-        return builder.toString();
+        String builder = name + ":W=" + numberOfWins + ";D=" + (allMatches - numberOfLoses - numberOfWins) +
+                ";L=" + numberOfLoses + ";Scored=" + numberOfScored +
+                ";Conceded=" + numberOfConceded + ";Points=" + points;
+        return builder;
     }
 
     private static boolean checkTeamIsInRow(String row, String team) {

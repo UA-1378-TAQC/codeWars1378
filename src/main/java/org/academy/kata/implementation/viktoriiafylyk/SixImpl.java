@@ -35,7 +35,7 @@ public class SixImpl extends Base implements ISix {
         }
 
         return String.format("Original Balance: %s\\r\\n", arr[0])
-                + sb.toString()
+                + sb
                 + String.format("Total expense  %.2f\\r\\n"
                 , Arrays.stream(arr, 1, arr.length)
                         .mapToDouble(a -> Double.parseDouble(a.split("\\s+")[2]))

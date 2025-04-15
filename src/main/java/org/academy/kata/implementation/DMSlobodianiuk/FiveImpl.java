@@ -76,7 +76,7 @@ public class FiveImpl extends Base implements IFive {
     @Override
     public long[] smallest(long n) {
         int len = Long.toString(n).length();
-        long k[] = new long[3];
+        long[] k = new long[3];
 
         long min = n;
         long min_i = 0;
