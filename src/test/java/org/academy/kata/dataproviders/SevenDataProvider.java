@@ -54,9 +54,9 @@ public class SevenDataProvider extends BaseDataProvider {
     @DataProvider(name = "seriesSumDataProvider")
     public Object[][] seriesSumDataProvider() {
         Object[][] data = new Object[][]{
-                {5, "1,57"},
-                {9, "1,77"},
-                {15, "1,94"}
+                {5, "1.57"},
+                {9, "1.77"},
+                {15, "1.94"}
         };
         return combineDataProviders(data, SEVENS);
     }
