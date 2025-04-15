@@ -13,7 +13,6 @@ public class FiveDataProvider extends BaseDataProvider {
             new org.academy.kata.implementation.dima123493.FiveImpl(),
             new org.academy.kata.implementation.DMSlobodianiuk.FiveImpl(),
             new org.academy.kata.implementation.HrushaNataliia.FiveImpl(),
-            new org.academy.kata.implementation.keepCalmGirl.FiveImpl(),
             new org.academy.kata.implementation.KhrystynaTs.FiveImpl(),
             new org.academy.kata.implementation.MMykha.FiveImpl(),
             new org.academy.kata.implementation.novitskiiy.FiveImpl(),

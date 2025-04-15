@@ -15,7 +15,6 @@ public class EightDataProvider extends BaseDataProvider {
             new org.academy.kata.implementation.dima123493.EightImpl(),
             new org.academy.kata.implementation.DMSlobodianiuk.EightImpl(),
             new org.academy.kata.implementation.HrushaNataliia.EightImpl(),
-            new org.academy.kata.implementation.keepCalmGirl.EightImpl(),
             new org.academy.kata.implementation.KhrystynaTs.EightImpl(),
             new org.academy.kata.implementation.MMykha.EightImpl(),
             new org.academy.kata.implementation.novitskiiy.EightImpl(),

@@ -14,7 +14,6 @@ public class SevenDataProvider extends BaseDataProvider{
             new org.academy.kata.implementation.dima123493.SevenImpl(),
             new org.academy.kata.implementation.DMSlobodianiuk.SevenImpl(),
             new org.academy.kata.implementation.HrushaNataliia.SevenImpl(),
-            new org.academy.kata.implementation.keepCalmGirl.SevenImpl(),
             new org.academy.kata.implementation.KhrystynaTs.SevenImpl(),
             new org.academy.kata.implementation.MMykha.SevenImpl(),
             new org.academy.kata.implementation.novitskiiy.SevenImpl(),
