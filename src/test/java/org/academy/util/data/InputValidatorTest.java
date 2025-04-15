@@ -9,8 +9,10 @@ import static org.testng.Assert.assertEquals;
 
 public class InputValidatorTest extends InputValidatorDataProvider {
 
-    @Test
-    public void testIsValidInt() {
+    @Test(dataProvider = "isValidIntDataProvider")
+    public void testIsValidInt(String input, Integer minValue, boolean expected) {
+        boolean actual = InputValidator.isValidInt(input, minValue);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test(dataProvider = "isValidLongDataProvider", dataProviderClass = InputValidatorDataProvider.class)
