@@ -29,8 +29,6 @@ public class ConsoleReaderDataProvider{
         return data;
     }
 
-public class ConsoleReaderDataProvider {
-
     @DataProvider(name = "intArrayDataProvider")
     public Object[][] intArrayDataProvider() {
         return new Object[][]{
