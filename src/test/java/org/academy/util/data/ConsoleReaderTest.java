@@ -64,8 +64,12 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
     public void testReadBigInteger() {
     }
 
-    @Test
-    public void testReadString() {
+    @Test(dataProvider = "readStringDataProvider")
+    public void testReadString(String[] stepInputs, String regEx, String expected) {
+        inputCaptor.setInput(String.join("\n", stepInputs));
+        ConsoleReader consoleReader = new ConsoleReader();
+        String actual = consoleReader.readString(regEx);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -93,8 +97,14 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
     public void testReadDoubleArray() {
     }
 
-    @Test
-    public void testReadStringArray() {
+    @Test(dataProvider = "stringArrayDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
+    public void testReadStringArray(String delimiter, String input, String regEx, String[] expectedResult) {
+        inputCaptor.setInput(delimiter + "\n" + input + "\n");
+
+        ConsoleReader reader = new ConsoleReader();
+        String[] result = reader.readStringArray(regEx);
+
+        Assert.assertEquals(result, expectedResult);
     }
 }
 

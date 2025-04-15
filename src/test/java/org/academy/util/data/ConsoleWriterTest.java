@@ -83,8 +83,15 @@ public class ConsoleWriterTest extends WriterDataProvider {
     }
 
 
-    @Test
-    public void testTestWriteArray1() {
+    @Test(dataProvider = "doubleArrayDataProvider", dataProviderClass = WriterDataProvider.class)
+    public void testTestWriteArray1(double[] inputArray, String expectedOutput) {
+        writer.writeArray(inputArray);
+        String actualOutput = captor.getOutput();
+
+        String normalizedActual = actualOutput.replace("\r\n", "\n");
+        String normalizedExpected = expectedOutput.replace("\r\n", "\n");
+
+        Assert.assertEquals(normalizedActual, normalizedExpected);
     }
 
     @Test(dataProvider = "testWriteArray2String", dataProviderClass = WriterDataProvider.class)
