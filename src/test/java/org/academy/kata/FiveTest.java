@@ -32,5 +32,6 @@
             for (int i = 0; i < expected.length; i++) {
                 softAssert.assertEquals(actual[i], expected[i], "Mismatch at index " + i);
             }
+            softAssert.assertAll();
         }
     }
