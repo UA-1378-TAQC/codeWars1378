@@ -3,6 +3,7 @@ package org.academy.kata.dataproviders;
 import org.testng.annotations.DataProvider;
 
 public class WriterDataProvider {
+
     @DataProvider(name = "characterData")
     public Object[][] characterData() {
         return new Object[][]{
@@ -15,25 +16,27 @@ public class WriterDataProvider {
     }
 
     @DataProvider(name = "testWritePrompt")
-    public Object[][] testWritePrompt(){
+    public Object[][] testWritePrompt() {
         return new Object[][]{
-            {"Enter length.","Enter length."},
-            {"Enter height.","Enter height."},
-            {"Enter widths.","Enter widths."},
-            {"Bob needs a fast way to calculate the volume of a rectangular cuboid with three values: the length, width and height of the cuboid.\n","\"Bob needs a fast way to calculate the volume of a rectangular cuboid with three values: the length, width and height of the cuboid.\\n" + //
-                                "\""}
-        };
-    };
-
-    @DataProvider(name = "testWriteArray2String")
-    public Object[][] testWriteArray2String(){
-        return new Object[][]{
-            {new String[]{"0ABAR 20", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"},new String[]{"0ABAR 20", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"}},
-            {new String[]{"Hello","World","Hi"},new String[]{"Hello","World","Hi"}},
-            {new String[]{"I","want","to","all","tests","goes","well"},new String[]{"I","want","to","all","tests","goes","well"}}
+                {"Enter length.", "Enter length."},
+                {"Enter height.", "Enter height."},
+                {"Enter widths.", "Enter widths."},
+                {"Bob needs a fast way to calculate the volume of a rectangular cuboid with three values: the length, width and height of the cuboid.\n", "\"Bob needs a fast way to calculate the volume of a rectangular cuboid with three values: the length, width and height of the cuboid.\\n" + //
+                        "\""}
         };
     }
-  
+
+    ;
+
+    @DataProvider(name = "testWriteArray2String")
+    public Object[][] testWriteArray2String() {
+        return new Object[][]{
+                {new String[]{"0ABAR 20", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"}, new String[]{"0ABAR 20", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"}},
+                {new String[]{"Hello", "World", "Hi"}, new String[]{"Hello", "World", "Hi"}},
+                {new String[]{"I", "want", "to", "all", "tests", "goes", "well"}, new String[]{"I", "want", "to", "all", "tests", "goes", "well"}}
+        };
+    }
+
     @DataProvider(name = "booleanDataProvider")
     public Object[][] booleanDataProvider() {
         return new Object[][]{
@@ -51,7 +54,7 @@ public class WriterDataProvider {
                 {Float.MAX_VALUE, String.valueOf(Float.MAX_VALUE)},
                 {Float.MIN_VALUE, String.valueOf(Float.MIN_VALUE)},
                 {3.14159f, "3.14159"}
-              };
+        };
     }
 
     @DataProvider(name = "writeArrayDataProvider")
@@ -75,6 +78,7 @@ public class WriterDataProvider {
                 {Integer.MIN_VALUE, String.valueOf(Integer.MIN_VALUE)}
         };
     }
+
 
     @DataProvider(name = "doubleDataProvider")
     public static Object[][] doubleDataProvider() {

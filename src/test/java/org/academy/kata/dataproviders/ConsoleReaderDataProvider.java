@@ -5,6 +5,17 @@ import org.testng.annotations.DataProvider;
 import java.math.BigInteger;
 
 public class ConsoleReaderDataProvider {
+    @DataProvider(name = "longDataProvider")
+    public Object[][] longDataProvider() {
+        return new Object[][]{
+                {0L, "0", 0L},
+                {1L, "1", 1L},
+                {-1L, "-1", -1L},
+                {100L, "100", 100L},
+                {Long.MAX_VALUE, String.valueOf(Long.MAX_VALUE), Long.MAX_VALUE},
+                {Long.MIN_VALUE, String.valueOf(Long.MIN_VALUE), Long.MIN_VALUE}
+        };
+    }
 
     @DataProvider(name = "readIntDataProvider")
     public Object[][] readIntDataProvider() {
@@ -98,6 +109,8 @@ public class ConsoleReaderDataProvider {
                 {"\n,\n1.1,2.2,3.3\n", 1.0, new double[]{1.1, 2.2, 3.3}},
                 {"\n;\n4.5;5.6;6.7\n", 4.0, new double[]{4.5, 5.6, 6.7}},
                 {"\n|\n7.8|8.9|9.0\n", 7.5, new double[]{7.8, 8.9, 9.0}}
+
         };
     }
 }
+

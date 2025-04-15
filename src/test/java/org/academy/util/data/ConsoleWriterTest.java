@@ -32,10 +32,12 @@ public class ConsoleWriterTest extends WriterDataProvider {
         Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 
+
     @Test(dataProvider = "stringData", dataProviderClass = WriterStringDataProvider.class)
     public void testWriteResult(String input, String expectedOutput) {
         writer.writeResult(input);
         Assert.assertEquals(captor.getOutput(), expectedOutput);
+
     }
 
     @Test(dataProvider = "floatDataProvider", dataProviderClass = WriterDataProvider.class)
@@ -58,6 +60,7 @@ public class ConsoleWriterTest extends WriterDataProvider {
         writer.writeResult(input);
         Assert.assertEquals(captor.getOutput(), expected);
     }
+
 
     @Test(dataProvider = "characterData", dataProviderClass = WriterDataProvider.class)
     public void testTestWriteResult5(char input, String expectedOutput) {
@@ -98,3 +101,4 @@ public class ConsoleWriterTest extends WriterDataProvider {
         Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 }
+
