@@ -18,8 +18,8 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String balance(String book) {
-        String[] lines=book.replaceAll("[^a-zA-Z0-9.\\n ]", "").trim().split("\n");
-        double originalBalance =Double.parseDouble(lines[0]);
+        String[] lines = book.replaceAll("[^a-zA-Z0-9.\\n ]", "").trim().split("\n");
+        double originalBalance = Double.parseDouble(lines[0]);
         double curBalance = originalBalance;
         double totalExpense = 0;
         int transactionCount = 0;
@@ -27,21 +27,21 @@ public class SixImpl extends Base implements ISix {
         StringBuilder result = new StringBuilder();
         result.append(String.format("Original Balance: %.2f\\r\\n", originalBalance));
 
-        for (int i= 1; i<lines.length; i++) {
+        for (int i = 1; i < lines.length; i++) {
             String line = lines[i].trim();
             if (line.isEmpty()) continue;
 
-            String[] parts=line.split("\\s+");
-            if (parts.length<3) continue;
-            double amount=Double.parseDouble(parts[parts.length-1]);
+            String[] parts = line.split("\\s+");
+            if (parts.length < 3) continue;
+            double amount = Double.parseDouble(parts[parts.length - 1]);
             curBalance -= amount;
             totalExpense += amount;
             transactionCount++;
 
-            result.append(String.format("%s %s %.2f Balance %.2f\\r\\n",parts[0], parts[1], amount, curBalance));
+            result.append(String.format("%s %s %.2f Balance %.2f\\r\\n", parts[0], parts[1], amount, curBalance));
         }
 
-        double averageExpense = totalExpense/transactionCount;
+        double averageExpense = totalExpense / transactionCount;
         result.append(String.format("Total expense  %.2f\\r\\n", totalExpense));
         result.append(String.format("Average expense  %.2f", averageExpense));
         return result.toString();
@@ -58,17 +58,17 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double mean(String town, String strng) {
-        String[] towns=strng.split("\n");
+        String[] towns = strng.split("\n");
 
         for (String t : towns) {
             if (t.startsWith(town + ":")) {
-                String[] monthData = t.substring(town.length()+1).split(",");
-                double sum=0.0;
+                String[] monthData = t.substring(town.length() + 1).split(",");
+                double sum = 0.0;
 
-                for (int i=0; i<12; i++) {
+                for (int i = 0; i < 12; i++) {
                     sum += Double.parseDouble(monthData[i].split(" ")[1]);
                 }
-                return sum/12;
+                return sum / 12;
             }
         }
         return -1;
@@ -76,17 +76,17 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double variance(String town, String strng) {
-        String[] towns=strng.split("\n");
+        String[] towns = strng.split("\n");
 
         for (String t : towns) {
             if (t.startsWith(town + ":")) {
-                String[] monthData = t.substring(town.length()+1).split(",");
-                double[] values =new double[12];
-                for (int i=0; i<12; i++) {
+                String[] monthData = t.substring(town.length() + 1).split(",");
+                double[] values = new double[12];
+                for (int i = 0; i < 12; i++) {
                     values[i] = Double.parseDouble(monthData[i].split(" ")[1]);
                 }
 
-                double mean=0.0;
+                double mean = 0.0;
                 for (double value : values) {
                     mean += value;
                 }
@@ -94,9 +94,9 @@ public class SixImpl extends Base implements ISix {
 
                 double variance = 0.0;
                 for (double value : values) {
-                    variance += Math.pow(value-mean, 2);
+                    variance += Math.pow(value - mean, 2);
                 }
-                return variance/12;
+                return variance / 12;
             }
         }
         return -1;
@@ -106,7 +106,7 @@ public class SixImpl extends Base implements ISix {
     public String nbaCup(String resultSheet, String toFind) {
         if (toFind.isEmpty()) return "";
 
-        int wins=0, draws=0, losses=0, scored=0, conceded=0;
+        int wins = 0, draws = 0, losses = 0, scored = 0, conceded = 0;
         boolean teamFound = false;
         String[] matches = resultSheet.split(",");
 
@@ -145,14 +145,14 @@ public class SixImpl extends Base implements ISix {
                 scored += score1;
                 conceded += score2;
                 if (score1 > score2) wins++;
-                else if (score1<score2) losses++;
+                else if (score1 < score2) losses++;
                 else draws++;
             } else if (team2Name.equals(toFind)) {
                 teamFound = true;
                 scored += score2;
                 conceded += score1;
-                if (score2 >score1) wins++;
-                else if (score2<score1) losses++;
+                if (score2 > score1) wins++;
+                else if (score2 < score1) losses++;
                 else draws++;
             }
 
@@ -160,9 +160,9 @@ public class SixImpl extends Base implements ISix {
         if (!teamFound) {
             return toFind + ":This team didn't play!";
         }
-        int points = wins*3+draws;
+        int points = wins * 3 + draws;
         return String.format("%s:W=%d;D=%d;L=%d;Scored=%d;Conceded=%d;Points=%d",
-                toFind, wins,draws,losses, scored, conceded, points);
+                toFind, wins, draws, losses, scored, conceded, points);
     }
 
     @Override
@@ -177,16 +177,16 @@ public class SixImpl extends Base implements ISix {
             String category = String.valueOf(parts[0].charAt(0));
             int quantity = Integer.parseInt(parts[1]);
 
-            categorySums.put(category, categorySums.getOrDefault(category, 0)+quantity);
+            categorySums.put(category, categorySums.getOrDefault(category, 0) + quantity);
         }
 
         StringBuilder result = new StringBuilder();
-        for (int i=0; i<lstOf1stLetter.length; i++) {
+        for (int i = 0; i < lstOf1stLetter.length; i++) {
             String category = lstOf1stLetter[i];
             int sum = categorySums.getOrDefault(category, 0);
 
             result.append("(").append(category).append(" : ").append(sum).append(")");
-            if (i < lstOf1stLetter.length-1) {
+            if (i < lstOf1stLetter.length - 1) {
                 result.append(" - ");
             }
         }

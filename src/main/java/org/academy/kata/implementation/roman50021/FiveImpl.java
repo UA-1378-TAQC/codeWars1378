@@ -52,7 +52,7 @@ public class FiveImpl extends Base implements IFive {
         BigInteger b = BigInteger.ONE; // F(1)
         BigInteger sum = BigInteger.ONE; // Start F(1)
 
-        for(BigInteger i = BigInteger.ONE; i.compareTo(n) <= 0; i = i.add(BigInteger.ONE)){
+        for (BigInteger i = BigInteger.ONE; i.compareTo(n) <= 0; i = i.add(BigInteger.ONE)) {
             BigInteger next = a.add(b); // F(k) = F(k-2) + F(k-1)
             sum = sum.add(next);
             a = b; // move next to Fibonacci
@@ -67,13 +67,13 @@ public class FiveImpl extends Base implements IFive {
         double right = 1.0;
         double mid = 0.0;
 
-        while (right - left > 1e-13){
+        while (right - left > 1e-13) {
             mid = (left + right) / 2;
             double current = mid / Math.pow(1 - mid, 2);
 
-            if(current < m){
+            if (current < m) {
                 left = mid;
-            }else {
+            } else {
                 right = mid;
             }
         }
@@ -87,42 +87,42 @@ public class FiveImpl extends Base implements IFive {
 
         long[] array = new long[s.length()];
 
-        for(int i = 0; i < s.length(); i++){
+        for (int i = 0; i < s.length(); i++) {
             array[i] = s.charAt(i) - '0';
         }
 
-        long minNumber  = n;
+        long minNumber = n;
         int from = 0;
         int to = 0;
 
-        for(int i = 0; i < array.length; i++){
-            for(int j = 0; j < array.length; j++){
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
                 if (i == j) continue;
 
                 long[] copy = array.clone();
 
                 long digitToMove = copy[i];
 
-                if (i < j){
-                    for (int k = i; k < j; k++){
+                if (i < j) {
+                    for (int k = i; k < j; k++) {
                         copy[k] = copy[k + 1];
                     }
                     copy[j] = digitToMove;
                 } else {
-                    for (int k = i; k > j; k--){
+                    for (int k = i; k > j; k--) {
                         copy[k] = copy[k - 1];
                     }
                     copy[j] = digitToMove;
                 }
 
                 StringBuilder sb = new StringBuilder();
-                for (long digit : copy){
+                for (long digit : copy) {
                     sb.append(digit);
                 }
 
                 long candidate = Long.parseLong(sb.toString());
 
-                if(candidate < minNumber){
+                if (candidate < minNumber) {
                     minNumber = candidate;
                     from = i;
                     to = j;
