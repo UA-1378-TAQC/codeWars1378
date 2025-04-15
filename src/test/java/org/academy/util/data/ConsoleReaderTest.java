@@ -1,18 +1,19 @@
 package org.academy.util.data;
 
 import org.academy.kata.console.ConsoleInputCaptor;
+import org.academy.kata.console.ConsoleOutputCaptor;
 import org.academy.kata.dataproviders.ConsoleReaderDataProvider;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.math.BigInteger;
 import static org.testng.Assert.assertEquals;
 
-
-public class ConsoleReaderTest {
+public class ConsoleReaderTest extends ConsoleReaderDataProvider {
     ConsoleInputCaptor inputCaptor;
 
     @BeforeMethod
@@ -25,6 +26,7 @@ public class ConsoleReaderTest {
         inputCaptor.restoreInput();
     }
 
+
     @Test
     public void testReadInt() {
     }
@@ -35,8 +37,7 @@ public class ConsoleReaderTest {
 
     @Test(dataProvider = "readFloatDataProvider")
     public void testReadFloat(float minValue, String simulatedInput, float expected) {
-        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
-        captor.setInput(simulatedInput + "\n");
+        inputCaptor.setInput(simulatedInput + "\n");
         ConsoleReader consoleReader = new ConsoleReader();
 
         float actual = consoleReader.readFloat(minValue);
@@ -52,8 +53,12 @@ public class ConsoleReaderTest {
     public void testReadBigInteger() {
     }
 
-    @Test
-    public void testReadString() {
+    @Test(dataProvider = "readStringDataProvider")
+    public void testReadString(String[] stepInputs, String regEx, String expected) {
+        inputCaptor.setInput(String.join("\n", stepInputs));
+        ConsoleReader consoleReader = new ConsoleReader();
+        String actual = consoleReader.readString(regEx);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -72,7 +77,14 @@ public class ConsoleReaderTest {
     public void testReadDoubleArray() {
     }
 
-    @Test
-    public void testReadStringArray() {
+    @Test(dataProvider = "stringArrayDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
+    public void testReadStringArray(String delimiter, String input, String regEx, String[] expectedResult) {
+        inputCaptor.setInput(delimiter + "\n" + input + "\n");
+
+        ConsoleReader reader = new ConsoleReader();
+        String[] result = reader.readStringArray(regEx);
+
+        Assert.assertEquals(result, expectedResult);
     }
+
 }
