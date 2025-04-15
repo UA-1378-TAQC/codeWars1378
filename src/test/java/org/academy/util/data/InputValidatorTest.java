@@ -1,14 +1,13 @@
 package org.academy.util.data;
 
 import org.academy.kata.dataproviders.InputValidatorDataProvider;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 
-public class InputValidatorTest {
+public class InputValidatorTest extends InputValidatorDataProvider {
 
     @Test
     public void testIsValidInt() {
@@ -47,8 +46,10 @@ public class InputValidatorTest {
         assertEquals(actual, expected, "Failed for input: " + prompt);
     }
 
-    @Test
-    public void testIsValidDoubleArray() {
+    @Test(dataProvider = "isValidDoubleArrayDataProvider")
+    public void testIsValidDoubleArray(String input, String delimiter, Double minValue, boolean expected) {
+        boolean actual = InputValidator.isValidDoubleArray(input, delimiter, minValue);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
