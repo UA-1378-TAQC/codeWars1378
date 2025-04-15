@@ -142,4 +142,37 @@ public class SixDataProvider extends BaseDataProvider {
         };
         return combineDataProviders(data, SIXES);
     }
+
+    @DataProvider(name = "stockSummaryDataProvider")
+    protected Object[][] stockSummaryDataProvider() {
+        Object[][] data = new Object[][]{
+                {
+                        new String[]{"ABAR 200", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"},
+                        new String[]{"A", "B"},
+                        "(A : 200) - (B : 1140)"
+                },
+                {
+                        new String[]{"ABAR 100", "CDXE 200"},
+                        new String[]{"A", "C"},
+                        "(A : 100) - (C : 200)"
+                },
+                {
+                        new String[]{},
+                        new String[]{"A", "B"},
+                        ""
+                },
+                {
+                        new String[]{"ABAR 100"},
+                        new String[]{},
+                        ""
+                },
+                {
+                        new String[]{"ABAR 100", "BTSQ 200", "CDXE 300"},
+                        new String[]{"A", "B", "C", "D"},
+                        "(A : 100) - (B : 200) - (C : 300) - (D : 0)"
+                }
+        };
+
+        return combineDataProviders(data, SIXES);
+    }
 }

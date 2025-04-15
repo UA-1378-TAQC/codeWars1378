@@ -1,12 +1,12 @@
 package org.academy.kata;
 
 import org.academy.kata.dataproviders.SixDataProvider;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.Assert;
 
-import static org.testng.Assert.assertEquals;
 
 public class SixTest extends SixDataProvider {
+
 
     @Test(dataProvider = "findNbDataProvider")
     public void testFindNb(long input, long expected, ISix iSix) {
@@ -27,7 +27,7 @@ public class SixTest extends SixDataProvider {
         for (int i = 1; i <= input; i++) {
             actual *= i;
         }
-        assertEquals(actual, expected);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test(dataProvider = "meanDataProvider")
@@ -46,7 +46,9 @@ public class SixTest extends SixDataProvider {
         Assert.assertEquals(actual, expected, "Failed for implementation: " + sixImpl.getClass().getSimpleName());
     }
 
-    @Test
-    public void testStockSummary() {
+    @Test(dataProvider = "stockSummaryDataProvider")
+    public void testStockSummary(String[] lstOfArt, String[] lstOf1stLetter, String expected, ISix implementation) {
+        String result = implementation.stockSummary(lstOfArt, lstOf1stLetter);
+        Assert.assertEquals(result, expected);
     }
 }
