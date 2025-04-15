@@ -25,8 +25,11 @@ public class ConsoleWriterTest extends WriterDataProvider {
         captor.stopCapture();
     }
 
-    @Test
-    public void testWritePrompt() {
+    @Test(dataProvider="testWritePrompt",dataProviderClass=WriterDataProvider.class)
+    public void testWritePrompt(String input,String expectedOutput) {
+        writer.writePrompt(input);
+
+        assertEquals(captor.getOutput(),expectedOutput);
     }
 
     @Test(dataProvider = "stringData", dataProviderClass = WriterStringDataProvider.class)

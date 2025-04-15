@@ -14,6 +14,17 @@ public class WriterDataProvider {
         };
     }
 
+    @DataProvider(name = "testWritePrompt")
+    public Object[][] testWritePrompt(){
+        return new Object[][]{
+            {"Enter length.","Enter length."},
+            {"Enter height.","Enter height."},
+            {"Enter widths.","Enter widths."},
+            {"Bob needs a fast way to calculate the volume of a rectangular cuboid with three values: the length, width and height of the cuboid.\n","\"Bob needs a fast way to calculate the volume of a rectangular cuboid with three values: the length, width and height of the cuboid.\\n" + //
+                                "\""}
+        };
+    };
+
     @DataProvider(name = "testWriteArray2String")
     public Object[][] testWriteArray2String(){
         return new Object[][]{
