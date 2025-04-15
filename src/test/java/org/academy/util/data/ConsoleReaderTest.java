@@ -1,6 +1,7 @@
 package org.academy.util.data;
 
 import org.academy.kata.console.ConsoleInputCaptor;
+import org.academy.kata.console.ConsoleOutputCaptor;
 import org.academy.kata.dataproviders.ConsoleReaderDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -33,8 +34,7 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
 
     @Test(dataProvider = "readFloatDataProvider")
     public void testReadFloat(float minValue, String simulatedInput, float expected) {
-        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
-        captor.setInput(simulatedInput + "\n");
+        inputCaptor.setInput(simulatedInput + "\n");
         ConsoleReader consoleReader = new ConsoleReader();
 
         float actual = consoleReader.readFloat(minValue);

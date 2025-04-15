@@ -30,8 +30,6 @@ public class ConsoleReaderDataProvider{
         return data;
     }
 
-public class ConsoleReaderDataProvider {
-
     @DataProvider(name = "bigIntegerDataProvider")
     public Object[][] bigIntegerDataProvider() {
         return new Object[][]{
