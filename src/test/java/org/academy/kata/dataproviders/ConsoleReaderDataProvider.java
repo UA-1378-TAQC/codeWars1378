@@ -1,10 +1,22 @@
 package org.academy.kata.dataproviders;
 
 import org.testng.annotations.DataProvider;
-
 import java.math.BigInteger;
 
 public class ConsoleReaderDataProvider {
+
+    @DataProvider(name = "readIntDataProvider")
+    public Object[][] readIntDataProvider() {
+        return new Object[][]{
+                {0, "0", 0},
+                {1, "1", 1},
+                {-1, "-1", -1},
+                {42, "42", 42},
+                {Integer.MAX_VALUE, String.valueOf(Integer.MAX_VALUE), Integer.MAX_VALUE},
+                {Integer.MIN_VALUE, String.valueOf(Integer.MIN_VALUE), Integer.MIN_VALUE}
+        };
+    }
+    
     @DataProvider(name = "readStringDataProvider")
     protected Object[][] readStringDataProvider() {
         Object[][] data = {
@@ -75,6 +87,7 @@ public class ConsoleReaderDataProvider {
                 {0.5f, "1.0", 1.0f},
                 {1.5f, "2.0", 2.0f},
                 {0.1f, "0.25", 0.25f},
+
         };
     }
 

@@ -7,9 +7,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
 
 public class ConsoleReaderTest extends ConsoleReaderDataProvider {
+
     ConsoleInputCaptor inputCaptor;
 
     @BeforeMethod
@@ -23,8 +23,14 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
     }
 
 
-    @Test
-    public void testReadInt() {
+    @Test(dataProvider = "readIntDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
+    public void testReadInt(int minValue, String simulatedInput, int expected) {
+        inputCaptor.setInput(simulatedInput + "\n");
+        ConsoleReader consoleReader = new ConsoleReader();
+
+        int actual = consoleReader.readInt(minValue);
+
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
