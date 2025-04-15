@@ -8,11 +8,11 @@ import java.math.BigInteger;
 public class FiveImpl extends Base implements IFive {
     @Override
     public long[] gap(int g, long m, long n) {
-        for(long i = m; i <= n-g; i++){
-            if(isPrime(i)){
-                for(long j = i+1; j<=n; j++){
-                    if(isPrime(j)&&j-i==g) return new long[]{i,j};
-                    else if(isPrime(j)) break;
+        for (long i = m; i <= n - g; i++) {
+            if (isPrime(i)) {
+                for (long j = i + 1; j <= n; j++) {
+                    if (isPrime(j) && j - i == g) return new long[]{i, j};
+                    else if (isPrime(j)) break;
                 }
             }
         }
@@ -32,9 +32,9 @@ public class FiveImpl extends Base implements IFive {
     @Override
     public int zeros(int n) {
         int result = 0;
-        for(int k = 1, i = 1; i>0 ; k++){
-            i = (int)Math.floor(n/Math.pow(5,k));
-            result+=i;
+        for (int k = 1, i = 1; i > 0; k++) {
+            i = (int) Math.floor(n / Math.pow(5, k));
+            result += i;
         }
         return result;
     }
@@ -42,12 +42,12 @@ public class FiveImpl extends Base implements IFive {
     @Override
     public BigInteger perimeter(BigInteger n) {
         int nInt = n.intValue();
-        BigInteger [] arraySides = new BigInteger [nInt+2];
-        arraySides[0]=BigInteger.ZERO;
-        arraySides[1]=BigInteger.ONE;
+        BigInteger[] arraySides = new BigInteger[nInt + 2];
+        arraySides[0] = BigInteger.ZERO;
+        arraySides[1] = BigInteger.ONE;
         BigInteger sum = BigInteger.ONE;
-        for(int i = 2; i<arraySides.length; i++){
-            arraySides[i] = (arraySides[i-1]).add(arraySides[i-2]);
+        for (int i = 2; i < arraySides.length; i++) {
+            arraySides[i] = (arraySides[i - 1]).add(arraySides[i - 2]);
             sum = sum.add(arraySides[i]);
         }
         return sum.multiply(BigInteger.valueOf(4));
@@ -60,18 +60,18 @@ public class FiveImpl extends Base implements IFive {
         double start = 0.0;
         double end = 1.0;
 
-        while(end-start>diffComp){
-            double x = (start+end)/2;
+        while (end - start > diffComp) {
+            double x = (start + end) / 2;
             double sumU = 0.0;
             double powerX = x;
-            for(int k =1; k<=n; k++){
-                sumU += (k*powerX);
+            for (int k = 1; k <= n; k++) {
+                sumU += (k * powerX);
                 powerX *= x;
             }
-            if(sumU<m) start = x;
+            if (sumU < m) start = x;
             else end = x;
         }
-        return (start+end)/2;
+        return (start + end) / 2;
     }
 
     @Override
@@ -80,22 +80,22 @@ public class FiveImpl extends Base implements IFive {
         long min = n;
         int indexI = -1;
         int indexJ = -1;
-        for(int i = 0; i<minNumberString.length(); i++){
+        for (int i = 0; i < minNumberString.length(); i++) {
             char removedDigit = minNumberString.charAt(i);
             StringBuilder t = new StringBuilder(minNumberString);
             t.deleteCharAt(i);
-            for(int j = 0; j<minNumberString.length(); j++){
-                if(i==j) continue;
+            for (int j = 0; j < minNumberString.length(); j++) {
+                if (i == j) continue;
                 StringBuilder newT = new StringBuilder(t);
                 newT.insert(j, removedDigit);
                 long check = Long.parseLong(newT.toString());
-                if(check<min){
+                if (check < min) {
                     min = check;
-                    indexI=i;
-                    indexJ=j;
+                    indexI = i;
+                    indexJ = j;
                 }
             }
         }
-        return new long [] {min,indexI,indexJ};
+        return new long[]{min, indexI, indexJ};
     }
 }

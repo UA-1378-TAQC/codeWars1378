@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 
 import java.util.List;
 
-public class SevenDataProvider extends BaseDataProvider{
+public class SevenDataProvider extends BaseDataProvider {
     private final static List<ISeven> SEVENS = List.of(
             new org.academy.kata.implementation.adidvar.SevenImpl(),
             new org.academy.kata.implementation.Anat0li1.SevenImpl(),
@@ -22,7 +22,7 @@ public class SevenDataProvider extends BaseDataProvider{
             new org.academy.kata.implementation.viktoriiafylyk.SevenImpl()
     );
 
-    @DataProvider(name="benefactorDataProvider")
+    @DataProvider(name = "benefactorDataProvider")
     protected Object[][] benefactorDataProvider() {
         Object[][] data = new Object[][]{
                 {new double[]{14.0, 30.0, 5.0, 7.0, 9.0, 11.0, 16.0}, 90, 628},
@@ -38,7 +38,7 @@ public class SevenDataProvider extends BaseDataProvider{
         return combineDataProviders(data, SEVENS);
     }
 
-    @DataProvider(name="benefactorExceptionDataProvider")
+    @DataProvider(name = "benefactorExceptionDataProvider")
     protected Object[][] benefactorExceptionDataProvider() {
         Object[][] data = new Object[][]{
                 {new double[]{14, 30, 5, 7, 9, 11, 15}, 2},

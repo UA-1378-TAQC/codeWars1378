@@ -8,9 +8,9 @@ public class TaskNbaCup implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
         writer.writePrompt("""
-                                Enter match result string (example: 
-                                Los Angeles Clippers 104 Dallas Mavericks 88, New York Knicks 101 Atlanta Hawks 112):
-                            """);
+                    Enter match result string (example: 
+                    Los Angeles Clippers 104 Dallas Mavericks 88, New York Knicks 101 Atlanta Hawks 112):
+                """);
 
         String teamNameRegex = "([A-Za-z0-9 ]+)";
         String spase = "\\s";

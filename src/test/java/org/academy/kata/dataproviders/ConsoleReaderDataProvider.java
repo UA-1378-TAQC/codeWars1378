@@ -1,11 +1,12 @@
 package org.academy.kata.dataproviders;
 
 import org.testng.annotations.DataProvider;
+
 import java.math.BigInteger;
 
-public class ConsoleReaderDataProvider{
+public class ConsoleReaderDataProvider {
     @DataProvider(name = "readStringDataProvider")
-    protected Object[][] readStringDataProvider(){
+    protected Object[][] readStringDataProvider() {
         Object[][] data = {
                 {new String[]{"str"}, null, "str"},
                 {new String[]{"str", "oneMore"}, null, "str"},

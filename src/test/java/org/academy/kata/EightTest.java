@@ -3,7 +3,6 @@ package org.academy.kata;
 
 import org.academy.kata.dataproviders.EightDataProvider;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class EightTest extends EightDataProvider {
@@ -57,9 +56,9 @@ public class EightTest extends EightDataProvider {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-    @Test(dataProvider="wilsonDataProvider")
-    public void testAm_i_wilson(long n,boolean expectedVolume,IEight iEight) {
+    @Test(dataProvider = "wilsonDataProvider")
+    public void testAm_i_wilson(long n, boolean expectedVolume, IEight iEight) {
         boolean actualVolume = iEight.am_i_wilson(n);
-        Assert.assertEquals(actualVolume,expectedVolume);
+        Assert.assertEquals(actualVolume, expectedVolume);
     }
 }

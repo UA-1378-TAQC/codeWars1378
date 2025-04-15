@@ -1,9 +1,9 @@
 package org.academy.kata;
 
 import org.academy.kata.dataproviders.SixDataProvider;
-import org.academy.util.Authors;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import static org.testng.Assert.assertEquals;
 
 public class SixTest extends SixDataProvider {
@@ -18,7 +18,7 @@ public class SixTest extends SixDataProvider {
     public void testBalance(String input, String expected, ISix iSix) {
         String output = iSix.balance(input);
 
-        Assert.assertEquals(output,expected);
+        Assert.assertEquals(output, expected);
     }
 
     @Test(dataProvider = "dataForF", dataProviderClass = SixDataProvider.class)

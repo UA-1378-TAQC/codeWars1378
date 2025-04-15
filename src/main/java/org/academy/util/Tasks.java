@@ -1,6 +1,5 @@
 package org.academy.util;
 
-import org.academy.tasks.ITask;
 import org.academy.tasks.*;
 
 public enum Tasks {

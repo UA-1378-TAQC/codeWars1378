@@ -3,9 +3,9 @@ package org.academy.kata.dataproviders;
 import org.testng.annotations.DataProvider;
 
 public class InputValidatorDataProvider {
-    @DataProvider(name="isValidStringDataProvider")
+    @DataProvider(name = "isValidStringDataProvider")
     public Object[][] isValidStringDataProvider() {
-        return new Object[][] {
+        return new Object[][]{
                 {"", "", false},
                 {"     ", "", false},
                 {"\n", "", false},
@@ -19,7 +19,7 @@ public class InputValidatorDataProvider {
                 {"45 _hhh", "(\\d*)\\s_?", false}
         };
     }
-  
+
     @DataProvider(name = "isValidStringArrayDataProvider")
     protected Object[][] isValidStringArrayDataProvider() {
         return new Object[][]{
@@ -34,9 +34,9 @@ public class InputValidatorDataProvider {
                 {"123, 45a ,789", ",", "^\\d+$", false},
                 {"onlyOne", ",", "^[a-zA-Z]+$", true},
                 {"one,two,three,", ",", "^[a-zA-Z]+$", true}
-         };
+        };
     }
-  
+
     @DataProvider(name = "isValidDoubleArrayDataProvider")
     protected Object[][] isValidDoubleArrayDataProvider() {
         Object[][] data = new Object[][]{
@@ -69,7 +69,7 @@ public class InputValidatorDataProvider {
 
     @DataProvider(name = "isValidIntDataProvider")
     public Object[][] isValidIntDataProvider() {
-        return new Object[][] {
+        return new Object[][]{
                 {"123", 100, true},
                 {"99", 100, false},
                 {"-1", -5, true},
@@ -84,7 +84,7 @@ public class InputValidatorDataProvider {
                 {"    ", 0, false},
                 {"12.3", 0, false},
                 {"--12", 0, false},
-           };
+        };
     }
 
     @DataProvider(name = "floatDataProvider")
@@ -108,7 +108,7 @@ public class InputValidatorDataProvider {
                 {"1, 2, 3", ",", 1, true},
                 {"1 2 3", "\\s+", 1, true},
         };
-    } 
+    }
 
     @DataProvider(name = "isValidLongDataProvider")
     public Object[][] isValidLongDataProvider() {

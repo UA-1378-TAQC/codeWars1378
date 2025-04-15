@@ -1,10 +1,8 @@
 package org.academy.kata.dataproviders;
 
-import java.util.List;
-
 import org.academy.kata.IEight;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 import java.util.List;
 
 public class EightDataProvider extends BaseDataProvider {
@@ -36,9 +34,9 @@ public class EightDataProvider extends BaseDataProvider {
         return combineDataProviders(data, EIGHTS);
     }
 
-    @DataProvider(name="kmPerLiterProvider")
-    protected Object[][] kmPerLiterProvider(){
-        Object[][] data =  new Object[][]{
+    @DataProvider(name = "kmPerLiterProvider")
+    protected Object[][] kmPerLiterProvider() {
+        Object[][] data = new Object[][]{
                 {10.0f, 3.54f},
                 {20.0f, 7.08f},
                 {30.0f, 10.62f},
@@ -91,16 +89,16 @@ public class EightDataProvider extends BaseDataProvider {
         return combineDataProviders(data, EIGHTS);
     }
 
-    @DataProvider(name="wilsonDataProvider")
-    protected Object[][] wilsonDataProvider(){
+    @DataProvider(name = "wilsonDataProvider")
+    protected Object[][] wilsonDataProvider() {
         Object[][] data = new Object[][]{
-            {0,false},
-            {1,false},
-            {5,true},
+                {0, false},
+                {1, false},
+                {5, true},
         };
         return combineDataProviders(data, EIGHTS);
     }
-    
+
     @DataProvider(name = "squareRootDataProvider")
     public Object[][] squareRootDataProvider() {
         Object[][] data = new Object[][]{
@@ -111,9 +109,9 @@ public class EightDataProvider extends BaseDataProvider {
         return combineDataProviders(data, EIGHTS);
     }
 
-    @DataProvider(name="stringToNumberDataProvider")
-    protected Object[][] stringToNumberDataProvider(){
-        Object[][] data =  new Object[][]{
+    @DataProvider(name = "stringToNumberDataProvider")
+    protected Object[][] stringToNumberDataProvider() {
+        Object[][] data = new Object[][]{
                 {"1234", 1234},
                 {"605", 605},
                 {"1405", 1405},
@@ -128,20 +126,20 @@ public class EightDataProvider extends BaseDataProvider {
     @DataProvider(name = "countPositiveSumNegativeDataProvider")
     protected Object[][] countPositiveSumNegativeDataProvider() {
         Object[][] data = new Object[][]{
-                {new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15}, new int[] {10, -65}},
-                {new int[] {0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14}, new int[] {8, -50}},
-                {new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, new int[] {10, 0}},
-                {new int[] {-11, -12, -13, -14, -15}, new int[] {0, -65}},
-                {new int[] {0}, new int[] {0, 0}},
-                {new int[] {0, 0, 0, 0, 0, 0, 0}, new int[] {0, 0}},
-                {new int[] {-1, 1}, new int[]{1, -1}},
-                {new int[] {1, -1}, new int[]{1, -1}},
-                {new int[] {-19, 0}, new int[]{0, -19}},
-                {new int[] {0, -19}, new int[]{0, -19}},
-                {new int[] {0, 19}, new int[]{1, 0}},
-                {new int[] {19, 0}, new int[]{1, 0}},
-                {new int[] {7}, new int[]{1, 0}},
-                {new int[] {-7}, new int[]{0, -7}}
+                {new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15}, new int[]{10, -65}},
+                {new int[]{0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14}, new int[]{8, -50}},
+                {new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, new int[]{10, 0}},
+                {new int[]{-11, -12, -13, -14, -15}, new int[]{0, -65}},
+                {new int[]{0}, new int[]{0, 0}},
+                {new int[]{0, 0, 0, 0, 0, 0, 0}, new int[]{0, 0}},
+                {new int[]{-1, 1}, new int[]{1, -1}},
+                {new int[]{1, -1}, new int[]{1, -1}},
+                {new int[]{-19, 0}, new int[]{0, -19}},
+                {new int[]{0, -19}, new int[]{0, -19}},
+                {new int[]{0, 19}, new int[]{1, 0}},
+                {new int[]{19, 0}, new int[]{1, 0}},
+                {new int[]{7}, new int[]{1, 0}},
+                {new int[]{-7}, new int[]{0, -7}}
                 //{new int[] {}, new int[] {}},
                 //{null, new int[] {}},
         };
