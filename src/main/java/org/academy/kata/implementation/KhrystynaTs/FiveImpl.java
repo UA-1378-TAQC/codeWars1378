@@ -6,7 +6,7 @@ import org.academy.kata.IFive;
 import java.math.BigInteger;
 
 public class FiveImpl extends Base implements IFive {
-    public  boolean isPrime(long num) {
+    public boolean isPrime(long num) {
         if (num <= 1) return false;
         if (num == 2) return true;
         if (num % 2 == 0) return false;
@@ -15,6 +15,7 @@ public class FiveImpl extends Base implements IFive {
         }
         return true;
     }
+
     @Override
     public long[] gap(int g, long m, long n) {
         long lastPrime = -1;

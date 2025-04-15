@@ -23,7 +23,6 @@ public class ConsoleOutputCaptor {
     }
 
 
-
     public void setInput(String simulatedInput) {
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
     }
