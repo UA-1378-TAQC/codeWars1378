@@ -15,8 +15,11 @@ public class SixTest extends SixDataProvider {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void testBalance() {
+    @Test(dataProvider = "balanceDataProvider")
+    public void testBalance(String input, String expected, ISix iSix) {
+        String output = iSix.balance(input);
+
+        Assert.assertEquals(output,expected);
     }
 
     @Test
