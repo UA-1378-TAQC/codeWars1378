@@ -3,6 +3,7 @@ package org.academy.kata.dataproviders;
 import org.academy.kata.IFive;
 import org.testng.annotations.DataProvider;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class FiveDataProvider extends BaseDataProvider {
@@ -22,8 +23,22 @@ public class FiveDataProvider extends BaseDataProvider {
 
     );
 
+
+    @DataProvider(name="perimeterDataProvider")
+    protected Object[][] perimeterDataProvider(){
+        Object[][] data = new Object[][]{
+                {BigInteger.valueOf(0), BigInteger.valueOf(4)},
+                {BigInteger.valueOf(1), BigInteger.valueOf(8)},
+                {BigInteger.valueOf(5), BigInteger.valueOf(80)},
+                {BigInteger.valueOf(7), BigInteger.valueOf(216)},
+                {BigInteger.valueOf(30), BigInteger.valueOf(14098308)}
+        };
+        return combineDataProviders(data, FIVES);
+    }
+
     @DataProvider(name = "zerosDataProvider")
     protected Object[][] zerosDataProvider() {
+
         Object[][] data = new Object[][]{
                 {0, 0},
                 {4, 0},
@@ -49,6 +64,7 @@ public class FiveDataProvider extends BaseDataProvider {
                 {20.00, 0.8000000000000},
                 {50.00, 0.868225531212422}
         };
+
         return combineDataProviders(data, FIVES);
     }
 }
