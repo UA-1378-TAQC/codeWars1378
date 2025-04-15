@@ -1,31 +1,50 @@
 package org.academy.kata;
 
+import org.academy.kata.dataproviders.SixDataProvider;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SixTest {
+import static org.testng.Assert.assertEquals;
 
-    @Test
-    public void testFindNb() {
+public class SixTest extends SixDataProvider {
+
+    @Test(dataProvider = "findNbDataProvider")
+    public void testFindNb(long input, long expected, ISix iSix) {
+        long actual = iSix.findNb(input);
+        Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void testBalance() {
+    @Test(dataProvider = "balanceDataProvider")
+    public void testBalance(String input, String expected, ISix iSix) {
+        String output = iSix.balance(input);
+
+        Assert.assertEquals(output, expected);
     }
 
-    @Test
-    public void testF() {
+    @Test(dataProvider = "dataForF", dataProviderClass = SixDataProvider.class)
+    public void testF(int input, int expected) {
+        int actual = 1;
+        for (int i = 1; i <= input; i++) {
+            actual *= i;
+        }
+        assertEquals(actual, expected);
     }
 
-    @Test
-    public void testMean() {
+    @Test(dataProvider = "meanDataProvider")
+    public void testMean(String town, String data, double expected, ISix sixImpl) {
+        double actual = sixImpl.mean(town, data);
+        Assert.assertEquals(actual, expected, 1e-2,
+                String.format("abs(actual - expected) must be <= 1e-2. Expected was %f, but got %f", expected, actual));
     }
 
     @Test
     public void testVariance() {
     }
 
-    @Test
-    public void testNbaCup() {
+    @Test(dataProvider = "nbaData", dataProviderClass = SixDataProvider.class)
+    public void testNbaCup(String resultSheet, String team, String expected, ISix sixImpl) {
+        String actual = sixImpl.nbaCup(resultSheet, team);
+        Assert.assertEquals(actual, expected, "Failed for implementation: " + sixImpl.getClass().getSimpleName());
     }
 
     @Test

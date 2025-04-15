@@ -3,7 +3,7 @@ package org.academy.kata.implementation.roman50021;
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class SixImpl extends Base implements ISix {
     @Override
@@ -79,11 +79,11 @@ public class SixImpl extends Base implements ISix {
 
         String[] rows = strng.split("\n");
 
-        for(String row : rows){
-            if(row.startsWith(town + ":")){
+        for (String row : rows) {
+            if (row.startsWith(town + ":")) {
                 String dataPart = row.substring(town.length() + 1);
 
-                String [] monthlyData = dataPart.split(",");
+                String[] monthlyData = dataPart.split(",");
 
                 double sum = 0.0;
                 int count = 0;
@@ -108,6 +108,7 @@ public class SixImpl extends Base implements ISix {
 
         return -1;
     }
+
     @Override
     public double variance(String town, String strng) {
 
@@ -150,7 +151,7 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String nbaCup(String resultSheet, String toFind) {
-        if(toFind.isEmpty()){
+        if (toFind.isEmpty()) {
             return "";
         }
 
@@ -163,8 +164,8 @@ public class SixImpl extends Base implements ISix {
         String[] matches = resultSheet.split(",");
         boolean played = false;
 
-        for(String match : matches){
-            if(!match.contains(toFind)){
+        for (String match : matches) {
+            if (!match.contains(toFind)) {
                 continue;
             }
 
@@ -175,8 +176,8 @@ public class SixImpl extends Base implements ISix {
             String[] words = match.trim().split(" ");
 
             int firstScoreIndex = -1;
-            for(int i = 0; i < words.length; i++){
-                if (words[i].matches("\\d+")){
+            for (int i = 0; i < words.length; i++) {
+                if (words[i].matches("\\d+")) {
                     firstScoreIndex = i;
                     break;
                 }
@@ -186,8 +187,8 @@ public class SixImpl extends Base implements ISix {
             int score1 = Integer.parseInt(words[firstScoreIndex]);
 
             int secondScoreIndex = -1;
-            for(int i = firstScoreIndex + 1; i < words.length; i++){
-                if(words[i].matches("\\d+")){
+            for (int i = firstScoreIndex + 1; i < words.length; i++) {
+                if (words[i].matches("\\d+")) {
                     secondScoreIndex = i;
                     break;
                 }
@@ -196,34 +197,34 @@ public class SixImpl extends Base implements ISix {
             String team2 = String.join(" ", Arrays.copyOfRange(words, firstScoreIndex + 1, secondScoreIndex));
             int score2 = Integer.parseInt(words[secondScoreIndex]);
 
-            if(team1.equals(toFind)){
+            if (team1.equals(toFind)) {
                 played = true;
                 scored = scored + score1;
                 conceded = conceded + score2;
 
-                if(score1 > score2){
+                if (score1 > score2) {
                     wins++;
-                }else if(score1 == score2){
+                } else if (score1 == score2) {
                     draws++;
-                }else {
+                } else {
                     losses++;
                 }
-            }else if(team2.equals(toFind)){
+            } else if (team2.equals(toFind)) {
                 played = true;
                 scored = scored + score2;
                 conceded = conceded + score1;
 
-                if(score2 > score1){
+                if (score2 > score1) {
                     wins++;
                 } else if (score2 == score1) {
                     draws++;
-                }else {
+                } else {
                     losses++;
                 }
             }
         }
 
-        if (!played){
+        if (!played) {
             return toFind + ":This team didn't play!";
         }
 
@@ -235,6 +236,32 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return "";
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return "";
+        }
+
+        Map<String, Integer> categorySums = new LinkedHashMap<>();
+        for (String letter : lstOf1stLetter) {
+            categorySums.put(letter, 0);
+        }
+
+        for (String item : lstOfArt) {
+            String[] parts = item.split(" ");
+            String code = parts[0];
+            int quantity = Integer.parseInt(parts[1]);
+            String category = code.substring(0, 1);
+
+            if (categorySums.containsKey(category)) {
+                categorySums.put(category, categorySums.get(category) + quantity);
+            }
+        }
+
+        List<String> resultParts = new ArrayList<>();
+        for (String letter : lstOf1stLetter) {
+            int sum = categorySums.get(letter);
+            resultParts.add("(" + letter + " : " + sum + ")");
+        }
+
+        return String.join(" - ", resultParts);
     }
 }

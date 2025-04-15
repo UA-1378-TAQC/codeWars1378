@@ -9,13 +9,13 @@ import java.util.ArrayList;
 public class FiveImpl extends Base implements IFive {
     @Override
     public long[] gap(int g, long m, long n) {
-        if(g < 2 || m <= 2 || n < m){
+        if (g < 2 || m <= 2 || n < m) {
             return null;
         }
         long[] result = new long[2];
         ArrayList<Long> primesTillN = returnArrayWithPrimesFromMTillN(m, n);
-        for(int i = 0; i < primesTillN.size() - 1; i++){
-            if(primesTillN.get(i + 1) - primesTillN.get(i) == g){
+        for (int i = 0; i < primesTillN.size() - 1; i++) {
+            if (primesTillN.get(i + 1) - primesTillN.get(i) == g) {
                 result[0] = primesTillN.get(i);
                 result[1] = primesTillN.get(i + 1);
                 return result;
@@ -23,25 +23,26 @@ public class FiveImpl extends Base implements IFive {
         }
         return null;
     }
-    private static ArrayList<Long> returnArrayWithPrimesFromMTillN(long m, long n){
+
+    private static ArrayList<Long> returnArrayWithPrimesFromMTillN(long m, long n) {
         ArrayList<Long> array = new ArrayList<>();
-        for(long i = m; i <=n; i++){
-            if(isPrime(i)){
+        for (long i = m; i <= n; i++) {
+            if (isPrime(i)) {
                 array.add(i);
             }
         }
         return array;
     }
 
-    private static boolean isPrime(long n){
-        if(n <= 1){
+    private static boolean isPrime(long n) {
+        if (n <= 1) {
             return false;
         }
-        if(n % 2 == 0 && n != 2){
+        if (n % 2 == 0 && n != 2) {
             return false;
         }
-        for(int i = 3; i <= (long)Math.sqrt(n); i++){
-            if(n % i == 0){
+        for (int i = 3; i <= (long) Math.sqrt(n); i++) {
+            if (n % i == 0) {
                 return false;
             }
         }
@@ -62,7 +63,7 @@ public class FiveImpl extends Base implements IFive {
         return BigInteger.valueOf(4).multiply(returnFibonacciSumOfNMembers(n));
     }
 
-    private static BigInteger returnFibonacciSumOfNMembers(BigInteger n){
+    private static BigInteger returnFibonacciSumOfNMembers(BigInteger n) {
         BigInteger firstPart = BigInteger.ZERO;
         BigInteger secondPart = BigInteger.ONE;
         BigInteger sum = BigInteger.ONE;
@@ -85,25 +86,25 @@ public class FiveImpl extends Base implements IFive {
     @Override
     public long[] smallest(long n) {
         long num = n;
-        if(n < 10){
+        if (n < 10) {
             return new long[]{};
         }
         int N = Long.toString(n).length();
         int[] digits = new int[N];
-        for(int i = N - 1; i >= 0; i--){
-            digits[N - i - 1] = (int)Math.floor(n / Math.pow(10, i));
+        for (int i = N - 1; i >= 0; i--) {
+            digits[N - i - 1] = (int) Math.floor(n / Math.pow(10, i));
             n %= (long) Math.pow(10, i);
         }
         int indexTo = 0;
         int indexFrom = 0;
         int[] newNumDigits;
 
-        for(int i = 0; i < N; i++){
-            for(int j = 0; j < N; j++){
-                if(i != j){
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (i != j) {
                     newNumDigits = shiftOneMember(digits, i, j);
                     long tempNum = arrayToNumber(newNumDigits);
-                    if(tempNum < num || (tempNum == num && i < indexFrom)){
+                    if (tempNum < num || (tempNum == num && i < indexFrom)) {
                         num = tempNum;
                         indexFrom = i;
                         indexTo = j;
@@ -118,27 +119,27 @@ public class FiveImpl extends Base implements IFive {
         int[] result = new int[array.length];
         int movedDigit = array[indexFrom];
         int k = 0;
-        for(int i = 0; i < array.length; i++) {
-            if(i != indexFrom) {
+        for (int i = 0; i < array.length; i++) {
+            if (i != indexFrom) {
                 result[k++] = array[i];
             }
         }
-        for(int i = result.length - 1; i > indexTo; i--) {
+        for (int i = result.length - 1; i > indexTo; i--) {
             result[i] = result[i - 1];
         }
         result[indexTo] = movedDigit;
         return result;
     }
 
-    private static long arrayToNumber(int[] array){
+    private static long arrayToNumber(int[] array) {
         int index = 0;
         int n = array.length;
         long result = 0;
-        while(array[index] == 0){
+        while (array[index] == 0) {
             index++;
         }
-        for(int j = index; j < n; j++){
-            result += (long)Math.pow(10, n - j - 1) * array[j];
+        for (int j = index; j < n; j++) {
+            result += (long) Math.pow(10, n - j - 1) * array[j];
         }
         return result;
     }

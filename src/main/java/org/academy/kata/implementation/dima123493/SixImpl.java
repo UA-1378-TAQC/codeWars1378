@@ -4,8 +4,11 @@ import org.academy.kata.Base;
 import org.academy.kata.ISix;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class SixImpl extends Base implements ISix {
     @Override
@@ -35,37 +38,47 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double f(double x) {
-        return x / (Math.sqrt(1 + x) + 1);
+        final double OFFSET = 1.0;
+        final double CONJUGATE_ADDITION = 1.0;
+        return x / (Math.sqrt(OFFSET + x) + CONJUGATE_ADDITION);
     }
 
     @Override
     public double mean(String town, String strng) {
+        final double INVALID_RESULT = -1.0;
         double[] values = getRainfallValues(town, strng);
-        if (values == null) return -1.0;
-        return Arrays.stream(values).average().orElse(-1.0);
+        if (values == null) return INVALID_RESULT;
+        return Arrays.stream(values).average().orElse(INVALID_RESULT);
     }
 
     @Override
     public double variance(String town, String strng) {
+        final double INVALID_RESULT = -1.0;
         double[] values = getRainfallValues(town, strng);
-        if (values == null) return -1.0;
+        if (values == null) return INVALID_RESULT;
 
         double mean = mean(town, strng);
         return Arrays.stream(values)
                 .map(x -> Math.pow(x - mean, 2))
                 .average()
-                .orElse(-1.0);
+                .orElse(INVALID_RESULT);
     }
 
     private static double[] getRainfallValues(String town, String strng) {
-        String[] records = strng.split("\n");
+        final int VALUE_INDEX = 1;
+        final String LINE_SEPARATOR = "\n";
+        final String ENTRY_SEPARATOR = ",";
+        final String VALUE_SEPARATOR = " ";
+        final int COLON_OFFSET = 1;
+
+        String[] records = strng.split(LINE_SEPARATOR);
 
         for (String record : records) {
             if (record.startsWith(town + ":")) {
-                String dataPart = record.substring(town.length() + 1);
+                String dataPart = record.substring(town.length() + COLON_OFFSET);
 
-                return Arrays.stream(dataPart.split(","))
-                        .map(s -> s.split(" ")[1])
+                return Arrays.stream(dataPart.split(ENTRY_SEPARATOR))
+                        .map(s -> s.split(VALUE_SEPARATOR)[VALUE_INDEX])
                         .mapToDouble(Double::parseDouble)
                         .toArray();
             }
@@ -136,6 +149,19 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return "";
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return "";
+        }
+
+        Map<Character, Integer> stockCount = new HashMap<>();
+        for (String book : lstOfArt) {
+            char category = book.charAt(0);
+            int quantity = Integer.parseInt(book.split(" ")[1]);
+            stockCount.put(category, stockCount.getOrDefault(category, 0) + quantity);
+        }
+
+        return Arrays.stream(lstOf1stLetter)
+                .map(cat -> "(" + cat + " : " + stockCount.getOrDefault(cat.charAt(0), 0) + ")")
+                .collect(Collectors.joining(" - "));
     }
 }

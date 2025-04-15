@@ -2,6 +2,7 @@ package org.academy.kata.implementation.viktoriiafylyk;
 
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
+
 import java.util.*;
 
 
@@ -11,10 +12,10 @@ public class SixImpl extends Base implements ISix {
         long sum = 0;
         long n = 0;
 
-        while (sum < m){
+        while (sum < m) {
             n++;
-            sum += n*n*n;
-            if (sum == m){
+            sum += n * n * n;
+            if (sum == m) {
                 return n;
             }
         }
@@ -23,7 +24,27 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String balance(String book) {
-        return "";
+        String[] arr = book
+                .replaceAll("[^a-zA-Z0-9\n. ]", "").split("\n+");
+
+        StringBuilder sb = new StringBuilder();
+        double balance = Double.parseDouble(arr[0]);
+        for (int i = 1; i < arr.length; i++) {
+            balance -= Double.parseDouble(arr[i].split("\\s+")[2]);
+            sb.append(String.format("%s Balance %.2f\\r\\n", arr[i].trim().replaceAll("\\s+", " "), balance));
+        }
+
+        return String.format("Original Balance: %s\\r\\n", arr[0])
+                + sb.toString()
+                + String.format("Total expense  %.2f\\r\\n"
+                , Arrays.stream(arr, 1, arr.length)
+                        .mapToDouble(a -> Double.parseDouble(a.split("\\s+")[2]))
+                        .sum())
+                + String.format("Average expense  %.2f"
+                , Arrays.stream(arr, 1, arr.length)
+                        .mapToDouble(a -> Double.parseDouble(a.split("\\s+")[2]))
+                        .average()
+                        .getAsDouble());
     }
 
     @Override
