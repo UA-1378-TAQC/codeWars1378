@@ -65,6 +65,15 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
     public void testReadIntArray() {
     }
 
+    @Test(dataProvider = "readDoubleArrayDataProvider")
+    public void testReadDoubleArray(String simulatedInput, Double minValue, double[] expected) {
+        ConsoleInputCaptor captor = new ConsoleInputCaptor();
+        captor.setInput(simulatedInput);
+        ConsoleReader consoleReader = new ConsoleReader();
+        double[] actual = consoleReader.readDoubleArray(minValue);
+        Assert.assertEquals(actual, expected);
+    }
+  
     @Test(dataProvider = "intArrayDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
     public void testReadIntArray(String input, int[] expected) {
         inputCaptor.setInput(input);
