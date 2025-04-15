@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+
 public class ConsoleWriterTest extends WriterDataProvider {
     private ConsoleOutputCaptor captor;
     private IWriter writer;
@@ -49,14 +50,15 @@ public class ConsoleWriterTest extends WriterDataProvider {
         Assert.assertEquals(actualOutput, expectedOutput, "Expected output: " + expectedOutput + ", but got: " + actualOutput);
     }
 
-    @Test
-    public void testTestWriteResult4() {
+    @Test(dataProvider = "booleanDataProvider", dataProviderClass = WriterDataProvider.class)
+    public void testTestWriteResult4(boolean input, String expected) {
+        writer.writeResult(input);
+        assertEquals(captor.getOutput(), expected);
     }
 
     @Test(dataProvider = "characterData", dataProviderClass = WriterDataProvider.class)
     public void testTestWriteResult5(char input, String expectedOutput) {
         writer.writeResult(input);
-
         Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 
