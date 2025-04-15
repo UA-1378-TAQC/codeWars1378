@@ -29,7 +29,7 @@ public class ConsoleWriterTest extends WriterDataProvider {
     public void testWritePrompt(String input,String expectedOutput) {
         writer.writePrompt(input);
 
-        assertEquals(captor.getOutput(),expectedOutput);
+        Assert.assertEquals(captor.getOutput(),expectedOutput);
     }
 
     @Test(dataProvider = "stringData", dataProviderClass = WriterStringDataProvider.class)
