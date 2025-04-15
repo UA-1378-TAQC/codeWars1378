@@ -20,8 +20,10 @@ public class EightTest extends EightDataProvider {
     }
 
 
-    @Test
-    public void testMpgToKPM() {
+    @Test(dataProvider = "kmPerLiterProvider")
+    public void testMpgToKPM(float mpg, float expectedResult, IEight iEight) {
+        float actualResult = iEight.mpgToKPM(mpg);
+        Assert.assertEquals(actualResult, expectedResult, 0.001);
     }
 
     @Test(dataProvider = "squareRootDataProvider")
@@ -54,10 +56,9 @@ public class EightTest extends EightDataProvider {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-
-    @Test(dataProvider="wilsonDataProvider")
-    public void testAm_i_wilson(long n,boolean expectedVolume,IEight iEight) {
+    @Test(dataProvider = "wilsonDataProvider")
+    public void testAm_i_wilson(long n, boolean expectedVolume, IEight iEight) {
         boolean actualVolume = iEight.am_i_wilson(n);
-        Assert.assertEquals(actualVolume,expectedVolume);
+        Assert.assertEquals(actualVolume, expectedVolume);
     }
 }
