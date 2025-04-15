@@ -2,6 +2,7 @@ package org.academy.kata.implementation.roman50021;
 
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
+
 import java.util.Arrays;
 
 public class EightImpl extends Base implements IEight {
@@ -39,22 +40,22 @@ public class EightImpl extends Base implements IEight {
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
         {
-            if (input == null || input.length == 0){
-                return new int[] {};
+            if (input == null || input.length == 0) {
+                return new int[]{};
             }
 
             int psum = 0;
             int msum = 0;
 
-            for(int i = 0; i < input.length; i++){
-                if(input[i] > 0){
+            for (int i = 0; i < input.length; i++) {
+                if (input[i] > 0) {
                     psum++;
-                }else {
+                } else {
                     msum = msum + input[i];
                 }
             }
 
-            return new int[] {psum, msum};
+            return new int[]{psum, msum};
         }
     }
 
@@ -70,11 +71,11 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        int [] result = new int[numbers.length];
+        int[] result = new int[numbers.length];
         int index = 0;
 
         for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] % divider == 0){
+            if (numbers[i] % divider == 0) {
                 result[index] = numbers[i];
                 index++;
             }

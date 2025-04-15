@@ -1,4 +1,3 @@
-
 package org.academy.tasks;
 
 import org.academy.util.Authors;

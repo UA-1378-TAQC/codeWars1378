@@ -2,17 +2,16 @@ package org.academy.util.data;
 
 import org.academy.kata.console.ConsoleOutputCaptor;
 import org.academy.kata.dataproviders.WriterDataProvider;
+import org.academy.kata.dataproviders.WriterStringDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import static org.testng.Assert.assertEquals;
 
-import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 
 public class ConsoleWriterTest extends WriterDataProvider {
-
     private ConsoleOutputCaptor captor;
     private IWriter writer;
 
@@ -32,21 +31,7 @@ public class ConsoleWriterTest extends WriterDataProvider {
     public void testWritePrompt() {
     }
 
-    @Test
     public void testWriteResult() {
-    }
-
-    @Test(dataProvider = "intDataProvider", dataProviderClass = WriterDataProvider.class)
-    public void testTestWriteResult(int input, String expectedOutput) {
-        ConsoleWriter writer = new ConsoleWriter();
-        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
-
-        captor.startCapture();
-        writer.writeResult(input);
-        captor.stopCapture();
-
-        String output = captor.getOutput();
-        assertEquals(output, expectedOutput);
     }
 
     @Test
@@ -58,22 +43,7 @@ public class ConsoleWriterTest extends WriterDataProvider {
         writer.writeResult(value);
         String actualOutput = captor.getOutput().trim();
 
-        Assert.assertEquals(actualOutput, expectedOutput,
-                "Expected output: " + expectedOutput + ", but got: " + actualOutput);
-    }
-
-    @Test(dataProvider = "longDataProvider")
-    public void testTestWriteResult3(long input, String expectedOutput) {
-        ConsoleWriter writer = new ConsoleWriter();
-        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
-
-        captor.startCapture();
-        writer.writeResult(input);
-        captor.stopCapture();
-
-        String output = captor.getOutput();
-        assertEquals(output.trim(), expectedOutput.trim());
-
+        Assert.assertEquals(actualOutput, expectedOutput, "Expected output: " + expectedOutput + ", but got: " + actualOutput);
     }
 
     @Test
@@ -95,6 +65,7 @@ public class ConsoleWriterTest extends WriterDataProvider {
     @Test
     public void testTestWriteArray() {
     }
+
 
     @Test
     public void testTestWriteArray1() {

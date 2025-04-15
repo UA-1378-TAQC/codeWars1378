@@ -2,13 +2,12 @@ package org.academy.util.data;
 
 import org.academy.kata.console.ConsoleInputCaptor;
 import org.academy.kata.dataproviders.ConsoleReaderDataProvider;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import org.testng.Assert;
-
-public class ConsoleReaderTest {
+public class ConsoleReaderTest extends ConsoleReaderDataProvider {
     ConsoleInputCaptor inputCaptor;
     private IReader reader;
 
@@ -23,6 +22,7 @@ public class ConsoleReaderTest {
         inputCaptor.restoreInput();
     }
 
+
     @Test
     public void testReadInt() {
     }
@@ -36,6 +36,9 @@ public class ConsoleReaderTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
+    @Test
+    public void testReadFloat() {
+    }
 
     @Test
     public void testReadDouble() {
