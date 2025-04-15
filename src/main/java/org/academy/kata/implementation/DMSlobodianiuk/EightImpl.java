@@ -38,7 +38,7 @@ public class EightImpl extends Base implements IEight {
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
         if (input == null || input.length == 0) {
-            int empty[] = {};
+            int[] empty = {};
             return empty;
         }
 
@@ -53,7 +53,7 @@ public class EightImpl extends Base implements IEight {
             }
         }
 
-        int res[] = {pos_count, neg_sum};
+        int[] res = {pos_count, neg_sum};
 
         return res;
     }
@@ -77,7 +77,7 @@ public class EightImpl extends Base implements IEight {
             }
         }
 
-        int new_numbers[] = new int[k];
+        int[] new_numbers = new int[k];
 
         int p = 0;
         for (int i = 0; i < numbers.length; i++) {
@@ -100,11 +100,7 @@ public class EightImpl extends Base implements IEight {
         double t = ((factorial(p - 1) + 1) % (Math.pow(p, 2)));
 
 
-        if (t == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return t == 0;
     }
 
 

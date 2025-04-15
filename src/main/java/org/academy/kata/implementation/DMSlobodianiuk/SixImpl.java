@@ -29,7 +29,7 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String balance(String book) {
-        String balance[] = book.split("\n");
+        String[] balance = book.split("\n");
 
 
         for (int i = 0; i < balance.length; i++) {
@@ -48,7 +48,7 @@ public class SixImpl extends Base implements ISix {
 
         for (int i = 1; i < balance.length; i++) {
 
-            String t[] = balance[i].split(" ");
+            String[] t = balance[i].split(" ");
             // System.out.println(Arrays.toString(t));
             String check_Number = t[0];
             String catagory = t[1];
@@ -108,7 +108,7 @@ public class SixImpl extends Base implements ISix {
         double mean_value = 0;
 
         for (String mv : month_value) {
-            String t_month_value[] = mv.split(" ");
+            String[] t_month_value = mv.split(" ");
             mean_value += Double.parseDouble(t_month_value[1]);
         }
 
@@ -134,7 +134,7 @@ public class SixImpl extends Base implements ISix {
         double d = 0;
 
         for (String vv : variance_value_arr) {
-            String t_month_value[] = vv.split(" ");
+            String[] t_month_value = vv.split(" ");
             double t_value = Double.parseDouble(t_month_value[1]);
             // d += (t_value - mean_value) * (t_value - mean_value);
             d += Math.pow((t_value - mean_value), 2);
@@ -144,7 +144,7 @@ public class SixImpl extends Base implements ISix {
     }
 
     public static String extract(String town, String towns) {
-        String towns_splited[] = towns.split("\n");
+        String[] towns_splited = towns.split("\n");
 
 
         for (String line : towns_splited) {
@@ -172,13 +172,13 @@ public class SixImpl extends Base implements ISix {
         int conceded = 0;
         int points = 0;
 
-        String resultSheetSplited[] = resultSheet.split(",");
+        String[] resultSheetSplited = resultSheet.split(",");
 
         for (String rss : resultSheetSplited) {
             // System.out.println(rss);
             if (rss.contains(toFind)) {
                 // System.out.println("\n"+rss);
-                String t[] = rss.split(" ");
+                String[] t = rss.split(" ");
 
                 double num_1 = 0;
                 double num_2 = 0;
@@ -259,7 +259,7 @@ public class SixImpl extends Base implements ISix {
 
         for (int i = 0; i < lstOfArt.length; i++) {
             if (lettersSet.contains(lstOfArt[i].substring(0, 1))) {
-                String t[] = lstOfArt[i].split(" ");
+                String[] t = lstOfArt[i].split(" ");
                 String art = t[0].substring(0, 1);
                 int books = Integer.parseInt(t[1]);
                 list.merge(art, books, Integer::sum);
