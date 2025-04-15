@@ -34,8 +34,11 @@ public class ConsoleWriterTest extends WriterDataProvider {
         Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 
-    @Test
-    public void testTestWriteResult1() {
+    @Test(dataProvider = "floatDataProvider", dataProviderClass = WriterDataProvider.class)
+    public void testTestWriteResult1(float input, String expectedOutput) {
+        writer.writeResult(input);
+        String actualOutput = captor.getOutput();
+        Assert.assertEquals(actualOutput, expectedOutput);
     }
 
     @Test(dataProvider = "doubleDataProvider", dataProviderClass = WriterDataProvider.class)
