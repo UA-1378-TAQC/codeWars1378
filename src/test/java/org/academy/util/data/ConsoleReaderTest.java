@@ -44,7 +44,7 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
 
         float actual = consoleReader.readFloat(minValue);
 
-        assertEquals(actual, expected, 0.0001f);
+        Assert.assertEquals(actual, expected, 0.0001f);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
         inputCaptor.setInput(input);
         ConsoleReader reader = new ConsoleReader();
         int[] result = reader.readIntArray(0);
-        assertEquals(result, expected);
+        Assert.assertEquals(result, expected);
     }
 
     @Test

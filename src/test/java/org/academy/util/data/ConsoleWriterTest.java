@@ -53,7 +53,7 @@ public class ConsoleWriterTest extends WriterDataProvider {
     @Test(dataProvider = "booleanDataProvider", dataProviderClass = WriterDataProvider.class)
     public void testTestWriteResult4(boolean input, String expected) {
         writer.writeResult(input);
-        assertEquals(captor.getOutput(), expected);
+        Assert.assertEquals(captor.getOutput(), expected);
     }
 
     @Test(dataProvider = "characterData", dataProviderClass = WriterDataProvider.class)
@@ -88,10 +88,10 @@ public class ConsoleWriterTest extends WriterDataProvider {
         Assert.assertEquals(normalizedActual, normalizedExpected);
     }
 
-    @Test(dataProvider="testWriteArray2String",dataProviderClass= WriterDataProvider.class)
+    @Test(dataProvider = "testWriteArray2String", dataProviderClass = WriterDataProvider.class)
     public void testTestWriteArray2(String[] input, String[] expectedOutput) {
         writer.writeResult(input);
 
-        assertEquals(captor.getOutput(), expectedOutput);
+        Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 }

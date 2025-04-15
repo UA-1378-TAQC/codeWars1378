@@ -3,6 +3,7 @@ package org.academy.kata;
 import org.academy.kata.dataproviders.FiveDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import java.util.Arrays;
 
 public class FiveTest extends FiveDataProvider {

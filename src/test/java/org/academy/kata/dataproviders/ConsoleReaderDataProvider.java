@@ -1,6 +1,7 @@
 package org.academy.kata.dataproviders;
 
 import org.testng.annotations.DataProvider;
+
 import java.math.BigInteger;
 
 public class ConsoleReaderDataProvider {
