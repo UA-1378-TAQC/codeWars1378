@@ -21,7 +21,7 @@ public class FiveImpl extends Base implements IFive {
 
         for (long i = m; i <= n; i++) {
             if (isPrime(i)) {
-                if(prev != i && i - prev == g) {
+                if (prev != i && i - prev == g) {
                     return new long[]{prev, i};
                 }
                 prev = i;
@@ -30,10 +30,10 @@ public class FiveImpl extends Base implements IFive {
         return null;
     }
 
-    private static int countDiv(int n){
+    private static int countDiv(int n) {
         int step = 5;
         int counter = 0;
-        while (step <= n){
+        while (step <= n) {
             counter += (n / step);
             step *= 5;
         }
@@ -42,7 +42,7 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public int zeros(int n) {
-        if(n==0)
+        if (n == 0)
             return 0;
         return countDiv(n);
     }
@@ -87,19 +87,19 @@ public class FiveImpl extends Base implements IFive {
         double range_begin = 1e-12;
         double range_end = 1.0 - range_begin;
 
-        for(int i = 0 ; i < 100 ; i++){
+        for (int i = 0; i < 100; i++) {
 
-            double range_middle = (range_begin + range_end)/2.0;
+            double range_middle = (range_begin + range_end) / 2.0;
             double range_middle_value = calcFunction(range_middle);
 
-            if(m > range_middle_value){
+            if (m > range_middle_value) {
                 range_begin = range_middle;
             } else {
                 range_end = range_middle;
             }
 
         }
-        return (range_begin + range_end)/2.0;
+        return (range_begin + range_end) / 2.0;
     }
 
     private static String moveCharacter(String str, int fromIndex, int toIndex) {
@@ -117,18 +117,18 @@ public class FiveImpl extends Base implements IFive {
         int count = String.valueOf(n).length();
 
         long min = n;
-        int r1 = -1,r2 = -1;
+        int r1 = -1, r2 = -1;
 
-        for(int i = 0 ; i < count; i++){
-            for(int j = 0 ; j < count; j++){
-                if(i==j) continue;
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < count; j++) {
+                if (i == j) continue;
 
                 String string = String.valueOf(n);
-                string = moveCharacter(string,i,j);
+                string = moveCharacter(string, i, j);
 
                 long new_num = Long.parseLong(string);
 
-                if(new_num < min){
+                if (new_num < min) {
                     min = new_num;
                     r1 = i;
                     r2 = j;
@@ -136,6 +136,6 @@ public class FiveImpl extends Base implements IFive {
             }
         }
 
-        return new long[] {min,(long)r1,(long)r2};
+        return new long[]{min, (long) r1, (long) r2};
     }
 }

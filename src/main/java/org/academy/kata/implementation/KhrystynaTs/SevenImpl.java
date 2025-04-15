@@ -11,13 +11,19 @@ public class SevenImpl extends Base implements ISeven {
             sum += number;
         }
         long result = (long) Math.ceil(navg * (arr.length + 1) - sum);
-        if(result <= 0){
+        if (result <= 0) {
             throw new IllegalArgumentException("Expected value is too low");
-        }else
+        } else
             return result;
 
     }
 
     @Override
-    public String seriesSum(int n) {return null;}
+    public String seriesSum(int n) {
+        double sum = 0.0;
+        for (int i = 0; i < n; i++) {
+            sum += 1.0 / (3 * i + 1);
+        }
+        return String.format("%.2f", sum);
+    }
 }

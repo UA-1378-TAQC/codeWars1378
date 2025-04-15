@@ -55,7 +55,7 @@ public class FiveImpl extends Base implements IFive {
         BigInteger c = BigInteger.ONE;
         BigInteger sum = BigInteger.ZERO;
 
-        for(int i = 0; i <= n.intValue(); i++) {
+        for (int i = 0; i <= n.intValue(); i++) {
             a = b;
             b = c;
             c = a.add(b);

@@ -34,9 +34,10 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public int zeros(int n) {
+        final int FACTOR_FOR_TRAILING_ZERO = 5;
         int count = 0;
         while (n > 0) {
-            n /= 5;
+            n /= FACTOR_FOR_TRAILING_ZERO;
             count += n;
         }
         return count;
@@ -47,6 +48,7 @@ public class FiveImpl extends Base implements IFive {
         BigInteger firstFibonacci = BigInteger.ONE;
         BigInteger secondFibonacci = BigInteger.ONE;
         BigInteger totalSideLength = BigInteger.ZERO;
+        final BigInteger SIDES_PER_SQUARE = BigInteger.valueOf(4);
 
         for (BigInteger i = BigInteger.ZERO; i.compareTo(n) <= 0; i = i.add(BigInteger.ONE)) {
             totalSideLength = totalSideLength.add(firstFibonacci);
@@ -56,12 +58,19 @@ public class FiveImpl extends Base implements IFive {
             secondFibonacci = next;
         }
 
-        return totalSideLength.multiply(BigInteger.valueOf(4));
+        return totalSideLength.multiply(SIDES_PER_SQUARE);
     }
 
     @Override
     public double solve(double m) {
-        return ((2 * m + 1) - Math.sqrt(4 * m + 1)) / (2 * m);
+        final double COEFFICIENT_A = 2.0;
+        final double COEFFICIENT_B = 1.0;
+        final double UNDER_ROOT_MULTIPLIER = 4.0;
+
+        double numerator = (COEFFICIENT_A * m + COEFFICIENT_B) - Math.sqrt(UNDER_ROOT_MULTIPLIER * m + COEFFICIENT_B);
+        double denominator = COEFFICIENT_A * m;
+
+        return numerator / denominator;
     }
 
     @Override
