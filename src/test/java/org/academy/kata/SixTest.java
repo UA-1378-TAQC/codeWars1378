@@ -36,8 +36,10 @@ public class SixTest extends SixDataProvider {
         Assert.assertEquals(actual, expected, 1e-2, String.format("abs(actual - expected) must be <= 1e-2. Expected was %f, but got %f", expected, actual));
     }
 
-    @Test
-    public void testVariance() {
+    @Test(dataProvider="varianceDataProvider")
+    public void testVariance(String town,String strn,double expectedValue,ISix iSix) {
+        double actualValue = iSix.variance(town, strn);
+        Assert.assertEquals(actualValue, expectedValue,0.000000001);
     }
 
     @Test(dataProvider = "nbaData", dataProviderClass = SixDataProvider.class)

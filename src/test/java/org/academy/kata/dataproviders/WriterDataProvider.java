@@ -127,7 +127,7 @@ public class WriterDataProvider {
                 {new String[]{"100", "200", "300"}, new String[]{"100", "200", "300"}}
         };
     }
-  
+
     @DataProvider(name = "writeResultObjectDataProvider")
     protected Object[][] writeResultObjectDataProvider(){
         Object[][] data = new Object[][]{

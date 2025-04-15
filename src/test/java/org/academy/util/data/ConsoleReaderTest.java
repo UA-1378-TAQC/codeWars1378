@@ -8,6 +8,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.math.BigInteger;
 import java.util.NoSuchElementException;
 
 
@@ -75,8 +78,12 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
         }
     }
 
-    @Test
-    public void testReadBigInteger() {
+    @Test(dataProvider = "bigIntegerDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
+    public void testReadBigInteger(BigInteger minVal, String input, BigInteger expectedResult) {
+        inputCaptor.setInput(input);
+        ConsoleReader reader = new ConsoleReader();
+        BigInteger result = reader.readBigInteger(minVal);
+        Assert.assertEquals(result, expectedResult);
     }
 
     @Test(dataProvider = "readStringDataProvider")

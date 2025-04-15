@@ -89,16 +89,6 @@ public class EightDataProvider extends BaseDataProvider {
         return combineDataProviders(data, EIGHTS);
     }
 
-    @DataProvider(name = "wilsonDataProvider")
-    protected Object[][] wilsonDataProvider() {
-        Object[][] data = new Object[][]{
-                {0, false},
-                {1, false},
-                {5, true},
-        };
-        return combineDataProviders(data, EIGHTS);
-    }
-
     @DataProvider(name = "squareRootDataProvider")
     public Object[][] squareRootDataProvider() {
         Object[][] data = new Object[][]{
@@ -159,6 +149,18 @@ public class EightDataProvider extends BaseDataProvider {
                 {10.8, 5},
                 {5.9, 2},
                 {6.0, 3}
+        };
+        return combineDataProviders(data, EIGHTS);
+    }
+
+    @DataProvider(name="wilsonDataProvider")
+    protected Object[][] wilsonDataProvider(){
+        Object[][] data = new Object[][]{
+            {0,false},
+            {1,false},
+            {5,true},
+            {13,true},
+            {15,false}
         };
         return combineDataProviders(data, EIGHTS);
     }
