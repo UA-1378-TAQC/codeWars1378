@@ -1,15 +1,14 @@
 package org.academy.util.data;
 
 import org.academy.kata.console.ConsoleOutputCaptor;
-import org.academy.kata.dataproviders.WriterStringDataProvider;
 import org.academy.kata.dataproviders.WriterDataProvider;
-import org.testng.annotations.*;
-import static org.testng.Assert.assertEquals;
+import org.academy.kata.dataproviders.WriterStringDataProvider;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.Assert;
 
+import static org.testng.Assert.assertEquals;
 
 
 public class ConsoleWriterTest extends WriterDataProvider {
@@ -47,8 +46,7 @@ public class ConsoleWriterTest extends WriterDataProvider {
         writer.writeResult(value);
         String actualOutput = captor.getOutput().trim();
 
-        Assert.assertEquals(actualOutput, expectedOutput,
-                "Expected output: " + expectedOutput + ", but got: " + actualOutput);
+        Assert.assertEquals(actualOutput, expectedOutput, "Expected output: " + expectedOutput + ", but got: " + actualOutput);
     }
 
     @Test
