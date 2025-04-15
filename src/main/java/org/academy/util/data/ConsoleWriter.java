@@ -1,5 +1,6 @@
 package org.academy.util.data;
 
+
 public class ConsoleWriter implements IWriter {
     @Override
     public void writePrompt(String prompt) {

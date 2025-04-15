@@ -21,7 +21,7 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public float mpgToKPM(float mpg) {
-        return Math.round(ROUND_TO * (float) mpg * MPG_TO_KPM) / ROUND_TO;
+        return Math.round(ROUND_TO * mpg * MPG_TO_KPM) / ROUND_TO;
     }
 
     @Override
@@ -105,8 +105,6 @@ public class EightImpl extends Base implements IEight {
             return true;
         else if (n == 13)
             return true;
-        else if (n == 563)
-            return true;
-        return false;
+        else return n == 563;
     }
 }

@@ -2,6 +2,7 @@ package org.academy.kata.dataproviders;
 
 import org.academy.kata.IFive;
 import org.testng.annotations.DataProvider;
+
 import java.util.List;
 
 public class FiveDataProvider extends BaseDataProvider {
