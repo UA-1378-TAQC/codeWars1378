@@ -103,6 +103,25 @@ public class ConsoleReaderDataProvider {
         };
     }
 
+    @DataProvider(name="doubleDataProvider")
+    protected Object[][] doubleDataProvider() {
+        return new Object[][]{
+                {0.0, "23.0", 23.0},
+                {null, "78.9", 78.9},
+                {-17.0, "-11", -11.0},
+                {0.0, "0", 0.0},
+        };
+    }
+
+    @DataProvider(name="doubleIncorrectDataProvider")
+    protected Object[][] doubleIncorrectDataProvider() {
+        return new Object[][]{
+                {0.0, "drt"},
+                {8.0, "2.0"},
+                {null, "null"}
+        };
+    }
+
     @DataProvider(name = "readDoubleArrayDataProvider")
     public Object[][] readDoubleArrayDataProvider() {
         return new Object[][]{

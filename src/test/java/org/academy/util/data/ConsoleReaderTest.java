@@ -1,6 +1,7 @@
 package org.academy.util.data;
 
 import org.academy.kata.console.ConsoleInputCaptor;
+import org.academy.kata.console.ConsoleOutputCaptor;
 import org.academy.kata.dataproviders.ConsoleReaderDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -9,32 +10,29 @@ import org.testng.annotations.Test;
 
 
 public class ConsoleReaderTest extends ConsoleReaderDataProvider {
-
-    ConsoleInputCaptor inputCaptor;
+    private ConsoleInputCaptor inputCaptor;
+    private ConsoleOutputCaptor outputCaptor;
     private IReader reader;
-
 
     @BeforeMethod
     public void setUpInputStream() {
         inputCaptor = new ConsoleInputCaptor();
+        outputCaptor = new ConsoleOutputCaptor();
     }
 
     @AfterMethod
     public void restoreInputStream() {
         inputCaptor.restoreInput();
+        outputCaptor.stopCapture();
     }
-
 
     @Test(dataProvider = "readIntDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
     public void testReadInt(int minValue, String simulatedInput, int expected) {
         inputCaptor.setInput(simulatedInput + "\n");
         ConsoleReader consoleReader = new ConsoleReader();
-
         int actual = consoleReader.readInt(minValue);
-
         Assert.assertEquals(actual, expected);
     }
-
 
     @Test(dataProvider = "longDataProvider", dataProviderClass = ConsoleReaderDataProvider.class)
     public void testReadLong(long minValue, String simulatedInput, long expectedResult) {
@@ -55,8 +53,24 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
 
     }
 
-    @Test
-    public void testReadDouble() {
+    @Test(dataProvider = "doubleDataProvider")
+    public void testReadDouble(Double minValue, String input, Double expectedResult) {
+        inputCaptor.setInput(input);
+        ConsoleReader reader = new ConsoleReader();
+        outputCaptor.startCapture();
+        assertEquals(reader.readDouble(minValue), expectedResult);
+    }
+
+    @Test(dataProvider = "doubleIncorrectDataProvider")
+    public void testReadDoubleIncorrect(Double minValue, String input) {
+        inputCaptor.setInput(input);
+        ConsoleReader reader = new ConsoleReader();
+        outputCaptor.startCapture();
+        try {
+            reader.readDouble(minValue);
+        } catch (Exception e) {
+            assertEquals(outputCaptor.getOutput(), "Incorrect input, please try again:");
+        }
     }
 
     @Test

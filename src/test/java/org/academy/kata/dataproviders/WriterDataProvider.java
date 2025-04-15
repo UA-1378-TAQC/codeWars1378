@@ -6,6 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WriterDataProvider {
+    @DataProvider(name = "characterData")
+    public Object[][] characterData() {
+        return new Object[][]{
+                {'A', "A"},
+                {'m', "m"},
+                {'Z', "Z"},
+                {'1', "1"},
+                {'#', "#"}
+        };
+    }
 
     @DataProvider(name = "characterData")
     public Object[][] characterData() {
