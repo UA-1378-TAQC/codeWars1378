@@ -1,10 +1,13 @@
 package org.academy.kata;
 
 import org.academy.kata.dataproviders.SixDataProvider;
+import org.academy.util.Authors;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;
 
 public class SixTest extends SixDataProvider {
+
 
     @Test(dataProvider = "findNbDataProvider")
     public void testFindNb(long input, long expected, ISix iSix) {
@@ -31,8 +34,10 @@ public class SixTest extends SixDataProvider {
     public void testVariance() {
     }
 
-    @Test
-    public void testNbaCup() {
+    @Test(dataProvider = "nbaData", dataProviderClass = SixDataProvider.class)
+    public void testNbaCup(String resultSheet, String team, String expected, ISix sixImpl) {
+        String actual = sixImpl.nbaCup(resultSheet, team);
+        Assert.assertEquals(actual, expected, "Failed for implementation: " + sixImpl.getClass().getSimpleName());
     }
 
     @Test
