@@ -30,7 +30,6 @@ public class SevenImpl extends Base implements ISeven {
         } else {
             for (int i = 0; i < n; i++) {
                 result += 1.0 / (1 + 3 * i);
-                System.out.println(1 + 3 * i);
             }
         }
         double rounded = (Math.round(result * Math.pow(10, accuracy)) / Math.pow(10, accuracy));
