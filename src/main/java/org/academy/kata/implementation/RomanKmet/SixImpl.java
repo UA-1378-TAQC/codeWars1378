@@ -3,12 +3,12 @@ package org.academy.kata.implementation.RomanKmet;
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class SixImpl extends Base implements ISix {
     @Override
@@ -24,12 +24,43 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String balance(String book) {
-        return "";
+        String cleaned = book.replaceAll("[^a-zA-Z0-9.\\s]", "").replaceAll(" +", " ").trim();
+        String[] lines = cleaned.split("\\n");
+        double originalBalance = Double.parseDouble(lines[0]);
+        double balance = originalBalance;
+        double totalExpense = 0.0;
+        int count = 0;
+        StringBuilder report = new StringBuilder();
+        report.append(String.format("Original Balance: %.2f\r\n", originalBalance));
+        for (int i = 1; i < lines.length; i++) {
+            String line = lines[i].trim();
+            if (line.isEmpty()) continue;
+
+            String[] parts = line.split(" ");
+            if (parts.length != 3) continue;
+
+            String checkNumber = parts[0];
+            String category = parts[1];
+            double amount = Double.parseDouble(parts[2]);
+
+            balance -= amount;
+            totalExpense += amount;
+            count++;
+
+            report.append(String.format("%s %s %.2f Balance %.2f\r\n",
+                    checkNumber, category, amount, balance));
+        }
+        double averageExpense = totalExpense / count;
+
+        report.append(String.format("Total expense  %.2f\r\n", totalExpense));
+        report.append(String.format("Average expense  %.2f", averageExpense));
+
+        return report.toString();
     }
 
     @Override
     public double f(double x) {
-        return 0;
+        return x / (Math.sqrt(1 + x) + 1);
     }
 
     @Override
@@ -60,7 +91,56 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String nbaCup(String resultSheet, String toFind) {
-        return "";
+        if (toFind == null || toFind.isEmpty()) {
+            return "";
+        }
+        String[] matches = resultSheet.split(",");
+        int wins = 0, draws = 0, losses = 0, scored = 0, conceded = 0;
+        for (String match : matches) {
+            if (match.contains(toFind)) {
+                Pattern pattern = Pattern.compile("(.+) (\\d+) (.+) (\\d+)");
+                Matcher matcher = pattern.matcher(match.trim());
+
+                if (!matcher.matches()) {
+                    if (match.matches(".*\\d+\\.\\d+.*")) {
+                        return "Error(float number):" + match.trim();
+                    }
+                    continue;
+                }
+                String team1 = matcher.group(1).trim();
+                int score1 = Integer.parseInt(matcher.group(2));
+                String team2 = matcher.group(3).trim();
+                int score2 = Integer.parseInt(matcher.group(4));
+
+                if (team1.equals(toFind)) {
+                    scored += score1;
+                    conceded += score2;
+                    if (score1 > score2) {
+                        wins++;
+                    } else if (score1 < score2) {
+                        losses++;
+                    } else {
+                        draws++;
+                    }
+                } else if (team2.equals(toFind)) {
+                    scored += score2;
+                    conceded += score1;
+                    if (score2 > score1) {
+                        wins++;
+                    } else if (score2 < score1) {
+                        losses++;
+                    } else {
+                        draws++;
+                    }
+                }
+            }
+        }
+        if (wins == 0 && draws == 0 && losses == 0 && scored == 0 && conceded == 0) {
+            return toFind + ":This team didn't play!";
+        }
+        int points = (wins * 3) + (draws);
+        return String.format("%s:W=%d;D=%d;L=%d;Scored=%d;Conceded=%d;Points=%d",
+                toFind, wins, draws, losses, scored, conceded, points);
     }
 
     @Override
@@ -83,7 +163,7 @@ public class SixImpl extends Base implements ISix {
         }
         StringBuilder result = new StringBuilder();
         for (String category : lstOf1stLetter) {
-            if (result.length() > 0) {
+            if (!result.isEmpty()) {
                 result.append(" - ");
             }
             result.append("(").append(category).append(" : ").append(categoryCounts.get(category)).append(")");

@@ -1,6 +1,7 @@
 package org.academy.util.data;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.function.Function;
 
 public class InputValidator {

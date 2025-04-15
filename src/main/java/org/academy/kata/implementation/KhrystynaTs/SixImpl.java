@@ -2,8 +2,13 @@ package org.academy.kata.implementation.KhrystynaTs;
 
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
-import static java.util.stream.Stream.of;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.DoubleStream;
+
+import static java.util.stream.Stream.of;
+
 
 public class SixImpl extends Base implements ISix {
     @Override
@@ -39,11 +44,24 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double f(double x) {
-        if (Math.abs(x) < 1e-15) {
-            return x / 2;
+        double A = x;
+        double B = -(2 * x + 1);
+        double C = x;
+
+        double discriminant = B * B - 4 * A * C;
+
+        double sqrtDiscriminant = Math.sqrt(discriminant);
+
+        double x1 = (-B + sqrtDiscriminant) / (2 * A);
+        double x2 = (-B - sqrtDiscriminant) / (2 * A);
+
+        if (x1 > 0 && x1 < 1) {
+            return x1;
+        } else {
+            return x2;
         }
-        return x / (Math.sqrt(1 + x) + 1);
     }
+
     @Override
     public double mean(String town, String strng) {
 
@@ -56,10 +74,12 @@ public class SixImpl extends Base implements ISix {
         return stream(town, strng).map(m -> Math.pow(m - mean(town, strng), 2)).average().orElse(-1);
 
     }
-   public DoubleStream stream(String town, String data) {
+
+    public DoubleStream stream(String town, String data) {
         return of(data.split("\n")).filter(s -> s.startsWith(town + ":"))
                 .flatMapToDouble(s -> of(s.replaceAll("[^\\d.]", " ").trim().split("\\s+")).mapToDouble(Double::parseDouble));
     }
+
     @Override
     public String nbaCup(String resultSheet, String toFind) {
         if (toFind.equals(""))
@@ -131,8 +151,32 @@ public class SixImpl extends Base implements ISix {
                     + ";Points=" + points;
         }
     }
+
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return "";
+        Map<String, Integer> categoryTotals = new HashMap<>();
+        for (String category : lstOf1stLetter) {
+            categoryTotals.put(category, 0);
+        }
+        for (String entry : lstOfArt) {
+            String[] parts = entry.split(" ");
+            String code = parts[0];
+            int quantity = Integer.parseInt(parts[1]);
+
+            String category = String.valueOf(code.charAt(0));
+            if (categoryTotals.containsKey(category)) {
+                categoryTotals.put(category, categoryTotals.get(category) + quantity);
+            }
+        }
+        StringBuilder result = new StringBuilder();
+        for (String category : lstOf1stLetter) {
+            result.append("(").append(category).append(" : ").append(categoryTotals.get(category)).append(") - ");
+        }
+        if (result.length() > 0) {
+            result.setLength(result.length() - 3);
+        }
+
+        return result.toString();
     }
+
 }
