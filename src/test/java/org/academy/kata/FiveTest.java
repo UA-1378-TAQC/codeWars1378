@@ -4,8 +4,6 @@
     import org.testng.annotations.Test;
     import org.testng.asserts.SoftAssert;
 
-    import static org.testng.Assert.assertEquals;
-
     public class FiveTest extends FiveDataProvider {
         SoftAssert softAssert = new SoftAssert();
         @Test
