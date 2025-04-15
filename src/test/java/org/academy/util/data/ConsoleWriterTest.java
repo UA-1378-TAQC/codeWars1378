@@ -1,6 +1,7 @@
 package org.academy.util.data;
 
 import org.academy.kata.console.ConsoleOutputCaptor;
+import org.academy.kata.dataproviders.ConsoleWriterDataProvider;
 import org.academy.kata.dataproviders.WriterDataProvider;
 import org.academy.kata.dataproviders.WriterStringDataProvider;
 import org.testng.Assert;
@@ -8,8 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-
-public class ConsoleWriterTest extends WriterDataProvider {
+public class ConsoleWriterTest extends WriterDataProvider , ConsoleWriterDataProvider {
     private ConsoleOutputCaptor captor;
     private IWriter writer;
 
@@ -68,8 +68,11 @@ public class ConsoleWriterTest extends WriterDataProvider {
         Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 
-    @Test
-    public void testTestWriteResult6() {
+    @Test(dataProvider = "writeResultObjectDataProvider")
+    public void testTestWriteResultObject(Object input, String expected) {
+        ConsoleWriter consoleWriter = new ConsoleWriter();
+        consoleWriter.writeResult(input);
+        Assert.assertEquals(expected, captor.getOutput());
     }
 
     @Test(dataProvider = "writeArrayDataProvider")
