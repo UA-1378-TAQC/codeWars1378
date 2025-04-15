@@ -7,15 +7,14 @@ public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
         long n = 1;
-        while(m > 0)
-        {
-            m-=n*n*n;
+        while (m > 0) {
+            m -= n * n * n;
             n++;
         }
-        if(m < 0)
+        if (m < 0)
             return -1;
         else
-            return n-1;
+            return n - 1;
     }
 
     @Override
@@ -28,7 +27,7 @@ public class SixImpl extends Base implements ISix {
         double average;
         double balance = Double.parseDouble(array[0].split(":")[1].trim());
 
-        for(int i = 1; i < array.length; i++) {
+        for (int i = 1; i < array.length; i++) {
             String[] temp = array[i].split("\\s+");
             double expense = Double.parseDouble(temp[2]);
             balance -= expense;
@@ -38,7 +37,7 @@ public class SixImpl extends Base implements ISix {
 
         average = total / (array.length - 1);
         StringBuilder res = new StringBuilder();
-        for(String line : array) {
+        for (String line : array) {
             res.append(line).append("\\r\\n");
         }
         res.append("Total expense  ").append(String.format("%.2f", total)).append("\\r\\n");
@@ -92,7 +91,7 @@ public class SixImpl extends Base implements ISix {
     @Override
     public String nbaCup(String resultSheet, String toFind) {
         return "";
-     }
+    }
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {

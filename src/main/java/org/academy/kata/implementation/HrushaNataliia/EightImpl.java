@@ -55,7 +55,7 @@ public class EightImpl extends Base implements IEight {
                 negativeSum += num;
             }
         }
-        return new int[] {positiveCount, negativeSum};
+        return new int[]{positiveCount, negativeSum};
     }
 
     @Override

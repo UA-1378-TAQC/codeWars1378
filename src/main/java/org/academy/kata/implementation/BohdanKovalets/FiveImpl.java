@@ -48,7 +48,7 @@ public class FiveImpl extends Base implements IFive {
         BigInteger b = BigInteger.ONE;
         BigInteger sum = a;
 
-        for (int i=1; i<=num; i++) {
+        for (int i = 1; i <= num; i++) {
             sum = sum.add(b);
             BigInteger temp = b;
             b = a.add(b);
@@ -62,22 +62,22 @@ public class FiveImpl extends Base implements IFive {
         double left = 0;
         double right = 1;
 
-        for (int i=0; i<100; i++) {
-            double x = (left+right) / 2;
-            double result = x / ((1-x) * (1-x));
+        for (int i = 0; i < 100; i++) {
+            double x = (left + right) / 2;
+            double result = x / ((1 - x) * (1 - x));
 
-            if (Math.abs(result-m) < 1e-12) {
+            if (Math.abs(result - m) < 1e-12) {
                 return x;
             }
 
-            if (result<m) {
+            if (result < m) {
                 left = x;
             } else {
                 right = x;
             }
         }
 
-        return (left + right)/2;
+        return (left + right) / 2;
     }
 
     @Override
@@ -109,6 +109,6 @@ public class FiveImpl extends Base implements IFive {
             }
         }
 
-        return new long[] { minResult, from, to };
+        return new long[]{minResult, from, to};
     }
 }

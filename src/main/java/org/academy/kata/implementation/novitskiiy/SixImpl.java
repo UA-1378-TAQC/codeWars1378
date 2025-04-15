@@ -3,11 +3,11 @@ package org.academy.kata.implementation.novitskiiy;
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class SixImpl extends Base implements ISix {
