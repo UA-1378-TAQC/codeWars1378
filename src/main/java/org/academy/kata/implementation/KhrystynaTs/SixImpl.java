@@ -2,10 +2,12 @@ package org.academy.kata.implementation.KhrystynaTs;
 
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
+
 import java.util.HashMap;
 import java.util.Map;
-import static java.util.stream.Stream.of;
 import java.util.stream.DoubleStream;
+
+import static java.util.stream.Stream.of;
 
 
 public class SixImpl extends Base implements ISix {
@@ -59,7 +61,7 @@ public class SixImpl extends Base implements ISix {
             return x2;
         }
     }
-  
+
     @Override
     public double mean(String town, String strng) {
 
@@ -72,10 +74,12 @@ public class SixImpl extends Base implements ISix {
         return stream(town, strng).map(m -> Math.pow(m - mean(town, strng), 2)).average().orElse(-1);
 
     }
-   public DoubleStream stream(String town, String data) {
+
+    public DoubleStream stream(String town, String data) {
         return of(data.split("\n")).filter(s -> s.startsWith(town + ":"))
                 .flatMapToDouble(s -> of(s.replaceAll("[^\\d.]", " ").trim().split("\\s+")).mapToDouble(Double::parseDouble));
     }
+
     @Override
     public String nbaCup(String resultSheet, String toFind) {
         if (toFind.equals(""))
@@ -147,6 +151,7 @@ public class SixImpl extends Base implements ISix {
                     + ";Points=" + points;
         }
     }
+
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
         Map<String, Integer> categoryTotals = new HashMap<>();

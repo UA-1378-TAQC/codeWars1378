@@ -6,6 +6,7 @@ import org.academy.kata.IFive;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+
 public class FiveImpl extends Base implements IFive {
     @Override
     public long[] gap(int g, long m, long n) {
@@ -115,6 +116,6 @@ public class FiveImpl extends Base implements IFive {
             }
         }
 
-        return new long[] { minNumber, minI, minJ };
+        return new long[]{minNumber, minI, minJ};
     }
 }
