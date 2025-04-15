@@ -140,8 +140,6 @@ public class EightDataProvider extends BaseDataProvider {
                 {new int[]{19, 0}, new int[]{1, 0}},
                 {new int[]{7}, new int[]{1, 0}},
                 {new int[]{-7}, new int[]{0, -7}}
-                //{new int[] {}, new int[] {}},
-                //{null, new int[] {}},
         };
         return combineDataProviders(data, EIGHTS);
     }

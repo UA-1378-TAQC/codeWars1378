@@ -24,17 +24,13 @@ public class InputValidatorTest extends InputValidatorDataProvider {
     @Test(dataProvider = "floatDataProvider", dataProviderClass = InputValidatorDataProvider.class)
     public void testIsValidFloat(String prompt, Float minValue, boolean expected) {
         boolean result = InputValidator.isValidFloat(prompt, minValue);
-        Assert.assertEquals(result, expected, String.format(
-                "Validation failed for input '%s' with minValue %.2f. Expected: %b, but got: %b",
-                prompt, minValue, expected, result));
+        Assert.assertEquals(result, expected, String.format("Validation failed for input '%s' with minValue %.2f. Expected: %b, but got: %b", prompt, minValue, expected, result));
     }
 
     @Test(dataProvider = "doubleDataProvider", dataProviderClass = InputValidatorDataProvider.class)
     public void testIsValidDouble(String prompt, Double minValue, boolean expected) {
         boolean result = InputValidator.isValidDouble(prompt, minValue);
-        Assert.assertEquals(result, expected, String.format(
-                "Validation failed for input '%s' with minValue %f. Expected: %b, but got: %b",
-                prompt, minValue, expected, result));
+        Assert.assertEquals(result, expected, String.format("Validation failed for input '%s' with minValue %f. Expected: %b, but got: %b", prompt, minValue, expected, result));
     }
 
 
