@@ -7,7 +7,10 @@ import org.academy.util.data.IWriter;
 public class TaskBalance implements ITask {
     @Override
     public void run(Authors author, IReader reader, IWriter writer) {
-        writer.writePrompt("Enter book values: ");
+        writer.writePrompt("Enter book values in the following format:");
+        writer.writePrompt("First line: initial balance (e.g. 1000.00)");
+        writer.writePrompt("Next lines: check number, category, and amount separated by spaces (e.g. 125 Market 125.45)");
+        writer.writePrompt("NOTE: Use spaces between values. Avoid commas and other separators.");
 
         String numberWithDecimal = "\\d+\\.\\d{2}";
         String newline = "\\R";

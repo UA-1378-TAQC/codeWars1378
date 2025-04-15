@@ -12,10 +12,10 @@ public class SixImpl extends Base implements ISix {
         long sum = 0;
         long n = 0;
 
-        while (sum < m){
+        while (sum < m) {
             n++;
-            sum += n*n*n;
-            if (sum == m){
+            sum += n * n * n;
+            if (sum == m) {
                 return n;
             }
         }
@@ -35,7 +35,7 @@ public class SixImpl extends Base implements ISix {
         }
 
         return String.format("Original Balance: %s\\r\\n", arr[0])
-                + sb.toString()
+                + sb
                 + String.format("Total expense  %.2f\\r\\n"
                 , Arrays.stream(arr, 1, arr.length)
                         .mapToDouble(a -> Double.parseDouble(a.split("\\s+")[2]))

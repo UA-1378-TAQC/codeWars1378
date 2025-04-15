@@ -3,11 +3,12 @@ package org.academy.kata.implementation.RomanKmet;
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import java.util.Arrays;
-import java.util.regex.*;
 
 public class SixImpl extends Base implements ISix {
     @Override
@@ -59,7 +60,7 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public double f(double x) {
-        return 0;
+        return x / (Math.sqrt(1 + x) + 1);
     }
 
     @Override
@@ -137,7 +138,7 @@ public class SixImpl extends Base implements ISix {
         if (wins == 0 && draws == 0 && losses == 0 && scored == 0 && conceded == 0) {
             return toFind + ":This team didn't play!";
         }
-        int points = (wins * 3) + (draws * 1);
+        int points = (wins * 3) + (draws);
         return String.format("%s:W=%d;D=%d;L=%d;Scored=%d;Conceded=%d;Points=%d",
                 toFind, wins, draws, losses, scored, conceded, points);
     }
