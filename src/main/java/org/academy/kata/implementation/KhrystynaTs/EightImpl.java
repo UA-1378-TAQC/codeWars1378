@@ -2,8 +2,9 @@ package org.academy.kata.implementation.KhrystynaTs;
 
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
-import java.util.Arrays;
+
 import java.math.BigInteger;
+import java.util.Arrays;
 
 public class EightImpl extends Base implements IEight {
     @Override
@@ -18,19 +19,18 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public float mpgToKPM(float mpg) {
-        float kilometersPerLitre=Math.round((mpg*(1.609344/4.54609188))*100);
-        kilometersPerLitre/=100;//for 2 decimals
+        float kilometersPerLitre = Math.round((mpg * (1.609344 / 4.54609188)) * 100);
+        kilometersPerLitre /= 100;//for 2 decimals
         return kilometersPerLitre;
 
     }
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             if (Math.sqrt(array[i]) % 1 == 0) {
                 array[i] = (int) Math.sqrt(array[i]);
-            }
-            else array[i] = array[i] * array[i];
+            } else array[i] = array[i] * array[i];
         }
         return array;
     }
@@ -38,10 +38,10 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        if (input ==null || input.length == 0){
+        if (input == null || input.length == 0) {
             return new int[]{};
         }
-        int[] array = {0,0};
+        int[] array = {0, 0};
         for (int j : input) {
             if (j > 0) {
                 array[0]++;
@@ -80,10 +80,10 @@ public class EightImpl extends Base implements IEight {
     @Override
     public boolean am_i_wilson(long n) {
         if (n <= 1) {
-            return false; 
+            return false;
         }
         for (int i = 2; i <= Math.sqrt(n); i++) {
-            if (n% i == 0) {
+            if (n % i == 0) {
                 return false;
             }
         }

@@ -3,8 +3,10 @@ package org.academy.kata.implementation.RomanKmet;
 import org.academy.kata.Base;
 import org.academy.kata.IEight;
 
-import java.math.*;
-
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
+import java.util.Arrays;
 
 
 public class EightImpl extends Base implements IEight {
@@ -55,7 +57,7 @@ public class EightImpl extends Base implements IEight {
                 negativeSum += num;
             }
         }
-        return new int[] {positiveCount, negativeSum};
+        return new int[]{positiveCount, negativeSum};
     }
 
     @Override
@@ -71,8 +73,8 @@ public class EightImpl extends Base implements IEight {
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
         return Arrays.stream(numbers)
-                     .filter(number -> number % divider == 0)
-                     .toArray();
+                .filter(number -> number % divider == 0)
+                .toArray();
     }
 
     @Override
@@ -84,6 +86,7 @@ public class EightImpl extends Base implements IEight {
         BigInteger divisor = BigInteger.valueOf(n).multiply(BigInteger.valueOf(n));
         return factorial.mod(divisor).equals(BigInteger.ZERO);
     }
+
     private static boolean isPrime(long n) {
         if (n < 2) return false;
         for (long i = 2; i * i <= n; i++) {
@@ -91,6 +94,7 @@ public class EightImpl extends Base implements IEight {
         }
         return true;
     }
+
     private static BigInteger factorial(long n) {
         BigInteger result = BigInteger.ONE;
         for (long i = 2; i <= n; i++) {

@@ -2,11 +2,11 @@ package org.academy.util.data;
 
 import org.academy.kata.console.ConsoleOutputCaptor;
 import org.academy.kata.dataproviders.WriterDataProvider;
-import org.testng.annotations.*;
-
-import static org.testng.Assert.assertEquals;
-import static org.testng.AssertJUnit.assertEquals;
-
+import org.academy.kata.dataproviders.WriterStringDataProvider;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class ConsoleWriterTest extends WriterDataProvider {
     private ConsoleOutputCaptor captor;
@@ -28,51 +28,33 @@ public class ConsoleWriterTest extends WriterDataProvider {
     public void testWritePrompt() {
     }
 
-    @Test
-    public void testWriteResult() {
-    }
-
-    @Test(dataProvider = "intDataProvider", dataProviderClass = WriterDataProvider.class)
-    public void testTestWriteResult(int input, String expectedOutput) {
-        ConsoleWriter writer = new ConsoleWriter();
-        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
-
-        captor.startCapture();
+    @Test(dataProvider = "stringData", dataProviderClass = WriterStringDataProvider.class)
+    public void testWriteResult(String input, String expectedOutput) {
         writer.writeResult(input);
-        captor.stopCapture();
-
-        String output = captor.getOutput();
-        assertEquals(output, expectedOutput);
+        Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 
     @Test
     public void testTestWriteResult1() {
     }
 
-    @Test
-    public void testTestWriteResult2() {
-    }
+    @Test(dataProvider = "doubleDataProvider", dataProviderClass = WriterDataProvider.class)
+    public void testTestWriteResult2(double value, String expectedOutput) {
+        writer.writeResult(value);
+        String actualOutput = captor.getOutput().trim();
 
-    @Test(dataProvider = "longDataProvider")
-    public void testTestWriteResult3(long input, String expectedOutput) {
-        ConsoleWriter writer = new ConsoleWriter();
-        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
-
-        captor.startCapture();
-        writer.writeResult(input);
-        captor.stopCapture();
-
-        String output = captor.getOutput();
-        assertEquals(output.trim(), expectedOutput.trim());
-
+        Assert.assertEquals(actualOutput, expectedOutput, "Expected output: " + expectedOutput + ", but got: " + actualOutput);
     }
 
     @Test
     public void testTestWriteResult4() {
     }
 
-    @Test
-    public void testTestWriteResult5() {
+    @Test(dataProvider = "characterData", dataProviderClass = WriterDataProvider.class)
+    public void testTestWriteResult5(char input, String expectedOutput) {
+        writer.writeResult(input);
+
+        Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 
     @Test
@@ -82,15 +64,23 @@ public class ConsoleWriterTest extends WriterDataProvider {
     @Test(dataProvider = "writeArrayDataProvider")
     public void testWriteArray(int[] input, String expected) {
         writer.writeArray(input);
-        assertEquals(captor.getOutput(), expected);
+        Assert.assertEquals(captor.getOutput(), expected);
     }
 
     @Test
     public void testTestWriteArray() {
     }
 
-    @Test
-    public void testTestWriteArray1() {
+
+    @Test(dataProvider = "doubleArrayDataProvider", dataProviderClass = WriterDataProvider.class)
+    public void testTestWriteArray1(double[] inputArray, String expectedOutput) {
+        writer.writeArray(inputArray);
+        String actualOutput = captor.getOutput();
+
+        String normalizedActual = actualOutput.replace("\r\n", "\n");
+        String normalizedExpected = expectedOutput.replace("\r\n", "\n");
+
+        Assert.assertEquals(normalizedActual, normalizedExpected);
     }
 
     @Test
