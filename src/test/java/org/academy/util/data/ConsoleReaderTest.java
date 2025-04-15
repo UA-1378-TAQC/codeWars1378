@@ -44,7 +44,6 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-
     @Test(dataProvider = "readFloatDataProvider")
     public void testReadFloat(float minValue, String simulatedInput, float expected) {
         inputCaptor.setInput(simulatedInput + "\n");
@@ -107,4 +106,3 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
         Assert.assertEquals(result, expectedResult);
     }
 }
-

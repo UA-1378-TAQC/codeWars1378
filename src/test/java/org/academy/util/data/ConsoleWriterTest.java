@@ -55,12 +55,21 @@ public class ConsoleWriterTest extends WriterDataProvider , ConsoleWriterDataPro
         Assert.assertEquals(actualOutput, expectedOutput, "Expected output: " + expectedOutput + ", but got: " + actualOutput);
     }
 
+    @Test(dataProvider = "longDataProvider")
+    public void testTestWriteResult3(long input, String expectedOutput) {
+        ConsoleWriter writer = new ConsoleWriter();
+
+        writer.writeResult(input);
+
+        String output = outputCaptor.getOutput();
+        assertEquals(output.trim(), expectedOutput.trim(), "Output mismatch for input: " + input);
+    }
+
     @Test(dataProvider = "booleanDataProvider", dataProviderClass = WriterDataProvider.class)
     public void testTestWriteResult4(boolean input, String expected) {
         writer.writeResult(input);
         Assert.assertEquals(captor.getOutput(), expected);
     }
-
 
     @Test(dataProvider = "characterData", dataProviderClass = WriterDataProvider.class)
     public void testTestWriteResult5(char input, String expectedOutput) {
@@ -104,4 +113,3 @@ public class ConsoleWriterTest extends WriterDataProvider , ConsoleWriterDataPro
         Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
 }
-
