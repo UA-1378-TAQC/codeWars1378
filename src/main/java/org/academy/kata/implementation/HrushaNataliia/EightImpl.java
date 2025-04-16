@@ -28,14 +28,14 @@ public class EightImpl extends Base implements IEight {
     @Override
     public int[] squareOrSquareRoot(int[] array) {
         int[] result = new int[array.length];
+
         for (int i = 0; i < array.length; i++) {
-            double sqrt = Math.sqrt(array[i]);
-            if (sqrt == (int) sqrt) {
-                result[i] = (int) sqrt;
-            } else {
+            if (Math.sqrt(array[i]) % 1 == 0)
+                result[i] = (int) Math.sqrt(array[i]);
+            else
                 result[i] = array[i] * array[i];
-            }
         }
+
         return result;
     }
 
