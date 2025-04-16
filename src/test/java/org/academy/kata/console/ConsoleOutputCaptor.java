@@ -12,7 +12,7 @@ public class ConsoleOutputCaptor {
     }
 
     public String getOutput() {
-        return outputStream.toString().trim();
+        return outputStream.toString().trim().replaceAll("\\R", "\n");
     }
 
     public void stopCapture() {
