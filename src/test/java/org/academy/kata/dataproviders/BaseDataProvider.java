@@ -14,4 +14,22 @@ public abstract class BaseDataProvider {
         }
         return combined;
     }
+
+    protected Object[][] combineDataProviderForSquareRoot(Object[][] data, List<?> implementations) {
+        Object[][] combined = new Object[data.length * implementations.size()][data[0].length + 1];
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < implementations.size(); j++) {
+                int index = i * implementations.size() + j;
+
+                int[] input = ((int[]) data[i][0]).clone();
+                int[] expected = ((int[]) data[i][1]).clone();
+
+                combined[index][0] = input;
+                combined[index][1] = expected;
+                combined[index][2] = implementations.get(j);
+            }
+        }
+        return combined;
+    }
+
 }
