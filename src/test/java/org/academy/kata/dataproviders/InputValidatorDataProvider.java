@@ -102,6 +102,26 @@ public class InputValidatorDataProvider {
         };
     }
 
+    @DataProvider(name = "doubleDataProvider")
+    public static Object[][] doubleDataProvider() {
+        return new Object[][]{
+                {"3.14", 0.0, true},
+                {"0.0", 0.0, true},
+                {"-1.5", -2.0, true},
+                {"100", 99.99, true},
+                {"-3.14", 0.0, false},
+                {"0.0", 1.0, false},
+                {"99.99", 100.0, false},
+                {"abc", 0.0, false},
+                {"", 0.0, false},
+                {" ", 0.0, false},
+                {null, 0.0, false},
+                {"1.7976931348623157E308", 0.0, true},
+                {"-1.7976931348623157E308", 0.0, false},
+        };
+    }
+
+
     @DataProvider(name = "integerArrayDataProvider")
     public Object[][] integerArrayDataProvider() {
         return new Object[][]{
