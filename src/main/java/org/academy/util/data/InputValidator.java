@@ -1,8 +1,10 @@
 package org.academy.util.data;
 
 import java.math.BigInteger;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.function.Function;
+import java.util.regex.Pattern;
 
 public class InputValidator {
 
@@ -74,7 +76,11 @@ public class InputValidator {
         if (prompt == null || prompt.isBlank()) {
             return false;
         }
-        String[] array = prompt.trim().split(delimiter);
+        String safeDelimiter = Pattern.quote(delimiter);
+        String[] array = Arrays.stream(prompt.trim().split(safeDelimiter)).filter(str -> !str.isBlank()).toArray(String[]::new);
+        if(array.length == 0){
+            return false;
+        }
         for (String elem : array) {
             try {
                 T value = parser.apply(elem.trim());
