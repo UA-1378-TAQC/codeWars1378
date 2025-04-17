@@ -231,7 +231,7 @@ public class SixImpl extends Base implements ISix {
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
         if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
-            return " ";
+            return "";
         }
         HashMap<String, Integer> list = new HashMap<>();
 
@@ -257,7 +257,7 @@ public class SixImpl extends Base implements ISix {
         res = res.substring(0, res.length() - 3);
         res.trim();
         if (res.length() == 0) {
-            return " ";
+            return "";
         }
         return res;
     }
