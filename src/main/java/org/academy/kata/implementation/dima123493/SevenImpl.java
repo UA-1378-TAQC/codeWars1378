@@ -26,17 +26,20 @@ public class SevenImpl extends Base implements ISeven {
 
     @Override
     public String seriesSum(int n) {
+        final int INITIAL_DENOMINATOR = 1;
+        final int DENOMINATOR_STEP = 3;
+        final String DECIMAL_FORMAT = "0.00";
         if (n == 0) {
             return "0.00";
         }
 
         double sum = 0.0;
         for (int i = 0; i < n; i++) {
-            int denominator = 1 + i * 3;
+            int denominator = INITIAL_DENOMINATOR + i * DENOMINATOR_STEP;
             sum += 1.0 / denominator;
         }
 
-        DecimalFormat df = new DecimalFormat("0.00");
+        DecimalFormat df = new DecimalFormat(DECIMAL_FORMAT);
         return df.format(sum);
     }
 }

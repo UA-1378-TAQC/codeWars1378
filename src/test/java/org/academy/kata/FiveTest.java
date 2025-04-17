@@ -1,38 +1,54 @@
-    package org.academy.kata;
+package org.academy.kata;
 
-    import org.academy.kata.dataproviders.FiveDataProvider;
-    import org.testng.Assert;
-    import org.testng.annotations.Test;
+import org.academy.kata.dataproviders.FiveDataProvider;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
-    import java.util.Arrays;
+import java.math.BigInteger;
+import java.util.Arrays;
 
-    public class FiveTest extends FiveDataProvider {
+public class FiveTest extends FiveDataProvider {
 
-        @Test(dataProvider = "gapDataProvider")
-        public void testGap(int g, long m, long n, Long[] expected, IFive fiveImpl) {
-            long[] actual = fiveImpl.gap(g, m, n);
+    @Test(dataProvider = "gapDataProvider")
+    public void testGap(int g, long m, long n, Long[] expected, IFive fiveImpl) {
+        long[] actual = fiveImpl.gap(g, m, n);
 
-            if (expected == null) {
-                Assert.assertNull(actual, "Expected null but got result from " + fiveImpl.getClass().getSimpleName());
-            } else {
-                Long[] actualBoxed = Arrays.stream(actual).boxed().toArray(Long[]::new);
-                Assert.assertEquals(actualBoxed, expected, "Failed for implementation: " + fiveImpl.getClass().getSimpleName());
-            }
-        }
-
-        @Test
-        public void testZeros() {
-        }
-
-        @Test
-        public void testPerimeter() {
-        }
-
-        @Test
-        public void testSolve() {
-        }
-
-        @Test
-        public void testSmallest() {
+        if (expected == null) {
+            Assert.assertNull(actual, "Expected null but got result from " + fiveImpl.getClass().getSimpleName());
+        } else {
+            Long[] actualBoxed = Arrays.stream(actual).boxed().toArray(Long[]::new);
+            Assert.assertEquals(actualBoxed, expected, "Failed for implementation: " + fiveImpl.getClass().getSimpleName());
         }
     }
+
+    @Test(dataProvider = "zerosDataProvider")
+    public void testZeros(int input, int expected, IFive iFive) {
+        int actual = iFive.zeros(input);
+        Assert.assertEquals(actual, expected, "Failed for implementation: " + iFive.getClass().getSimpleName() + " with input: " + input);
+    }
+
+    @Test(dataProvider = "perimeterDataProvider")
+    public void testPerimeter(BigInteger n, BigInteger expected, IFive iFive) {
+        BigInteger actual = iFive.perimeter(n);
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test(dataProvider = "solveDataProvider")
+    public void testSolve(double m, double expected, IFive iFive) {
+        double actual = iFive.solve(m);
+        Assert.assertEquals(actual, expected, 1e-12);
+    }
+
+    @Test(dataProvider = "smallestValueDataProvider")
+    public void testSmallest(long input, long[] expected, IFive iFive) {
+        SoftAssert softAssert = new SoftAssert();
+        long[] actual = iFive.smallest(input);
+        softAssert.assertEquals(actual.length, expected.length, "Length mismatch");
+
+        for (int i = 0; i < expected.length; i++) {
+            softAssert.assertEquals(actual[i], expected[i], "Mismatch at index " + i);
+        }
+        softAssert.assertAll();
+    }
+}

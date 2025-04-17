@@ -6,11 +6,6 @@ import org.academy.kata.ISeven;
 import org.academy.kata.ISix;
 
 public enum Authors {
-    KOSIAK_IVANNA(1, "keepCalmGirl", "Ivanna Kosiak",
-            new org.academy.kata.implementation.keepCalmGirl.EightImpl(),
-            new org.academy.kata.implementation.keepCalmGirl.SevenImpl(),
-            new org.academy.kata.implementation.keepCalmGirl.SixImpl(),
-            new org.academy.kata.implementation.keepCalmGirl.FiveImpl()),
 
     FYLYK_VIKTORIIA(2, "viktoriiafylyk", "Viktoriia Fylyk",
             new org.academy.kata.implementation.viktoriiafylyk.EightImpl(),
