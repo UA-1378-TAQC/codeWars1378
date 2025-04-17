@@ -2,6 +2,8 @@ package org.academy.kata.dataproviders;
 
 import org.testng.annotations.DataProvider;
 
+import java.math.BigInteger;
+
 public class InputValidatorDataProvider {
     @DataProvider(name = "isValidStringDataProvider")
     public Object[][] isValidStringDataProvider() {
@@ -129,4 +131,21 @@ public class InputValidatorDataProvider {
                 {"--12", 0L, false}
         };
     }
+    @DataProvider(name = "bigIntegerDataProvider")
+    public static Object[][] bigIntegerDataProvider() {
+        return new Object[][]{
+                {"0", new BigInteger("0"), true},
+                {"123", new BigInteger("123"), true},
+                {"-456", new BigInteger("-456"), true},
+                {"789000000000000000000", new BigInteger("789000000000000000000"), true},
+                {"+42", new BigInteger("42"), true},
+                {"  10  ", new BigInteger("10"), true}, // з пробілами
+                {"", BigInteger.ZERO, false},
+                {"abc", BigInteger.ZERO, false},
+                {"12.34", BigInteger.ZERO, false}, // десяткове — невалідне для BigInteger
+                {"1e3", BigInteger.ZERO, false},   // експоненціальне — теж ні
+                {null, BigInteger.ZERO, false}
+        };
+    }
+
 }
