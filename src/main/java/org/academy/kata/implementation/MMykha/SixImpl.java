@@ -27,7 +27,7 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String balance(String book) {
-        Pattern pattern = Pattern.compile("(\\d*\\.\\d\\d)\\W*(\\d*)\\W(\\w*)\\W*");
+        Pattern pattern = Pattern.compile("(\\d*\\.\\d*)\\W*(\\d*)\\W(\\w*)\\W*");
         Matcher matcher = pattern.matcher(book);
 
         ArrayList<String> checkNumber = new ArrayList<String>();
