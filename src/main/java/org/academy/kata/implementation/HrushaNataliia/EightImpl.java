@@ -62,7 +62,7 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public double TwoDecimalPlaces(double number) {
-        return Double.parseDouble(String.format("%.2f", number));
+        return Math.round(number * 100) / 100.0;
     }
 
     @Override
