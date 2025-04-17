@@ -75,7 +75,7 @@ public class ConsoleReaderDataProvider {
                 {";", "test;data;provider", null, new String[]{"test", "data", "provider"}},
                 {",", "only", null, new String[]{"only"}},
                 {",", "a,b,c", "[a-z]", new String[]{"a", "b", "c"}},
-                {"\\|", "A|B|C", "[A-Z]", new String[]{"A", "B", "C"}}
+                {"|", "A|B|C", "[A-Z]", new String[]{"A", "B", "C"}}
         };
     }
 
