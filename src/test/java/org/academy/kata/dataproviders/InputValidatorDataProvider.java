@@ -106,7 +106,7 @@ public class InputValidatorDataProvider {
     public Object[][] integerArrayDataProvider() {
         return new Object[][]{
                 {"1, 2, 3", ",", 1, true},
-                {"1 2 3", "\\s+", 1, true},
+                {"1 2 3", " ", 1, true},
         };
     }
 
