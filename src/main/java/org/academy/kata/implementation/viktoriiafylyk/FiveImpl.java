@@ -49,15 +49,15 @@ public class FiveImpl extends Base implements IFive {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        BigInteger a = BigInteger.ONE;
+        BigInteger a = BigInteger.ZERO;
         BigInteger b = BigInteger.ONE;
-        BigInteger sum = BigInteger.valueOf(2);
+        BigInteger sum = BigInteger.ONE;;
 
-        for (BigInteger i = BigInteger.valueOf(2); i.compareTo(n) <= 0; i = i.add(BigInteger.ONE)) {
-            BigInteger c = a.add(b);
-            sum = sum.add(c);
+        for (BigInteger i = BigInteger.ONE; i.compareTo(n) <= 0; i = i.add(BigInteger.ONE)) {
+            BigInteger next = a.add(b);
+            sum = sum.add(next);
             a = b;
-            b = c;
+            b = next;
         }
 
         return sum.multiply(BigInteger.valueOf(4));
