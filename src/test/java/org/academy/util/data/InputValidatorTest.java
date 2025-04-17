@@ -4,6 +4,8 @@ import org.academy.kata.dataproviders.InputValidatorDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.math.BigInteger;
+
 import static org.testng.Assert.assertEquals;
 
 
@@ -33,9 +35,10 @@ public class InputValidatorTest extends InputValidatorDataProvider {
         Assert.assertEquals(result, expected, String.format("Validation failed for input '%s' with minValue %f. Expected: %b, but got: %b", prompt, minValue, expected, result));
     }
 
-
-    @Test
-    public void testIsValidBigInteger() {
+    @Test(dataProvider = "bigIntegerDataProvider")
+    public void testIsValidBigInteger(String prompt, BigInteger minValue, boolean expected) {
+        boolean result = InputValidator.isValidBigInteger(prompt, minValue);
+        Assert.assertEquals(result, expected, String.format("Validation failed for input '%s' with minValue . Expected: %b, but got: %b", prompt, minValue, expected, result));
     }
 
     @Test(dataProvider = "isValidStringDataProvider", dataProviderClass = InputValidatorDataProvider.class)
