@@ -1,9 +1,13 @@
 package org.academy.kata.implementation.DMSlobodianiuk;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
-
-import java.util.*;
 
 public class SixImpl extends Base implements ISix {
     @Override
@@ -37,9 +41,6 @@ public class SixImpl extends Base implements ISix {
             balance[i] = balance[i].replaceAll(" +", " ");
         }
 
-        // for(String word:balance){
-        //     System.out.println(word);
-        // }
 
         double original_Balance = Double.parseDouble(balance[0]);
         String res = "Original Balance: " + original_Balance + "0\\r\\n";
@@ -49,7 +50,6 @@ public class SixImpl extends Base implements ISix {
         for (int i = 1; i < balance.length; i++) {
 
             String[] t = balance[i].split(" ");
-            // System.out.println(Arrays.toString(t));
             String check_Number = t[0];
             String catagory = t[1];
             double check_Amount = Double.parseDouble(t[2]);
@@ -61,11 +61,9 @@ public class SixImpl extends Base implements ISix {
             res += check_Number + " " + catagory + " " + length_Check(check_Amount) + " " + "Balance " + length_Check(final_Balance) + "\\r\\n";
 
         }
-        // total_Expense = Math.round(total_Expense*100.0)/100.0;
         double avarage_Expense = Math.round(total_Expense / (balance.length - 1) * 100.0) / 100.0;
 
         res += "Total expense  " + length_Check(total_Expense) + "\\r\\nAverage expense  " + length_Check(avarage_Expense);
-        // System.out.println("\n"+ res);
         return res;
     }
 
@@ -97,10 +95,6 @@ public class SixImpl extends Base implements ISix {
 
         String mean_data = extract(town, strng);
 
-        // String mean_data_splited[] = mean_data.split(":");
-
-        // String month_value[] = mean_data_splited[1].split(",");
-
         String[] mean_data_splited = mean_data.split(":");
         String[] month_value = mean_data_splited[1].split(",");
 
@@ -122,9 +116,6 @@ public class SixImpl extends Base implements ISix {
         }
         String variance_data = extract(town, strng);
 
-        // String variance_data_splited[] = variance_data.split(":");
-        // String variance_value_arr[] = variance_data_splited[1].split(",");
-
         String[] variance_data_splited = variance_data.split(":");
         String[] variance_value_arr = variance_data_splited[1].split(",");
 
@@ -136,7 +127,6 @@ public class SixImpl extends Base implements ISix {
         for (String vv : variance_value_arr) {
             String[] t_month_value = vv.split(" ");
             double t_value = Double.parseDouble(t_month_value[1]);
-            // d += (t_value - mean_value) * (t_value - mean_value);
             d += Math.pow((t_value - mean_value), 2);
         }
 
@@ -175,9 +165,8 @@ public class SixImpl extends Base implements ISix {
         String[] resultSheetSplited = resultSheet.split(",");
 
         for (String rss : resultSheetSplited) {
-            // System.out.println(rss);
             if (rss.contains(toFind)) {
-                // System.out.println("\n"+rss);
+
                 String[] t = rss.split(" ");
 
                 double num_1 = 0;
@@ -187,13 +176,6 @@ public class SixImpl extends Base implements ISix {
                 String name_2 = "";
 
                 for (String t_rss : t) {
-
-                    // try{
-                    //     Double.parseDouble(t_rss);
-                    // }
-                    // catch(NumberFormatException e){
-                    //     return "Error(float number):" + rss;
-                    // }
                     if (t_rss.indexOf(".") != -1) {
                         return "Error(float number):" + rss;
                     }
@@ -215,7 +197,6 @@ public class SixImpl extends Base implements ISix {
                 }
                 name_1 = name_1.trim();
                 name_2 = name_2.trim();
-                // System.out.println(name_1 + "|"+num_1+ "|"+name_2+"|" + num_2);
 
                 if (name_1.equals(toFind)) {
                     if (num_1 > num_2) {
@@ -252,7 +233,6 @@ public class SixImpl extends Base implements ISix {
         if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
             return " ";
         }
-        // int list[] = new int[lstOf1stLetter.length];
         HashMap<String, Integer> list = new HashMap<>();
 
         Set<String> lettersSet = new HashSet<>(Arrays.asList(lstOf1stLetter));
@@ -269,8 +249,6 @@ public class SixImpl extends Base implements ISix {
             list.merge(lstOf1stLetter[i], 0, Integer::sum);
         }
 
-        // System.out.println(list);
-
         String res = "";
         for (Map.Entry<String, Integer> entry : list.entrySet()) {
             res += "(" + entry.getKey() + " : " + entry.getValue() + ") - ";
@@ -278,7 +256,6 @@ public class SixImpl extends Base implements ISix {
 
         res = res.substring(0, res.length() - 3);
         res.trim();
-        // System.out.println(res);
         if (res.length() == 0) {
             return " ";
         }
