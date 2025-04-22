@@ -92,10 +92,6 @@ public class ConsoleReaderTest extends ConsoleReaderDataProvider {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void testReadIntArray() {
-    }
-
     @Test(dataProvider = "readDoubleArrayDataProvider")
     public void testReadDoubleArray(String simulatedInput, Double minValue, double[] expected) {
         ConsoleInputCaptor captor = new ConsoleInputCaptor();
