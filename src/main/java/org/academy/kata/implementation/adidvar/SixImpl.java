@@ -95,6 +95,10 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
+        if (lstOfArt == null || lstOf1stLetter == null || lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return "";
+        }
+
         int[] categoryCounts = new int[lstOf1stLetter.length];
         for (String book : lstOfArt) {
             char category = book.charAt(0);
@@ -118,4 +122,5 @@ public class SixImpl extends Base implements ISix {
 
         return result.toString();
     }
+
 }
