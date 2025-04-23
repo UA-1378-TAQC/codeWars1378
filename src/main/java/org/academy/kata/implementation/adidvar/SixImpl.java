@@ -3,6 +3,8 @@ package org.academy.kata.implementation.adidvar;
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
 
+import static org.academy.kata.implementation.KhrystynaTs.SixImpl.length_Check;
+
 public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
@@ -19,31 +21,34 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String balance(String book) {
-        String cleaned = book.replaceAll("[^a-zA-Z0-9.\\s\n]", "");
-        String[] array = cleaned.split("\\n+");
-        array[0] = "Original Balance: " + array[0];
-
-        double total = 0;
-        double average;
-        double balance = Double.parseDouble(array[0].split(":")[1].trim());
-
-        for (int i = 1; i < array.length; i++) {
-            String[] temp = array[i].split("\\s+");
-            double expense = Double.parseDouble(temp[2]);
-            balance -= expense;
-            total += expense;
-            array[i] = temp[0] + " " + temp[1] + " " + temp[2] + " Balance " + String.format("%.2f", balance);
+        String[] balance = book.split("\n");
+        for (int i = 0; i < balance.length; i++) {
+            balance[i] = balance[i].replaceAll("[/{!@#$%^&*-+=:;,`?}]", "");
+            balance[i] = balance[i].replaceAll(" +", " ");
         }
 
-        average = total / (array.length - 1);
-        StringBuilder res = new StringBuilder();
-        for (String line : array) {
-            res.append(line).append("\\r\\n");
-        }
-        res.append("Total expense  ").append(String.format("%.2f", total)).append("\\r\\n");
-        res.append("Average expense  ").append(String.format("%.2f", average));
+        double total_Expense = 0;
+        double original_Balance = Double.parseDouble(balance[0]);
+        String res = "Original Balance: " + original_Balance + "0\\r\\n";
 
-        return res.toString();
+        for (int i = 1; i < balance.length; i++) {
+            String[] t = balance[i].split(" ");
+            // System.out.println(Arrays.toString(t));
+            String check_Number = t[0];
+            String catagory = t[1];
+            double check_Amount = Double.parseDouble(t[2]);
+            total_Expense += check_Amount;
+            double final_Balance = Math.round((original_Balance - check_Amount) * 100.0) / 100.0;
+            original_Balance -= check_Amount;
+            res += check_Number + " " + catagory + " " + length_Check(check_Amount) + " " + "Balance " + length_Check(final_Balance) + "\\r\\n";
+
+        }
+        // total_Expense = Math.round(total_Expense*100.0)/100.0;
+        double avarage_Expense = Math.round(total_Expense / (balance.length - 1) * 100.0) / 100.0;
+
+        res += "Total expense  " + length_Check(total_Expense) + "\\r\\nAverage expense  " + length_Check(avarage_Expense);
+        // System.out.println("\n"+ res);
+        return res;
     }
 
     @Override
