@@ -30,23 +30,31 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String balance(String book) {
-        String t = book.replaceAll("([^\\n. \\da-zA-Z])", "");
-        String[] arr = t.split("[\\n]+");
-        double current = Double.parseDouble(arr[0]);
+        String cleaned = book.replaceAll("[^a-zA-Z0-9.\\s\n]", "");
+        String[] array = cleaned.split("\\n+");
+        array[0] = "Original Balance: " + array[0];
+
         double total = 0;
-        int count = 0;
-        StringBuilder result = new StringBuilder();
-        result.append("Original Balance: " + arr[0]);
-        for (int i = 1; i < arr.length; i++) {
-            count++;
-            String[] line = arr[i].split("[ ]+");
-            current -= Double.parseDouble(line[2]);
-            total += Double.parseDouble(line[2]);
-            String u = String.format("\\r\\n%s %s %s Balance %.2f", line[0], line[1], line[2], current);
-            result.append(u);
+        double average;
+        double balance = Double.parseDouble(array[0].split(":")[1].trim());
+
+        for (int i = 1; i < array.length; i++) {
+            String[] temp = array[i].split("\\s+");
+            double expense = Double.parseDouble(temp[2]);
+            balance -= expense;
+            total += expense;
+            array[i] = temp[0] + " " + temp[1] + " " + temp[2] + " Balance " + String.format("%.2f", balance);
         }
-        result.append(String.format("\\r\\nTotal expense  %.2f\\r\\nAverage expense  %.2f", total, total / count));
-        return result.toString();
+
+        average = total / (array.length - 1);
+        StringBuilder res = new StringBuilder();
+        for (String line : array) {
+            res.append(line).append("\r\n");
+        }
+        res.append("Total expense  ").append(String.format("%.2f", total)).append("\r\n");
+        res.append("Average expense  ").append(String.format("%.2f", average));
+
+        return res.toString();
     }
 
     @Override
