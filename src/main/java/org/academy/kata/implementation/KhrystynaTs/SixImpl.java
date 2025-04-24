@@ -13,10 +13,15 @@ import static java.util.stream.Stream.of;
 public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
-        double result = Math.sqrt(m);
-        double d = 1 + 8 * result;
-        double n = (Math.sqrt(d) - 1) / 2;
-        return n - Math.floor(n) == 0 ? (long) n : -1;
+        long n = 1;
+        while (m > 0) {
+            m -= n * n * n;
+            n++;
+        }
+        if (m < 0)
+            return -1;
+        else
+            return n - 1;
     }
 
     @Override
