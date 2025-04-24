@@ -4,6 +4,7 @@ import org.academy.kata.Base;
 import org.academy.kata.IEight;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class EightImpl extends Base implements IEight {
@@ -27,16 +28,12 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        int[] result = new int[array.length];
-        for (int i = 0; i < array.length; i++) {
-            double sqrt = Math.sqrt(array[i]);
-            if (sqrt == (int) sqrt) {
-                result[i] = (int) sqrt;
-            } else {
-                result[i] = array[i] * array[i];
-            }
-        }
-        return result;
+        return Arrays.stream(array)
+                .map(number -> {
+                    int sqrt = (int) Math.sqrt(number);
+                    return (sqrt * sqrt == number) ? sqrt : number * number;
+                })
+                .toArray();
     }
 
     @Override
