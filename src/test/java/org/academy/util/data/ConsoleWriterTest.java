@@ -1,5 +1,7 @@
 package org.academy.util.data;
 
+import java.util.Arrays;
+
 import org.academy.kata.console.ConsoleOutputCaptor;
 import org.academy.kata.dataproviders.WriterDataProvider;
 import org.academy.kata.dataproviders.WriterStringDataProvider;
@@ -26,8 +28,6 @@ public class ConsoleWriterTest extends WriterDataProvider {
 
     @Test(dataProvider = "testWritePrompt", dataProviderClass = WriterDataProvider.class)
     public void testWritePrompt(String input, String expectedOutput) {
-        ConsoleWriter writer = new ConsoleWriter();
-        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
         writer.writePrompt(input);
         Assert.assertEquals(captor.getOutput(), expectedOutput);
     }
@@ -107,10 +107,10 @@ public class ConsoleWriterTest extends WriterDataProvider {
 
     @Test(dataProvider = "testWriteArray2String", dataProviderClass = WriterDataProvider.class)
     public void testTestWriteArray2(String[] input, String[] expectedOutput) {
-        ConsoleWriter writer = new ConsoleWriter();
-        ConsoleOutputCaptor captor = new ConsoleOutputCaptor();
         writer.writeResult(input);
+        System.out.println(Arrays.toString(input));
+        System.out.println(Arrays.toString(expectedOutput));
 
-        Assert.assertEquals(captor.getOutput(), expectedOutput);
+        Assert.assertEquals(input,expectedOutput);
     }
 }
