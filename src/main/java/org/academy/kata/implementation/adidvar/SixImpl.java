@@ -3,6 +3,8 @@ package org.academy.kata.implementation.adidvar;
 import org.academy.kata.Base;
 import org.academy.kata.ISix;
 
+import static org.academy.kata.implementation.KhrystynaTs.SixImpl.length_Check;
+
 public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
@@ -34,7 +36,6 @@ public class SixImpl extends Base implements ISix {
             total += expense;
             array[i] = temp[0] + " " + temp[1] + " " + temp[2] + " Balance " + String.format("%.2f", balance);
         }
-
         average = total / (array.length - 1);
         StringBuilder res = new StringBuilder();
         for (String line : array) {
@@ -42,7 +43,6 @@ public class SixImpl extends Base implements ISix {
         }
         res.append("Total expense  ").append(String.format("%.2f", total)).append("\\r\\n");
         res.append("Average expense  ").append(String.format("%.2f", average));
-
         return res.toString();
     }
 
