@@ -1,9 +1,9 @@
 package org.academy.kata.implementation.DMSlobodianiuk;
 
+import java.math.BigInteger;
+
 import org.academy.kata.Base;
 import org.academy.kata.IFive;
-
-import java.math.BigInteger;
 
 public class FiveImpl extends Base implements IFive {
     @Override
