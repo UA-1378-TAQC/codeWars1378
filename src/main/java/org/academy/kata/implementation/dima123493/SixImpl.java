@@ -100,6 +100,12 @@ public class SixImpl extends Base implements ISix {
     public String nbaCup(String resultSheet, String toFind) {
         if (toFind.isEmpty()) return "";
 
+        for (String match : resultSheet.split(",")) {
+            if (match.matches(".*\\d+\\.\\d+.*")) {
+                return "Error(float number):" + match;
+            }
+        }
+
         String[] matches = resultSheet.split(",");
         int wins = 0, draws = 0, losses = 0, scored = 0, conceded = 0, points = 0;
         boolean teamPlayed = false;
