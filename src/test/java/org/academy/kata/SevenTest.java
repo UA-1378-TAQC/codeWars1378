@@ -2,9 +2,17 @@ package org.academy.kata;
 
 import org.academy.kata.dataproviders.SevenDataProvider;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.Locale;
+
 public class SevenTest extends SevenDataProvider {
+
+    @BeforeClass
+    public void setup(){
+        Locale.setDefault(Locale.ROOT);
+    }
 
     @Test(dataProvider = "benefactorDataProvider")
     public void testNewAvg(double[] arr, double navg, long expected, ISeven iSeven) {

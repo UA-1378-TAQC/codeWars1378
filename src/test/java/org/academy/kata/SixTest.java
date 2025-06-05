@@ -3,10 +3,15 @@ package org.academy.kata;
 import org.academy.kata.dataproviders.SixDataProvider;
 import org.testng.annotations.Test;
 import org.testng.Assert;
-
+import org.testng.annotations.BeforeClass;
+import java.util.Locale;
 
 public class SixTest extends SixDataProvider {
 
+    @BeforeClass
+    public void setup(){
+        Locale.setDefault(Locale.ROOT);
+    }
 
     @Test(dataProvider = "findNbDataProvider")
     public void testFindNb(long input, long expected, ISix iSix) {
@@ -17,8 +22,8 @@ public class SixTest extends SixDataProvider {
     @Test(dataProvider = "balanceDataProvider")
     public void testBalance(String input, String expected, ISix iSix) {
         String output = iSix.balance(input);
-
-        Assert.assertEquals(output, expected);
+        String updated = output./*replace("\\r","").*/replace("\r", "")/*.replace("\\n", "\n")*/;
+        Assert.assertEquals(updated, expected);
     }
 
     @Test(dataProvider = "dataForF", dataProviderClass = SixDataProvider.class)
