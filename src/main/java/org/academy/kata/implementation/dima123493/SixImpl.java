@@ -26,14 +26,24 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String balance(String book) {
+        final String lineSeparator = "\n";
         var lines = book.replaceAll("[^\\w\n. ]", "").split("\n");
-        var report = new StringBuilder("Original Balance: " + lines[0] + (book = "\\r\\n"));
-        double balance = Double.parseDouble(lines[0]), sum = 0;
+        var report = new StringBuilder("Original Balance: ");
+        report.append(lines[0]);
+        report.append(lineSeparator);
+        double balance = Double.parseDouble(lines[0]);
+        double sum = 0;
         for (int i = 1; i < lines.length; i++) {
-            sum += Double.parseDouble(lines[i].split("\\s+")[2]);
-            report.append(lines[i].trim().replaceAll("\\s+", " ")).append(String.format(" Balance %.2f", balance - sum)).append(book);
+            var fragments = lines[i].split("\\s+");
+            var price = Double.parseDouble(fragments[2]);
+            sum += price;
+            report.append(String.format("%s %s %.2f Balance %.2f",
+                            fragments[0], fragments[1], price, balance - sum))
+                    .append(lineSeparator);
         }
-        return report + String.format("Total expense  %.2f%sAverage expense  %.2f", sum, book, sum / (lines.length - 1));
+        report.append(String.format("Total expense  %.2f%sAverage expense  %.2f",
+                sum, lineSeparator, sum / (lines.length - 1)));
+        return report.toString();
     }
 
     @Override
@@ -89,6 +99,12 @@ public class SixImpl extends Base implements ISix {
     @Override
     public String nbaCup(String resultSheet, String toFind) {
         if (toFind.isEmpty()) return "";
+
+        for (String match : resultSheet.split(",")) {
+            if (match.matches(".*\\d+\\.\\d+.*")) {
+                return "Error(float number):" + match;
+            }
+        }
 
         String[] matches = resultSheet.split(",");
         int wins = 0, draws = 0, losses = 0, scored = 0, conceded = 0, points = 0;

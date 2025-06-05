@@ -37,7 +37,6 @@ public class SixImpl extends Base implements ISix {
             total += expense;
             array[i] = temp[0] + " " + temp[1] + " " + temp[2] + " Balance " + String.format("%.2f", balance);
         }
-
         average = total / (array.length - 1);
         StringBuilder res = new StringBuilder();
         for (String line : array) {
@@ -45,7 +44,6 @@ public class SixImpl extends Base implements ISix {
         }
         res.append("Total expense  ").append(String.format("%.2f", total)).append("\\r\\n");
         res.append("Average expense  ").append(String.format("%.2f", average));
-
         return res.toString();
     }
 
@@ -167,6 +165,10 @@ public class SixImpl extends Base implements ISix {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
+        if (lstOfArt == null || lstOf1stLetter == null || lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return "";
+        }
+
         int[] categoryCounts = new int[lstOf1stLetter.length];
         for (String book : lstOfArt) {
             char category = book.charAt(0);
@@ -190,4 +192,5 @@ public class SixImpl extends Base implements ISix {
 
         return result.toString();
     }
+
 }
