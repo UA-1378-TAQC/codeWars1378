@@ -18,12 +18,11 @@ public class EightImpl extends Base implements IEight {
         return length * width * height;
     }
 
-    @Override
     public float mpgToKPM(float mpg) {
-        float kilometersPerMile = 1.609344f;
-        float litersPerGallon = 4.54609188f;
-        float kpl = (mpg * kilometersPerMile) / litersPerGallon;
-        return Math.round(kpl * 100) / 100.0f;
+        double kilometersPerMile = 1.609344;
+        double litersPerGallon = 4.54609188;
+        double kpl = (mpg * kilometersPerMile) / litersPerGallon;
+        return (float) (Math.round(kpl * 100) / 100.0);
     }
 
     @Override
