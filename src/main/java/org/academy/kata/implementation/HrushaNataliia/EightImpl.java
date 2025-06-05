@@ -4,12 +4,13 @@ import org.academy.kata.Base;
 import org.academy.kata.IEight;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class EightImpl extends Base implements IEight {
     @Override
     public int liters(double time) {
-        return 0;
+        return (int) (time * 0.5);
     }
 
     @Override
@@ -17,26 +18,21 @@ public class EightImpl extends Base implements IEight {
         return length * width * height;
     }
 
-    @Override
     public float mpgToKPM(float mpg) {
-        float kilometersPerMile = 1.609344f;
-        float litersPerGallon = 4.54609188f;
-        float kpl = (mpg * kilometersPerMile) / litersPerGallon;
-        return Math.round(kpl * 100) / 100.0f;
+        double kilometersPerMile = 1.609344;
+        double litersPerGallon = 4.54609188;
+        double kpl = (mpg * kilometersPerMile) / litersPerGallon;
+        return (float) (Math.round(kpl * 100) / 100.0);
     }
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        int[] result = new int[array.length];
-        for (int i = 0; i < array.length; i++) {
-            double sqrt = Math.sqrt(array[i]);
-            if (sqrt == (int) sqrt) {
-                result[i] = (int) sqrt;
-            } else {
-                result[i] = array[i] * array[i];
-            }
-        }
-        return result;
+        return Arrays.stream(array)
+                .map(number -> {
+                    int sqrt = (int) Math.sqrt(number);
+                    return (sqrt * sqrt == number) ? sqrt : number * number;
+                })
+                .toArray();
     }
 
     @Override
@@ -65,7 +61,7 @@ public class EightImpl extends Base implements IEight {
 
     @Override
     public double TwoDecimalPlaces(double number) {
-        return Double.parseDouble(String.format("%.2f", number));
+        return Math.round(number * 100) / 100.0;
     }
 
     @Override

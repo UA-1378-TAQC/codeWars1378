@@ -96,7 +96,7 @@ public class EightDataProvider extends BaseDataProvider {
                 {new int[]{100, 101, 5, 5, 1, 1}, new int[]{10, 10201, 25, 25, 1, 1}},
                 {new int[]{1, 2, 3, 4, 5, 6}, new int[]{1, 4, 9, 2, 25, 36}},
         };
-        return combineDataProviders(data, EIGHTS);
+        return combineDataProviderForSquareRoot(data, EIGHTS);
     }
 
     @DataProvider(name = "stringToNumberDataProvider")

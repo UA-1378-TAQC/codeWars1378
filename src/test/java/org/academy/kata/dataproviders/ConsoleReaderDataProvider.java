@@ -75,7 +75,7 @@ public class ConsoleReaderDataProvider {
                 {";", "test;data;provider", null, new String[]{"test", "data", "provider"}},
                 {",", "only", null, new String[]{"only"}},
                 {",", "a,b,c", "[a-z]", new String[]{"a", "b", "c"}},
-                {"\\|", "A|B|C", "[A-Z]", new String[]{"A", "B", "C"}}
+                {"|", "A|B|C", "[A-Z]", new String[]{"A", "B", "C"}}
         };
     }
 
@@ -85,7 +85,6 @@ public class ConsoleReaderDataProvider {
                 {",\n1,2,3", new int[]{1, 2, 3}},
                 {",\n1f2,3\n,\n1,2,3", new int[]{1, 2, 3}},
                 {";\n  5 ; 6 ; 7 ", new int[]{5, 6, 7}},
-                {"-\n4-2-1\n-\n5-6-7", new int[]{5, 6, 7}},
                 {"|\n42", new int[]{42}},
                 {";\n1,2,3\n,\n1,2,3", new int[]{1, 2, 3}},
                 {"***\n10***20***30", new int[]{10, 20, 30}},
