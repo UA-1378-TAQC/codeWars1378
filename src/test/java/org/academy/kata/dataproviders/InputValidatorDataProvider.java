@@ -2,6 +2,8 @@ package org.academy.kata.dataproviders;
 
 import org.testng.annotations.DataProvider;
 
+import java.math.BigInteger;
+
 public class InputValidatorDataProvider {
     @DataProvider(name = "isValidStringDataProvider")
     public Object[][] isValidStringDataProvider() {
@@ -50,7 +52,7 @@ public class InputValidatorDataProvider {
                 {"23, 70, 12, 1, 0, 12, 1", ",", 0.0, true},
                 {"237212", "", 0.0, true},
                 {"237212", "", 2.0, false},
-                {"2.5 5.88 52.3 6.6", ".", 2.0, true},
+                {"2.5 5.88 52.3 6.6", ".", 2.0, false},
                 {"2.5 5.88 52.3 6.6", " ", 2.0, true},
                 {"2.5 5.88 52.3 6.6", "", 2.0, false},
                 {"2.55.8852.36.6", ".", 2.0, true},
@@ -102,11 +104,31 @@ public class InputValidatorDataProvider {
         };
     }
 
+    @DataProvider(name = "doubleDataProvider")
+    public static Object[][] doubleDataProvider() {
+        return new Object[][]{
+                {"3.14", 0.0, true},
+                {"0.0", 0.0, true},
+                {"-1.5", -2.0, true},
+                {"100", 99.99, true},
+                {"-3.14", 0.0, false},
+                {"0.0", 1.0, false},
+                {"99.99", 100.0, false},
+                {"abc", 0.0, false},
+                {"", 0.0, false},
+                {" ", 0.0, false},
+                {null, 0.0, false},
+                {"1.7976931348623157E308", 0.0, true},
+                {"-1.7976931348623157E308", 0.0, false},
+        };
+    }
+
+
     @DataProvider(name = "integerArrayDataProvider")
     public Object[][] integerArrayDataProvider() {
         return new Object[][]{
                 {"1, 2, 3", ",", 1, true},
-                {"1 2 3", "\\s+", 1, true},
+                {"1 2 3", " ", 1, true},
         };
     }
 
@@ -129,4 +151,21 @@ public class InputValidatorDataProvider {
                 {"--12", 0L, false}
         };
     }
+    @DataProvider(name = "bigIntegerDataProvider")
+    public static Object[][] bigIntegerDataProvider() {
+        return new Object[][]{
+                {"0", new BigInteger("0"), true},
+                {"123", new BigInteger("123"), true},
+                {"-456", new BigInteger("-456"), true},
+                {"789000000000000000000", new BigInteger("789000000000000000000"), true},
+                {"+42", new BigInteger("42"), true},
+                {"  10  ", new BigInteger("10"), true}, // з пробілами
+                {"", BigInteger.ZERO, false},
+                {"abc", BigInteger.ZERO, false},
+                {"12.34", BigInteger.ZERO, false}, // десяткове — невалідне для BigInteger
+                {"1e3", BigInteger.ZERO, false},   // експоненціальне — теж ні
+                {null, BigInteger.ZERO, false}
+        };
+    }
+
 }

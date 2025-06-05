@@ -89,7 +89,7 @@ public class WriterDataProvider {
                 {1.23, "1.23"},
                 {-4.56, "-4.56"},
                 {Double.MAX_VALUE, "1.7976931348623157E308"},
-                {Double.MIN_VALUE, "5.0E-324"},
+                {Double.MIN_VALUE, "4.9E-324"},
                 {Math.PI, "3.141592653589793"}
         };
     }
