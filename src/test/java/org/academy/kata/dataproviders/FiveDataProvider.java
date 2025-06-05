@@ -1,10 +1,10 @@
 package org.academy.kata.dataproviders;
 
-import org.academy.kata.IFive;
-import org.testng.annotations.DataProvider;
-
 import java.math.BigInteger;
 import java.util.List;
+
+import org.academy.kata.IFive;
+import org.testng.annotations.DataProvider;
 
 public class FiveDataProvider extends BaseDataProvider {
     private final static List<IFive> FIVES = List.of(
@@ -20,7 +20,6 @@ public class FiveDataProvider extends BaseDataProvider {
             new org.academy.kata.implementation.roman50021.FiveImpl(),
             new org.academy.kata.implementation.RomanKmet.FiveImpl(),
             new org.academy.kata.implementation.viktoriiafylyk.FiveImpl()
-
     );
 
 

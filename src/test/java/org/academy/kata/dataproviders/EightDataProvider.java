@@ -1,9 +1,9 @@
 package org.academy.kata.dataproviders;
 
+import java.util.List;
+
 import org.academy.kata.IEight;
 import org.testng.annotations.DataProvider;
-
-import java.util.List;
 
 public class EightDataProvider extends BaseDataProvider {
     private final static List<IEight> EIGHTS = List.of(
