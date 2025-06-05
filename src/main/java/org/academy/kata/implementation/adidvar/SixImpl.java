@@ -40,9 +40,9 @@ public class SixImpl extends Base implements ISix {
         average = total / (array.length - 1);
         StringBuilder res = new StringBuilder();
         for (String line : array) {
-            res.append(line).append("\\r\\n");
+            res.append(line).append("\r\n");
         }
-        res.append("Total expense  ").append(String.format("%.2f", total)).append("\\r\\n");
+        res.append("Total expense  ").append(String.format("%.2f", total)).append("\r\n");
         res.append("Average expense  ").append(String.format("%.2f", average));
         return res.toString();
     }
