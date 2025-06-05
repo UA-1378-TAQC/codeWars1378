@@ -13,33 +13,49 @@ import static java.util.stream.Stream.of;
 public class SixImpl extends Base implements ISix {
     @Override
     public long findNb(long m) {
-        double result = Math.sqrt(m);
-        double d = 1 + 8 * result;
-        double n = (Math.sqrt(d) - 1) / 2;
-        return n - Math.floor(n) == 0 ? (long) n : -1;
+        long n = 1;
+        while (m > 0) {
+            m -= n * n * n;
+            n++;
+        }
+        if (m < 0)
+            return -1;
+        else
+            return n - 1;
     }
 
     @Override
     public String balance(String book) {
-        String[] lines = book.split("\n");
-        StringBuilder report = new StringBuilder();
-        String originalBalance = lines[0].replaceAll("[^a-zA-Z0-9. ]", "");
-        report.append("Original balance: ").append(originalBalance).append("\n");
-        for (int i = 1; i < lines.length; i++) {
-            String line = lines[i].replaceAll("[^a-zA-Z0-9. ]", "");  // Clean the line
-            if (!line.trim().isEmpty()) {  // Ignore empty lines
-                String[] parts = line.split(" ");
-                if (parts.length >= 3) {
-                    String checkNumber = parts[0];
-                    String category = parts[1];
-                    String checkAmount = parts[2];
-                    report.append("Check ").append(checkNumber)
-                            .append(" - Category: ").append(category)
-                            .append(" - Amount: ").append(checkAmount).append("\n");
-                }
-            }
+        String[] balance = book.split("\n");
+
+        for (int i = 0; i < balance.length; i++) {
+            balance[i] = balance[i].replaceAll("[/{!@#$%^&*-+=:;,`?}]", "");
+            balance[i] = balance[i].replaceAll(" +", " ");
         }
-        return report.toString();
+
+        double originalBalance = Double.parseDouble(balance[0]);
+        String res = "Original Balance: " + originalBalance + "0\\r\\n";
+
+        double totalExpense = 0;
+
+        for (int i = 1; i < balance.length; i++) {
+
+            String[] t = balance[i].split(" ");
+            String checkNumber = t[0];
+            String category = t[1];
+            double checkAmount = Double.parseDouble(t[2]);
+            totalExpense += checkAmount;
+            double final_Balance = Math.round((originalBalance - checkAmount) * 100.0) / 100.0;
+            originalBalance -= checkAmount;
+
+
+            res += checkNumber + " " + category + " " + length_Check(checkAmount) + " " + "Balance " + length_Check(final_Balance) + "\\r\\n";
+        }
+            double avarage_Expense = Math.round(totalExpense / (balance.length - 1) * 100.0) / 100.0;
+
+            res += "Total expense  " + length_Check(totalExpense) + "\\r\\nAverage expense  " + length_Check(avarage_Expense);
+            return res;
+
     }
 
     @Override
@@ -155,6 +171,9 @@ public class SixImpl extends Base implements ISix {
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
         Map<String, Integer> categoryTotals = new HashMap<>();
+        if (lstOfArt == null || lstOf1stLetter == null || lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return "";
+        }
         for (String category : lstOf1stLetter) {
             categoryTotals.put(category, 0);
         }
@@ -178,5 +197,20 @@ public class SixImpl extends Base implements ISix {
 
         return result.toString();
     }
+    public static String length_Check(double t_value) {
+        String t_Value_String = String.valueOf(t_value);
 
+        String t_Value_String_substring = t_Value_String.substring(t_Value_String.indexOf('.') + 1);
+
+        if (t_Value_String_substring.length() == 0) {
+            t_Value_String += "00";
+        } else if (t_Value_String_substring.length() == 1) {
+            t_Value_String += "0";
+        } else if (t_Value_String_substring.length() == 2) {
+            return t_Value_String;
+        } else if (t_Value_String_substring.length() > 2) {
+            t_Value_String = length_Check((Math.round(t_value * 100.0)) / 100.0);
+        }
+        return t_Value_String;
+    }
 }

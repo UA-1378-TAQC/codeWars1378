@@ -1,9 +1,9 @@
 package org.academy.kata.dataproviders;
 
-import org.testng.annotations.DataProvider;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.testng.annotations.DataProvider;
 
 public class WriterDataProvider {
     @DataProvider(name = "characterData")
@@ -23,8 +23,8 @@ public class WriterDataProvider {
                 {"Enter length.", "Enter length."},
                 {"Enter height.", "Enter height."},
                 {"Enter widths.", "Enter widths."},
-                {"Bob needs a fast way to calculate the volume of a rectangular cuboid with three values: the length, width and height of the cuboid.\n", "\"Bob needs a fast way to calculate the volume of a rectangular cuboid with three values: the length, width and height of the cuboid.\\n" + //
-                        "\""}
+                {"Bob needs a fast way to calculate the volume of a rectangular cuboid with three values: the length, width and height of the cuboid.", 
+                 "Bob needs a fast way to calculate the volume of a rectangular cuboid with three values: the length, width and height of the cuboid."}
         };
     }
 
@@ -89,7 +89,7 @@ public class WriterDataProvider {
                 {1.23, "1.23"},
                 {-4.56, "-4.56"},
                 {Double.MAX_VALUE, "1.7976931348623157E308"},
-                {Double.MIN_VALUE, "5.0E-324"},
+                {Double.MIN_VALUE, "4.9E-324"},
                 {Math.PI, "3.141592653589793"}
         };
     }
